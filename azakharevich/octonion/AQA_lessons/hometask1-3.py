@@ -4,12 +4,11 @@ arr = [1, 4, 5, 2, 1, 3, 0, 2, 4]
 print('Массив: ', arr)
 
 i = 0
-n = 1
 
 while i < len(arr):
     n = i + 1
     while n < len(arr):
         if arr[i] == arr[n]:
-            print('Повторяется цифра ', arr[i])
+            print('Повторяется число ', arr[i])
         n += 1
     i += 1
