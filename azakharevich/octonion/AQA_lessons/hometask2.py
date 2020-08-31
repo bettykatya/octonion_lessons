@@ -9,7 +9,7 @@ mid = 0
 while i < len(arr):
     mid += arr[i]
     i += 1
-mid = mid/2
+mid = mid/len(arr)
 print('Среднее:', mid)
 
 i = 0
