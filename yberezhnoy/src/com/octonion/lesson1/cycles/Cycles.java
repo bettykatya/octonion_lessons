@@ -38,12 +38,13 @@ public class Cycles {
 */
 
     private static void combinations() {
+        int a = 12;                             // +++ добавил переменную кол-ва перебираемых чисел
         int res;
-        for (int i = 0; i <= 5; i++) {
-            for (int j = 0; j <= 5; j++) {
-                for (int k = 0; k <= 5; k++) {
+        for (int i = 0; i <= a; i++) {
+            for (int j = 0; j <= a; j++) {
+                for (int k = 0; k <= a; k++) {
                     res = i + j + k;
-                    if (res == 10) {
+                    if (res == 11) {
                         System.out.println(i + " " + j + " " + k);
                     }
                 }
@@ -59,12 +60,12 @@ public class Cycles {
 Для натурального числа n вывести все делители, кроме единицы и самого числа.
 */
     private static void divisors() {
-        int n = 28;
+        int n = 18;
         int res;
 
-        for (int i = 1; i < n + 1; i++) {
+        for (int i = 2; i < n; i++) {  // +++ начинаем с i=2, т.к. еденицу исключаем по условию
             res = n % i;                            // остаток от деления по модулю
-            if ((res == 0) & (i != n) & (i != 1)) { //если res равно 0 и i не равно само себе и не равно 1
+            if ((res == 0) & (i != n)) { //если res равно 0 и i не равно само себе
 
                 System.out.println(i + " ");
             }
