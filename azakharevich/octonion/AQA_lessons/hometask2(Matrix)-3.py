@@ -11,44 +11,36 @@ i = 0
 
 res = 'Исходная матрица:\n'
 
-while i < len(matrix):
+for i in range(len(matrix)):
     j = 0
-    while j < len(matrix):
+    for j in range(len(matrix)):
         res = res + '| ' + str(matrix[i][j]) + '|\t'
-        j += 1
-    i += 1
     res = res + '\n\r'
 print(res)
 
 i = 0
 res = 'Часть матрицы ниже побочной диагонали:\n'
 
-while i < len(matrix):
+for i in range(len(matrix)):
     j = 0
-    while j < len(matrix):
+    for j in range(len(matrix)):
         if (len(matrix) - i) > j:
             res = res + '|  |\t'
         else:
             res = res + '| ' + str(matrix[i][j]) + '|\t'
-        j += 1
-    i += 1
     res = res + '\n\r'
 
 print(res)
 
 
 i = 0
-y = 1
 j = 0
 res = matrix[i][j]
 
-while i < len(matrix):
+for i in range(len(matrix)):
     j = 0
-    while j < len(matrix):
-        if j > (len(matrix) - y):
+    for j in range(len(matrix)):
+        if j > (len(matrix) - i - 1):
             if matrix[i][j] < res:
                 res = matrix[i][j]
-        j += 1
-    i += 1
-    y += 1
 print('Минимальный элемент ниже побочной диагонали:', res)

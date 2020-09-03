@@ -8,12 +8,10 @@ print(matrix)
 
 j = 0
 
-while j < len(matrix):
+for j in range(len(matrix)):
     res = 0
     i = 0
-    while i < len(matrix):
+    for i in range(len(matrix)):
         if matrix[i][j] > res:
             res = matrix[i][j]
-        i += 1
-    j += 1
     print('Максимальный элемент в столбце №', j, ':', res)

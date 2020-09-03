@@ -7,17 +7,13 @@ matrix = [[3, 1, 6, 4],
           [9, -9, -1, 2]]
 
 i = 0
-y = 1
 j = 0
 count = 0
 
-while i < len(matrix):
+for i in range(len(matrix)):
     j = 0
-    while j < len(matrix):
-        if j > (len(matrix) - y):
+    for j in range(len(matrix)):
+        if j > (len(matrix) - i - 1):
             if matrix[i][j] < 0:
                 count += 1
-        j += 1
-    i += 1
-    y += 1
 print('Количество отрицательных элементов:', count)
