@@ -104,17 +104,68 @@ public class Main {
         //Пример:
         //Дано: Предел для перебираемых чисел: 5, Искомая сумма: 10
         //1 4 5, 1 5 4, 2 3 5, ...
-
+        /*
+        //Комбинации из трех чисел, дающие в сумме заданное число
+        //Написать программу, которая находит все комбинации из трех чисел до определенного предела, которые в сумме дают другое число.
+        //Пример:
+        //Дано: Предел для перебираемых чисел: 5, Искомая сумма: 10
+        //1 4 5, 1 5 4, 2 3 5, ...
+/*
         int sum = 10;
         int pre = 5;
-        for (int i = 1; i <= pre; i++){
-            for (int j = 1; j <= pre; j++){
-                for (int k = 1; k <= pre; k++){
-                    if (sum == i + j + k){
+        int a;
+        int b;
+        int c;
+        for (int i = 1; i <= pre; i++) {
+            for (int j = 1; j <= pre; j++) {
+                for (int k = 1; k <= pre; k++) {
+                    if (sum == i + j + k) {
                         System.out.println(" Числа: " + i + " и " + j + " и " + k);
                     }
                 }
             }
         }
+         */
+        //1.4.1. Максимальные элементы столбцов матрицы
+        /*int[][] matrix =
+                {{1, 6, 7, 4},
+                 {-3, 5, 8, 2},
+                 {4, 7, -3, 0},
+                 {0, 2, 1, -1}};
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        for (int j = 0; j < matrix.length; j++) {
+            int max = matrix[0][j];
+            for (int i = 0; i < matrix[j].length; i++) {
+                if (matrix[i][j] > max) {
+                    max = matrix[i][j];
+                }
+            }
+            System.out.println("Масксимальное число: " + max);
+        }*/
+        //*Количество отрицательных элементов под главной диагональю матрицы
+        int[][] matrix =
+                {{4, 6, 6, 2},
+                        {-3, 5, -4, 7},
+                        {5, 6, 2, 1},
+                        {9, 9, -8, 7}};
+        int M = matrix.length;
+        int N = matrix[0].length;
+        int count = 0;
+        for (int i = 1; i < matrix.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (matrix[i][j] < 0) {
+                    count += 1;
+                }
+                System.out.print(" " + matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("Количество минимальных эементов: " + count);
+
     }
 }
