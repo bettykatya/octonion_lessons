@@ -4,8 +4,7 @@ public class AlenaHW1 {
     public static class AlenaLesson1Answers {
         public static void main(String[] args) {
 
-            arrayAverage();
-
+            distance();
         }
 
         //region triangle
@@ -110,10 +109,13 @@ public class AlenaHW1 {
         private static void arrayAverage() {
             int[] array = {2, 12, 4, 2};
             int summ = 0;
-            int average = summ / array.length;
+            int average;
+            // int  iMax= 0;
             for (int i = 0; i < array.length; i++) {
                 summ += array[i];
-                if (i > average) {
+                average = 20 / array.length;
+                //  System.out.println("сумм" + summ);
+                if (array[i] > average) {
                     System.out.println(array[i]);
                 }
 
@@ -138,6 +140,89 @@ public class AlenaHW1 {
                 }
             }
         }
+        //endregion
+
+        //region Distance between dots NOT DONE
+        /*
+        1.3.4 Расстояние между точками в n-мерном пространстве
+При заданных координатах A1, A2, ..., An одной точки и координатах B1, B2, ..., Bn другой точки n-мерного пространства.
+Найти расстояние между ними по формуле sqrt(sqr(A1-B1) + ... + sqr(An-Bn)).
+         */
+        private static void distance() {
+            int[] line1 = {1, 2, 3};
+            int[] line2 = {4, 5, 6};
+            int res;
+            for (int i = 0; i < line1.length; i++) {
+          res = (line2[i] - line1[i]) * (line2[i] - line1[i]) ;
+                System.out.print(res);
+
+            }
+
+        }
+
+
+        //endregion
+
+        //region что будет выведено
+        private static void ex1() {
+            int[][] matrix1 = {{5, 3, 7, 0},
+                    {7, 1, 9, 2},
+                    {3, 4, 7, 6}};
+            int[][] matrix2 = {{4, 8},
+                    {3, 6},
+                    {0, 3},
+                    {5, 2}};
+            int[][] matrix3 = new int[3][2];
+
+            for (int i = 0; i < matrix1.length; i++) { //i=0-3
+                for (int j = 0; j < matrix2[0].length; j++) { //j=0-2
+                    matrix3[i][j] = 0;
+                    for (int k = 0; k < matrix2.length; k++) { //k 0-4
+                        matrix3[i][j] = matrix3[i][j] + matrix1[i][k] * matrix2[k][j];
+                    }
+                }
+            }
+
+            //   printMatrix(matrix1);
+            //  printMatrix(matrix2);
+            //   printMatrix(matrix3);
+        }
+/*
+        i = 0;
+        j = 0;
+
+        k=0; m[0][0] = 0+ 5*4 = 20
+        k=1; m[0][0] = 20 + 3*3 = 29;
+        k=2: m[0][0] = 29 + 7*0 = 29
+        k=3: m[0][0] = 29 + 0*5 = 29
+
+        i = 0;
+        j = 1
+        k=0; m[0][1] = 0+5*8  = 40
+        k=1; m[0][1] = 40+3*6  = 58
+        k=2; m[0][1] = 58+7*3   = 79
+        k=3; m[0][1] = 79+0*5=79
+
+        i = 1;
+        j = 0
+        k=0; m[1][0] = 0+7*4=28
+        k=1; m[1][0] = 28+3*6=46
+        k=2; m[1][0] =46+7*0=46
+        k=3; m[1][0] =46+2*5=56
+
+        i = 2;
+        j = 0
+        k=0; m[2][0] = 0+3*4=12
+        k=1; m[2][0] =12+4*3=24
+        k=2; m[2][0] =24+7*0=24
+        k=3; m[2][0] =24+6*5=54
+
+matrix3 =
+{20,40,28 ,12 }
+{29,58,46 ,24 }
+{29,79,46 ,24 }
+{29,79,56 ,54 }
+*/
         //endregion
 
     }
