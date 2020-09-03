@@ -3,7 +3,7 @@ package com.octonion.lesson1.cycles;
 public class Cycles {
 
     public static void main(String[] args) {
-        combinations();
+        divisors();
     }
 
     //region exponentiation (возведение числа в степень)
@@ -65,7 +65,7 @@ public class Cycles {
 
         for (int i = 2; i < n; i++) {  // +++ начинаем с i=2, т.к. еденицу исключаем по условию
             res = n % i;                            // остаток от деления по модулю
-            if ((res == 0) & (i != n)) { //если res равно 0 и i не равно само себе
+            if (res == 0) { // +++ убрал лишнее условие
 
                 System.out.println(i + " ");
             }
