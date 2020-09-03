@@ -17,9 +17,7 @@ while i < len(matrix):
         if j > (len(matrix) - y):
             if matrix[i][j] < 0:
                 count += 1
-            j += 1
-        else:
-            j += 1
+        j += 1
     i += 1
     y += 1
 print('Количество отрицательных элементов:', count)

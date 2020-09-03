@@ -14,9 +14,6 @@ while j < len(matrix):
     while i < len(matrix):
         if matrix[i][j] > res:
             res = matrix[i][j]
-            i += 1
-
-        else:
-            i += 1
+        i += 1
     j += 1
     print('Максимальный элемент в столбце №', j, ':', res)

@@ -21,20 +21,17 @@ while i < len(matrix):
 print(res)
 
 i = 0
-y = 0
 res = 'Часть матрицы ниже побочной диагонали:\n'
 
 while i < len(matrix):
     j = 0
     while j < len(matrix):
-        if (len(matrix) - y) > j:
+        if (len(matrix) - i) > j:
             res = res + '|  |\t'
-            j += 1
         else:
             res = res + '| ' + str(matrix[i][j]) + '|\t'
-            j += 1
+        j += 1
     i += 1
-    y += 1
     res = res + '\n\r'
 
 print(res)
@@ -51,9 +48,7 @@ while i < len(matrix):
         if j > (len(matrix) - y):
             if matrix[i][j] < res:
                 res = matrix[i][j]
-            j += 1
-        else:
-            j += 1
+        j += 1
     i += 1
     y += 1
 print('Минимальный элемент ниже побочной диагонали:', res)
