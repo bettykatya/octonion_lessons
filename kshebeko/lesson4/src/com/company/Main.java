@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -14,6 +16,7 @@ public class Main {
             System.out.println("Треугольник не существует");
         }
 */
+
         //Возведение числа в степень
         //Дано: n - число, d - степень
 /*
@@ -48,6 +51,7 @@ public class Main {
             }
         }
 */
+
 //Вывести элементы массива, которые больше среднего арифметического
 //Дан одномерный массив. Найти среднее арифметическое его элементов. Вывести на экран только те элементы массива, которые больше найденного среднего арифметического.
        /*
@@ -79,6 +83,7 @@ public class Main {
                     System.out.println("Одинаковые элементы: " + arr[i]); // 9; 6;8
                 }
             }
+
         }
 */
         //Сортировка выбором
@@ -104,12 +109,6 @@ public class Main {
         //Пример:
         //Дано: Предел для перебираемых чисел: 5, Искомая сумма: 10
         //1 4 5, 1 5 4, 2 3 5, ...
-        /*
-        //Комбинации из трех чисел, дающие в сумме заданное число
-        //Написать программу, которая находит все комбинации из трех чисел до определенного предела, которые в сумме дают другое число.
-        //Пример:
-        //Дано: Предел для перебираемых чисел: 5, Искомая сумма: 10
-        //1 4 5, 1 5 4, 2 3 5, ...
 /*
         int sum = 10;
         int pre = 5;
@@ -122,7 +121,7 @@ public class Main {
                 }
             }
         }
-         */
+*/
         //1.4.1. Максимальные элементы столбцов матрицы
         /*int[][] matrix =
                 {{1, 6, 7, 4},
@@ -137,7 +136,7 @@ public class Main {
         }
         for (int j = 0; j < matrix.length; j++) {
             int max = matrix[0][j];
-            for (int i = 0; i < matrix[j].length; i++) {
+            for (int i = 1; i < matrix[j].length; i++) {
                 if (matrix[i][j] > max) {
                     max = matrix[i][j];
                 }
@@ -150,8 +149,7 @@ public class Main {
                         {-3, 5, -4, 7},
                         {5, 6, 2, 1},
                         {9, 9, -8, 7}};
-        int M = matrix.length;
-        int N = matrix[0].length;
+     
         int count = 0;
         for (int i = 1; i < matrix.length; i++) {
             for (int j = 0; j < i; j++) {
@@ -162,10 +160,9 @@ public class Main {
             }
             System.out.println();
         }
-        System.out.println("Количество отрицательных эементов: " + count);
-    }
-         */
-        //1.4.3 *Найти минимальный элемент матрицы ниже побочной диагонали
+        System.out.println("Количество отрицательных эементов: " + count);*/
+
+//1.4.3 *Найти минимальный элемент матрицы ниже побочной диагонали
         /*int[][] matrix =
                 {{1, 5, 3, 4},
                         {8, 9, 6, 4},
@@ -173,6 +170,7 @@ public class Main {
                         {0, 1, -5, 8}};
         int N = matrix.length;
         int M = matrix[0].length;
+        int min = matrix[1][M - 1];
 
 //[0][3], [1][2], [2][1], [3][0]
 
@@ -184,18 +182,17 @@ public class Main {
             int j = M - 1 - i;
             //System.out.println("d- " + matrix[i][j]);
             for (int k = j + 1; k < M; k++) { // Элемнты под побочной диагональю
-                int min = matrix[i][k];
-                if (matrix[i + 1][k - 1] < min) {
-                    min = matrix[i + 1][k - 1];
-                    System.out.println("Минималььный элемент: " + min);
+                if (matrix[i][k] < min) {
+                    min = matrix[i][k];
                 }
-                System.out.print(" " + matrix[i][k] + " ");
+                System.out.print("\t" + matrix[i][k]);
             }
             System.out.println();
+        }
+        System.out.println("Минималььный элемент: " + min);
+         */
 
-        }*/
-        /* Что будет?
-        int[][] matrix1 = {{5, 3, 7, 0},
+        /*int[][] matrix1 = {{5, 3, 7, 0},
                 {7, 1, 9, 2},
                 {3, 4, 7, 6}};
         int[][] matrix2 = {{4, 8},
@@ -214,5 +211,9 @@ public class Main {
             }
 
         }*/
+
+        }
+
     }
-}
+
+
