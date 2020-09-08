@@ -1,115 +1,99 @@
-matrix = [['', '', ''],
-          ['', '', ''],
-          ['', '', '']]
+matrix = [[' ', ' ', ' '],
+          [' ', ' ', ' '],
+          [' ', ' ', ' ']]
 
 def showtab ():
-    i = 0
     res = 'Игровое поле:\n'
     for i in range(len(matrix)):
-        j = 0
         for j in range(len(matrix)):
             res = res + '|' + str(matrix[i][j]) + '| '
         res = res + '\n\r'
     return res
 
-def addchoice (inp, tmp, x):
-    i = 0
-    count = 0
+def addchoice (inp, tmp, count):
+    num = 0
     for i in range(len(matrix)):
-        j = 0
         for j in range(len(matrix)):
-            count += 1
-            if count == inp:
-                if matrix[i][j] != '':
+            num += 1
+            if num == inp:
+                if matrix[i][j] != ' ':
                     print('Занято, дядя!')
-                    counter(x)
+                    counter(count)
                 else:
                     matrix[i][j] = tmp
-                    checker(x)
+                    checker(count)
 
-def inp (x, tmp):
+def inp (count, tmp):
     i = input()
     while i.isalpha() or int(i) < 0 or int(i) > 9:
         print('Закусывай, шляпа!')
-        counter(x)
+        counter(count)
     i = int(i)
-    addchoice(i, tmp, x)
+    addchoice(i, tmp, count)
 
-def counter (x):
-    if x%2:
+def counter (count):
+    if count%2:
         print('Введите номер ячейки для Х')
         tmp = 'x'
     else:
         print('Введите номер ячейки для O')
         tmp = 'o'
-    inp(x, tmp)
+    inp(count, tmp)
 
-def checker (x):
+def checker (count):
     print(showtab())
-    x += 1
-    var = 0
+    count += 1
     for var in range(5):
-        i = 0
-        j = 0
-        countx = 0
-        counto = 0
+        countX = 0
+        countO = 0
         '''Главная диагональ'''
         if var == 0:
             for i in range(len(matrix)):
-                j = 0
-                for j in range(len(matrix)):
-                    if j == i:
-                        if matrix[i][j] == 'x':
-                            countx += 1
-                        elif matrix[i][j] == 'o':
-                            counto += 1
-                    result(countx, counto)
+                if matrix[i][i] == 'x':
+                    countX += 1
+                elif matrix[i][i] == 'o':
+                    countO += 1
+                result(countX, countO)
         '''Побочная диагональ'''
         if var == 1:
             for i in range(len(matrix)):
-                j = 0
-                for j in range(len(matrix)):
-                    if j == (len(matrix) - i - 1):
-                        if matrix[i][j] == 'x':
-                            countx += 1
-                        elif matrix[i][j] == 'o':
-                            counto += 1
-                    result(countx, counto)
+                if matrix[i][len(matrix) - i - 1] == 'x':
+                    countX += 1
+                elif matrix[i][len(matrix) - i - 1] == 'o':
+                    countO += 1
+                result(countX, countO)
         '''Строки'''
         if var == 2:
             for i in range(len(matrix)):
-                j = 0
-                countx = 0
-                counto = 0
+                countX = 0
+                countO = 0
                 for j in range(len(matrix)):
                     if matrix[i][j] == 'x':
-                        countx += 1
+                        countX += 1
                     elif matrix[i][j] == 'o':
-                        counto += 1
-                    result(countx, counto)
+                        countO += 1
+                    result(countX, countO)
         '''Столбцы'''
         if var == 3:
             for j in range(len(matrix)):
-                i = 0
-                countx = 0
-                counto = 0
+                countX = 0
+                countO = 0
                 for i in range(len(matrix)):
                     if matrix[i][j] == 'x':
-                        countx += 1
+                        countX += 1
                     elif matrix[i][j] == 'o':
-                        counto += 1
-                    result(countx, counto)
+                        countO += 1
+                    result(countX, countO)
         '''Ничья'''
         if var == 4:
             for i in range(len(matrix)):
-                j = 0
                 for j in range(len(matrix)):
                     if matrix[i][j] == 'x' or matrix[i][j] == 'o':
-                        counto += 1
-                    if counto == 9:
+                        countO += 1
+                    if countO == 9:
                         print('Ничья!')
                         quit()
-    counter(x)
+    counter(count)
 
 def result (resx, reso):
     if resx == 3:
@@ -124,8 +108,3 @@ def game ():
     counter(1)
 
 game()
-
-
-
-
-
