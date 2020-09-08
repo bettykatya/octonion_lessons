@@ -104,17 +104,107 @@ public class Main {
         //Пример:
         //Дано: Предел для перебираемых чисел: 5, Искомая сумма: 10
         //1 4 5, 1 5 4, 2 3 5, ...
-
+/*
         int sum = 10;
         int pre = 5;
-        for (int i = 1; i <= pre; i++){
-            for (int j = 1; j <= pre; j++){
-                for (int k = 1; k <= pre; k++){
-                    if (sum == i + j + k){
+        for (int i = 1; i <= pre; i++) {
+            for (int j = 1; j <= pre; j++) {
+                for (int k = 1; k <= pre; k++) {
+                    if (sum == i + j + k) {
                         System.out.println(" Числа: " + i + " и " + j + " и " + k);
                     }
                 }
             }
         }
+*/
+        //1.4.1. Максимальные элементы столбцов матрицы
+        /*int[][] matrix =
+                {{1, 6, 7, 4},
+                 {-3, 5, 8, 2},
+                 {4, 7, -3, 0},
+                 {0, 2, 1, -1}};
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        for (int j = 0; j < matrix.length; j++) {
+            int max = matrix[0][j];
+            for (int i = 1; i < matrix[j].length; i++) {
+                if (matrix[i][j] > max) {
+                    max = matrix[i][j];
+                }
+            }
+            System.out.println("Масксимальное число: " + max);
+        }*/
+        //*Количество отрицательных элементов под главной диагональю матрицы
+        /*int[][] matrix =
+                {{4, 6, 6, 2},
+                        {-3, 5, -4, 7},
+                        {5, 6, 2, 1},
+                        {9, 9, -8, 7}};
+
+        int count = 0;
+        for (int i = 1; i < matrix.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (matrix[i][j] < 0) {
+                    count += 1;
+                }
+                System.out.print(" " + matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("Количество отрицательных эементов: " + count);*/
+
+//1.4.3 *Найти минимальный элемент матрицы ниже побочной диагонали
+        /*int[][] matrix =
+                {{1, 5, 3, 4},
+                        {8, 9, 6, 4},
+                        {6, 2, -3, 8},
+                        {0, 1, -5, 8}};
+        int N = matrix.length;
+        int M = matrix[0].length;
+        int min = matrix[1][M - 1];
+
+//[0][3], [1][2], [2][1], [3][0]
+
+//[1][3],
+//[2][2]. [2][3]
+//[3][1] [3][2] [3][3]
+
+        for (int i = 0; i < N; i++) {
+            int j = M - 1 - i;
+            //System.out.println("d- " + matrix[i][j]);
+            for (int k = j + 1; k < M; k++) { // Элемнты под побочной диагональю
+                if (matrix[i][k] < min) {
+                    min = matrix[i][k];
+                }
+                System.out.print("\t" + matrix[i][k]);
+            }
+            System.out.println();
+        }
+        System.out.println("Минималььный элемент: " + min);
+         */
+
+        /*int[][] matrix1 = {{5, 3, 7, 0},
+                {7, 1, 9, 2},
+                {3, 4, 7, 6}};
+        int[][] matrix2 = {{4, 8},
+                {3, 6},
+                {0, 3},
+                {5, 2}};
+        int[][] matrix3 = new int[3][2];
+
+        for (int i = 0; i < matrix1.length; i++) {
+            for (int j = 0; j < matrix2[0].length; j++) {
+                matrix3[i][j] = 0;
+                for (int k = 0; k < matrix2.length; k++) {
+                    matrix3[i][j] = matrix3[i][j] + matrix1[i][k] * matrix2[k][j];
+                    System.out.print(" " + matrix3[i][j] + " ");
+                }
+            }
+
+        }*/
     }
 }
