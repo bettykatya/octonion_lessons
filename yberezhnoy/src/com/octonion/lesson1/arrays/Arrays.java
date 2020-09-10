@@ -4,7 +4,7 @@ public class Arrays {
 
 
     public static void main(String[] args) {
-        arraySimilarValues();
+        arraySelectionSort();
     }
 
     //region arrayPositiveSum (сумма положительных элементов массива)
@@ -82,32 +82,34 @@ public class Arrays {
 При заданных координатах A1, A2, ..., An одной точки и координатах B1, B2, ..., Bn другой точки n-мерного пространства.
 Найти расстояние между ними по формуле sqrt(sqr(A1-B1) + ... + sqr(An-Bn)).
 
-
-
-
  */
 
     //endregion N
 
-    //region ===NOT ENDED=== arraySelectionSort
+    //region arraySelectionSort
 /*
+
 9. *Сортировка выбором
 Требуется отсортировать массив по возрастанию. (используя поиск максимального ИЛИ минимального элемента)
  */
     private static void arraySelectionSort() {
-        int[] arr = {1, 7, 5, 2, 4, 6, 3};
+        int[] arr = {2, 7, 5, 1, 4, 6, 3};
         int min;
         for (int i = 0; i < arr.length; i++) {
             min = i;
             //System.out.println(min);  // сортировка по возростанию
             for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] > arr[min]) {
+                if (arr[j] < arr[min]) {
                     min = j;
                 }
             }
-            System.out.println(min);
-        }
+            int a = arr[min];
+            arr[min] = arr[i];
+            arr[i] = a;
 
+
+            System.out.println(java.util.Arrays.toString(arr));
+        }
     }
 //endregion
 
