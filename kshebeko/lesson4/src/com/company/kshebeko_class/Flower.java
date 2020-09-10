@@ -1,4 +1,4 @@
-package com.company;
+package com.company.kshebeko_class;
 
 public class Flower {
     public String name;
