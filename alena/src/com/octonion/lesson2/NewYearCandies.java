@@ -10,38 +10,29 @@ public class NewYearCandies {
     public int id;
     public String CandyName;
     public String CandyType;
-    public int weight;
-    public int qty;
-    public String ingredients;
+//    public int weight;
+//    public int qty;
 
     //region constructor
     public NewYearCandies() {
     }
 
-    public NewYearCandies(int id) {
-        id++;
-    }
-
-    public NewYearCandies(String CandyName) {
+    public NewYearCandies(String CandyName, String CandyType, int id) {
         this.CandyName = CandyName;
+        this.CandyType = CandyType;
+        System.out.println(CandyName + " - " + CandyType );
     }
-  /*  почему-то краснеет
-    public NewYearCandies(String "Bounty") {
-        this.CandyName = "Bounty";
-
-    }
-      public NewYearCandies(String CandyName) {
-      this.CandyName = CandyName;
-  }
-    */
-
 
     public void weightOfPresent(int weight, int qty) {
         System.out.println("Presents weight is " + weight * qty);
     }
 
-    public void findCandyType(String CandyType) {
-        this.CandyType = CandyType;
-        System.out.println(CandyType);
+    public String setCandyName(String candyName) {
+        this.CandyName = candyName;
+        return candyName;
+    }
+
+    public String getCandyName() {
+        return CandyName;
     }
 }
