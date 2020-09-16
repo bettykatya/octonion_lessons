@@ -7,3 +7,10 @@ class Motoequip:
 
     def display_info(self):
         print(self.name, self.price, self.place, self.weight)
+
+    @staticmethod
+    def Whami():
+        a = 0
+
+
+print(Motoequip.Whami())
