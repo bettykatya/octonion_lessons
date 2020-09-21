@@ -4,59 +4,56 @@ import java.util.ArrayList;
 
 public class Main {
 
+    //1. Определить иерархию цветов +
+    //2. Создать объекты цветы +
+    //3. Создать букет цветов с аксессуарами +
+    //4. Определить стоимость букета +
+    //5. Сортировка по уровню свежести
+    //6. Найти цветов по диапазону стебля
+
     public static void main(String[] args) {
-        Flower chamomile = new Flower("Chamomile");//Ромашка
-        Flower hydrangea = new Flower("Hydrangea");//Гортензия
-        Flower knapweed = new Flower("Knapweed");//Василек
+        ArrayList<Flower> flowerList = new ArrayList();
+        Flower chamomile = new ForestFlower("Chamomile", 2);//Ромашка
+        Flower hydrangea = new GardenFlower("Hydrangea", 7);//Гортензия
+        Flower knapweed = new ForestFlower("Knapweed", 9);//Василек
+        Flower peony = new GardenFlower("Peony", 7);
+        Flower rose = new GardenFlower("Rose", 8);
+        Flower narcissus = new GardenFlower("Narcissus",3);
+        Flower lily = new GardenFlower("Lily", 10);
 
-        chamomile.flowerName();
-        hydrangea.flowerName();
-        knapweed.flowerName();
+        flowerList.add(chamomile);//Добавление элементов
+        flowerList.add(hydrangea);
+        flowerList.add(knapweed);
+        flowerList.add(peony);
+        flowerList.add(rose);
+        flowerList.add(narcissus);
+        flowerList.add(lily);
 
-        System.out.println("Number of flowers: " + Flower.flowersInBouquet);
-        System.out.println("Price flowers chamomile = " + chamomile.price);
+        System.out.println(chamomile);//Вывод на консоль
+        System.out.println(hydrangea);
+        System.out.println(knapweed);
+        System.out.println(peony);
+        System.out.println(rose);
+        System.out.println(narcissus);
+        System.out.println(lily);
 
-        ArrayList flowerName = new ArrayList();//список цветов
-        flowerName.add("Chamomile");//добавление в список
-        flowerName.add("Hydrangea");
-        flowerName.add("Knapweed");
-        flowerName.add("Rose");
-        flowerName.add("Narcissus");//Нарцисс
-        System.out.println(flowerName.get(3));
-        System.out.println(flowerName.get(flowerName.size() - 1));//выводит названия цветка по индексу
-        System.out.println("Number of flowers : " + flowerName.size());//выводит кол-во цветков
+        Bouquet AutumnMorning = new Bouquet();
+        AutumnMorning.setFlowerList(flowerList);
+        AutumnMorning.accessories = Accessories.PAPER;
+        AutumnMorning.accessories = Accessories.BEADS;
 
-        //Метод indexOf
-        int index = flowerName.indexOf("Rose");
-        System.out.println("Knapweed number: " + index);
+        Bouquet FirstFrost = new Bouquet();
+        FirstFrost.setFlowerList(flowerList);
+        FirstFrost.accessories = Accessories.RIBBON;
 
-        //Меняем местами Rose и Hydrangea
-        flowerName.set(1, "Rose");
-        flowerName.set(3, "Hydrangea");
+        System.out.println("Bouquet Autumn morning: " + AutumnMorning + Accessories.RIBBON);
+        System.out.println("Bouquet First frost: " + FirstFrost + Accessories.PAPER + ", " + Accessories.BEADS);
 
-        //Выводим все цветы что есть в списке
-        String AllFlowers = " ";
-        for (int i = 0; i < flowerName.size(); i++) {
-            AllFlowers = AllFlowers + flowerName.get(i) + "; ";
-        }
-        System.out.println("All Flower : " + AllFlowers + " ");
+        int index = flowerList.indexOf(peony);
+        System.out.println("Peony number: " + index);
 
-        //Находим цветок в списке
-        System.out.println("There is flower in list: " + flowerName.contains("Peonies"));
+        System.out.println("Price Bouquet: Autumn morning = " + AutumnMorning.CountPriceBouquet());
 
-        knapweed.getName();//получаем доступ к name. get
-
-        Flower name_1 = new Flower();//set имя
-        name_1.setName("Lily");
-
-        name_1.flowerName();
-
-        //Наследдование
-        Garden_Flower asters = new Garden_Flower();
-        asters.setName("Asters");
-        System.out.println(asters.getName());
-
-        Garden_Flower hyacinth = new Garden_Flower("Hyacinth", "Fresh");
 
 
 

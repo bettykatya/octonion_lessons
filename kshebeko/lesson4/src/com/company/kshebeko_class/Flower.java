@@ -1,38 +1,27 @@
 package com.company.kshebeko_class;
 
-public class Flower {
-    private String name;
-    public String accessories;
-    public String freshFlower;
-    public final int price = 30;
-    public static int flowersInBouquet = 0;
+public abstract class Flower {
+    protected String name;
+    protected int price;
 
-    public void flowerName(){
-        System.out.println("Flower name: " + this.name);
-    }
-
-    public Flower(String name){
+    public Flower(String name, int price) { //Конструктор
         this.name = name;
-
-        flowersInBouquet++;
+        this.price = price;
     }
 
-    public Flower(){
-
-        flowersInBouquet++;
-    }
-
-    public Flower(int price){
-
-        flowersInBouquet++;
+    public Flower() { //Конструктор
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName (String name) {
-        this.name = name;
+    @Override
+    public String toString() {
+        return "Flower name: " + name + " Price  = " + price;
     }
 
+    protected abstract String setName();
+
+    public abstract int getPrice();
 }
