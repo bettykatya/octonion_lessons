@@ -1,11 +1,11 @@
 package com.octonion.lessons.stones;
 
 public class Stone {
-    private int weight;
+    private double weightGr;
     private String name;
 
-    public Stone(int weight, String name) {
-        this.weight = weight;
+    public Stone(double weight, String name) {
+        this.weightGr = weight;
         this.name = name;
     }
 
