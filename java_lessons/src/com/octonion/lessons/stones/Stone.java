@@ -1,6 +1,6 @@
 package com.octonion.lessons.stones;
 
-public class Stone {
+public abstract class Stone {
     private double weightGr;
     private String name;
 
@@ -15,4 +15,10 @@ public class Stone {
     public String getName() {
         return name;
     }
+
+    public abstract double getWeigtKr();
+
+    public abstract int getPrice();
+
+    public abstract int getTransparency();
 }

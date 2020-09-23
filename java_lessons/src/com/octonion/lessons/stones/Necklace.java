@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Necklace {
     private int price;
-    //    private int stoneQt;
     private double weightKr;
     private ArrayList<Stone> stones = new ArrayList();
 
@@ -16,22 +15,28 @@ public class Necklace {
         return weightKr;
     }
 
-    public void setWeightKr(double weightKr) {
-        this.weightKr = weightKr;
-
+    public int getPrice() {
+        return price;
     }
 
     public void addStone(Stone stone) {
         stones.add(stone);
         weightKr += stone.getWeigtKr();
+        price += stone.getPrice();
     }
 
-    private void calcWeight() {
-        double weight = 0;
+    public ArrayList<Stone> getStonesWithTransparency(int left, int right) {
+        ArrayList<Stone> stonesTr = new ArrayList<>();
+
         for (int i = 0; i < stones.size(); i++) {
-            weight += stones.get(i).getWeigtKr();
+            Stone stone = stones.get(i);
+            int transparency = stone.getTransparency();
+            if (transparency > left && transparency < right) {
+                System.out.println(stone.getName());
+                stonesTr.add(stone);
+            }
         }
-        System.out.println(weight);
-        setWeightKr(weight);
+
+        return stonesTr;
     }
 }
