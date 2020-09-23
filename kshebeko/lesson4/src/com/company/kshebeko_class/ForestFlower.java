@@ -1,37 +1,12 @@
 package com.company.kshebeko_class;
 
 public class ForestFlower extends Flower {
-    public int stemLength = 10;
-    public String flowerBud;
+    public int stemLength;
 
-
-    public ForestFlower(int stemLength) {
-        this.stemLength = stemLength;
-    }
-
-    public ForestFlower(String flowerBud) {
-        this.flowerBud = flowerBud;
-    }
-
-    public ForestFlower(String name, int price){
+    public ForestFlower(String name, int price, int stemLength){
         super(name, price);
-        System.out.println("Forest flower : " + this.getName() + this.setName());
-    }
-
-    public void setStemLength(int stemLength) {
         this.stemLength = stemLength;
-    }
-
-    public void setFlowerBud(String flowerBud) {
-        this.flowerBud = flowerBud;
-    }
-
-    public int getStemLength() {
-        return stemLength;
-    }
-
-    public String getFlowerBud() {
-        return flowerBud;
+        System.out.println("Forest flower : " + this.getName() + this.setName());
     }
 
     @Override
@@ -42,6 +17,11 @@ public class ForestFlower extends Flower {
     @Override
     public int getPrice() {
         return price;
+    }
+
+    @Override
+    public int getStemLength() {
+        return stemLength;
     }
 
 }

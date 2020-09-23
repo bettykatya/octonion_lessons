@@ -5,27 +5,25 @@ import java.util.ArrayList;
 public class Bouquet {
     public Accessories accessories;
     public String freshFlower;
-    public int price;
-    public String name;
+    private int price;
+    private String name;
 
-    public Bouquet (String name, int price){ //Конструктор
-        this.name = name;
-        this.price = price;
-        System.out.println(this.name + this.price);
-    }
+    private ArrayList<Flower> flowerList = new ArrayList();
 
-    public Bouquet(String freshFlower) { //Конструктор
+    public Bouquet(String freshFlower) {
         this.freshFlower = freshFlower;
     }
 
-    public ArrayList<Flower> flowerList = new ArrayList();
+    public Bouquet() {
+    }
 
     public void setFlowerList(ArrayList<Flower> list) {
         this.flowerList = list;
     }
 
-    public Bouquet() {
-    }
+    public ArrayList<Flower> flowers = new ArrayList<>();
+
+    public ArrayList getFlowers() { return flowers;}
 
     @Override
     public String toString() {
@@ -37,11 +35,39 @@ public class Bouquet {
         return str;
     }
 
-    public int CountPriceBouquet() {
-        int sum = 0;
+    public int countPriceBouquet() {
+        price = 0;
         for (int i = 0; i < flowerList.size(); i++) {
-            sum += flowerList.get(i).getPrice();
+            price += flowerList.get(i).getPrice();
         }
-        return sum;
+        return price;
     }
+
+    public int getPrice() {
+        countPriceBouquet();
+        return price;
+    }
+
+    public void addFlowers(Flower flower) {
+        flowers.add(flower);
+        price += flower.getPrice();
+    }
+
+    public ArrayList<Flower> getFlowerStemLength(int left, int right) {
+        ArrayList<Flower> flowersStem = new ArrayList<>();
+
+        for (int i = 0; i < flowerList.size(); i++) {
+            Flower flower = flowerList.get(i);
+            int stemLength = flower.getStemLength();
+            if (stemLength > left && stemLength < right) {
+                flowersStem.add(flower);
+                System.out.println(flower.getName());
+            }
+        }
+        return flowersStem;
+    }
+
+
+
+
 }

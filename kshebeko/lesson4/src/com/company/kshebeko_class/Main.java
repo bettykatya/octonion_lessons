@@ -13,13 +13,13 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayList<Flower> flowerList = new ArrayList();
-        Flower chamomile = new ForestFlower("Chamomile", 2);//Ромашка
-        Flower hydrangea = new GardenFlower("Hydrangea", 7);//Гортензия
-        Flower knapweed = new ForestFlower("Knapweed", 9);//Василек
-        Flower peony = new GardenFlower("Peony", 7);
-        Flower rose = new GardenFlower("Rose", 8);
-        Flower narcissus = new GardenFlower("Narcissus",3);
-        Flower lily = new GardenFlower("Lily", 10);
+        Flower chamomile = new ForestFlower("Chamomile", 2,50);//Ромашка
+        Flower hydrangea = new GardenFlower("Hydrangea", 7, 45);//Гортензия
+        Flower knapweed = new ForestFlower("Knapweed", 9, 20);//Василек
+        Flower peony = new GardenFlower("Peony", 7,60);
+        Flower rose = new GardenFlower("Rose", 8,100);
+        Flower narcissus = new GardenFlower("Narcissus",3,29);
+        Flower lily = new GardenFlower("Lily", 10,35);
 
         flowerList.add(chamomile);//Добавление элементов
         flowerList.add(hydrangea);
@@ -29,7 +29,7 @@ public class Main {
         flowerList.add(narcissus);
         flowerList.add(lily);
 
-        System.out.println(chamomile);//Вывод на консоль
+        System.out.println(chamomile);
         System.out.println(hydrangea);
         System.out.println(knapweed);
         System.out.println(peony);
@@ -37,22 +37,30 @@ public class Main {
         System.out.println(narcissus);
         System.out.println(lily);
 
-        Bouquet AutumnMorning = new Bouquet();
-        AutumnMorning.setFlowerList(flowerList);
-        AutumnMorning.accessories = Accessories.PAPER;
-        AutumnMorning.accessories = Accessories.BEADS;
+        Bouquet first = new Bouquet();
+        first.setFlowerList(flowerList);
+        first.accessories = Accessories.PAPER;
+        first.accessories = Accessories.BEADS;
+        first.addFlowers(rose);
 
-        Bouquet FirstFrost = new Bouquet();
-        FirstFrost.setFlowerList(flowerList);
-        FirstFrost.accessories = Accessories.RIBBON;
+        Bouquet second = new Bouquet();
+        second.setFlowerList(flowerList);
+        second.accessories = Accessories.RIBBON;
 
-        System.out.println("Bouquet Autumn morning: " + AutumnMorning + Accessories.RIBBON);
-        System.out.println("Bouquet First frost: " + FirstFrost + Accessories.PAPER + ", " + Accessories.BEADS);
+        System.out.println("Bouquet Autumn morning: " + second + Accessories.RIBBON);
+        System.out.println("Bouquet First frost: " + first + Accessories.PAPER + ", " + Accessories.BEADS);
 
         int index = flowerList.indexOf(peony);
         System.out.println("Peony number: " + index);
 
-        System.out.println("Price Bouquet: Autumn morning = " + AutumnMorning.CountPriceBouquet());
+        System.out.println("Price Bouquet: Autumn morning = " + first.getPrice());
+
+        System.out.println(first.getFlowers().size());
+        //System.out.println(first.getPrice());
+        System.out.println(first.getFlowerStemLength(35,70));
+
+
+
 
 
 
