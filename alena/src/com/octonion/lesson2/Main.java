@@ -2,11 +2,11 @@ package com.octonion.lesson2;
 
 public class Main {
     public static void main(String[] args) {
-        NewYearCandies candy1 = new NewYearCandies();
-        candy1.CandyName = "Strange Candy";
-        System.out.println(candy1.CandyName);
+        NewYearCandy candy1 = new NewYearCandy();
+        candy1.candyName = "Strange Candy";
+        System.out.println(candy1.candyName);
 
-        NewYearCandies candy2 = new NewYearCandies("Cheremushka", "soviet", 1);
+        NewYearCandy candy2 = new NewYearCandy("Cheremushka", "soviet", 1);
 
         Chokolate candy3 = new Chokolate();
         candy3.setCandyName("Mars");

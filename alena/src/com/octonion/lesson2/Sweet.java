@@ -1,4 +1,4 @@
 package com.octonion.lesson2;
 
-public class Sweet extends NewYearCandies {
+public class Sweet extends NewYearCandy {
 }
