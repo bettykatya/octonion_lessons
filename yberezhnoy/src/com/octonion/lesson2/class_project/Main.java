@@ -15,39 +15,32 @@ public class Main {
         Найти тариф в компании, соответствующий заданному диапазону параметров.
          */
 
-        Mobile_con comfort_S = new Mobile_con("comfort_S", 13);
-        Mobile_con comfort_M = new Mobile_con("comfort_M", 26);
-        Mobile_con comfort_L = new Mobile_con("comfort_L", 34);
+        SimpleTP comfort_S = new SimpleTP("comfort_S", 4761, 1, 60, 500, 13.90);
+        SimpleTP comfort_M = new SimpleTP("comfort_M", 3458, 10, 120, 1000, 20.90);
+        SimpleTP comfort_L = new SimpleTP("comfort_L", 2319, 25, 240, 2000, 29.90);
+        SimpleTP comfort_XL = new SimpleTP("comfort_XL", 1109, 50, 1000, 5000, 39.90);
 
-        comfort_S.tariffPlan();
-        comfort_M.tariffPlan();
-        comfort_L.tariffPlan();
+        UnlimTP unlimited_XS = new UnlimTP("unlimited_XS", 2314, "Unlim", 1, 8.90);
+        UnlimTP unlimited_S = new UnlimTP("unlimited_S", 1234, "Unlim", 2, 12.90);
+        UnlimTP unlimited_M = new UnlimTP("unlimited_M", 2242, "Unlim", 4, 17.90);
 
 
-        System.out.println("Number of customers: " + Mobile_con.customers);
-        System.out.println("Price of the comfort_M tariff plan = " + comfort_M.price);
+        System.out.println("Price of the comfort_M tariff plan = " + comfort_M.getPrice());
 
-        ArrayList tariffPlan = new ArrayList();
-        tariffPlan.add("comfort_S");
-        tariffPlan.add("comfort_M");
-        tariffPlan.add("comfort_L");
-        tariffPlan.add("comfort_XL");
-        tariffPlan.add("unlimited_XS");
 
-        System.out.println(tariffPlan.get(4)); // вывод тарифа по индексу из списка
-        System.out.println("Number of tariffs : " + tariffPlan.size()); // кол-во тарифов в списке
+        ArrayList ListTP = new ArrayList();
+        ListTP.add("comfort_S");
+        ListTP.add("comfort_M");
+        ListTP.add("comfort_L");
+        ListTP.add("comfort_XL");
+        ListTP.add("unlimited_XS");
+        ListTP.add("unlimited_S");
+        ListTP.add("unlimited_M");
 
-        int index = tariffPlan.indexOf("comfort_L");
-        System.out.println("comfort_L number: " + index); // определение индекса из списка по названию
-
-        System.out.println("TP from list: " + tariffPlan.contains("comfort_XL")); //проверка на наличие в списке названия тарифного плана
-
-        String Offers = " ";
-        for (int i = 0; i < tariffPlan.size(); i++) {
-            Offers = Offers + tariffPlan.get(i) + ", ";
-        }
-        System.out.println("Tariff plan offers : " + Offers + " "); // вывод предложений в списке
+        System.out.println(ListTP.get(4));
 
 
     }
+
+
 }
