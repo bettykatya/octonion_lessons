@@ -1,10 +1,22 @@
 package com.octonion.lesson2;
 
-public class Chokolate extends Sweet {
-    private String ingredientCacao;
-    private String ingredientPalma;
+public class Chokolate extends NewYearCandy {
 
-    public String getChildName() {
-        return super.getCandyName();
+    private int price;
+    private int weight;
+
+
+    public Chokolate(String candyName, int weight, int price) {
+        super(candyName, weight, price);
+    }
+
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
+    @Override
+    public int getWeight() {
+        return weight;
     }
 }

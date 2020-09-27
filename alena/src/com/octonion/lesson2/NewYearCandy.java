@@ -6,23 +6,21 @@ package com.octonion.lesson2;
 Создать несколько объектов-конфет. Собрать детский подарок с определением его веса.
 Провести сортировку конфет в подарке на основе одного из параметров. Найти конфету в подарке, соответствующую заданному диапазону содержания сахара.
  */
-public class NewYearCandy {
-    protected String candyName;
-    protected Type type;
+public abstract class NewYearCandy {
+    public String candyName;
     private final int SUGAR_IN_GRAMM = 5;
     private int weight;
+    private  int price;
     protected int totalSugar;
 
     public NewYearCandy() {
     }
 
-    public NewYearCandy(String candyName, int id) {
+    public NewYearCandy(String candyName, int weight, int price) {
         this.candyName = candyName;
-        System.out.println(candyName + " - ");
-    }
-
-    public void printCalculatedWeight(int weight, int qty) {
-        System.out.println("Presents weight is " + weight * qty);
+        this.weight=weight;
+        this.price= price;
+        System.out.println(candyName + " -  цена: " + price);
     }
 
     public int calculateTotalSugar(int weight) {
@@ -30,13 +28,7 @@ public class NewYearCandy {
         totalSugar = SUGAR_IN_GRAMM * weight;
         return totalSugar;
     }
+    public abstract int getWeight();
+    public abstract  int getPrice();
 
-    public String setCandyName(String candyName) {
-        this.candyName = candyName;
-        return candyName;
-    }
-
-    public String getCandyName() {
-        return candyName;
-    }
 }
