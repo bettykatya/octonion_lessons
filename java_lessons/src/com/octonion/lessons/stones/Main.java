@@ -17,19 +17,24 @@ public class Main {
         SemipreciosStone ametist = new SemipreciosStone(0.2, "Ametist", 25, 67);
 
         Necklace necklace = new Necklace();
-        necklace.addStone(ruby);
-        necklace.addStone(amber);
-        necklace.addStone(ametist);
+        necklace.addStone(ruby); //20
+        necklace.addStone(amber); //3
+        necklace.addStone(ametist); //25
 
         System.out.println(necklace.getStones().size());
         System.out.println(necklace.getWeightKr());
         System.out.println(necklace.getPrice());
 
-//        String str = " stones - ";
-//        ArrayList<Stone> stonesWithTransparency = necklace.getStonesWithTransparency(40, 60);
-//        for (int i = 0; i < stonesWithTransparency.size(); i++) {
-//            str += " " + stonesWithTransparency.get(i).getName();
-//        }
-//        System.out.println(str);
+        String str = " stones - ";
+        ArrayList<Stone> stonesWithTransparency = necklace.getStonesWithTransparency(40, 60);
+        for (int i = 0; i < stonesWithTransparency.size(); i++) {
+            Stone stone = stonesWithTransparency.get(i);
+            str += " " + stone.getName();
+        }
+        System.out.println(str);
+
+        necklace.printStones();
+        necklace.sortStones();
+        necklace.printStones();
     }
 }
