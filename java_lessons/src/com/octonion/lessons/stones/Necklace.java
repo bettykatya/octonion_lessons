@@ -1,13 +1,14 @@
 package com.octonion.lessons.stones;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Necklace {
     private int price;
     private double weightKr;
-    private ArrayList<Stone> stones = new ArrayList();
+    private List<Stone> stones = new ArrayList();
 
-    public ArrayList getStones() {
+    public List getStones() {
         return stones;
     }
 
@@ -38,5 +39,30 @@ public class Necklace {
         }
 
         return stonesTr;
+    }
+
+    public void sortStones() {
+
+        List<Stone> sortedList = new ArrayList<>();
+
+        for (int i = 0; i < stones.size(); i++) {
+            Stone stoneMin = stones.get(i);
+            for (int j = i+1; j < stones.size(); j++) {
+                Stone stoneCurr = stones.get(j);
+
+                if(stoneCurr.getPrice() < stoneMin.getPrice()) {
+                    stoneMin = stoneCurr;
+                }
+            }
+            sortedList.add(stoneMin);
+        }
+        stones = sortedList;
+    }
+
+    public void printStones() {
+        System.out.println("Stones in necklace:");
+        for (int i = 0; i < stones.size(); i++) {
+            System.out.println(" - " + stones.get(i).getName());
+        }
     }
 }
