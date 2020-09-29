@@ -13,19 +13,21 @@ public abstract class NewYearCandy {
 
     public NewYearCandy(String candyName, int weight, int price) {
         this.candyName = candyName;
-        this.weight=weight;
-        this.price= price;
+        this.weight = weight;
+        this.price = price;
         System.out.println(getName() + " -  цена: " + price);
     }
 
-    public int calculateTotalSugar(int weight) {
-        this.weight = weight;
+    public int calculateTotalSugar() {
         totalSugar = SUGAR_IN_GRAMM * weight;
         return totalSugar;
     }
+
     public abstract int getWeight();
-    public abstract  int getPrice();
-    public String getName(){
+
+    public abstract int getPrice();
+
+    public String getName() {
         return candyName;
     }
 
