@@ -1,14 +1,10 @@
 package com.octonion.lesson2;
 
 public class Ledency extends NewYearCandy {
-    private int price;
-    private int weight;
-
 
     public Ledency(String candyName, int weight, int price) {
-//        super(candyName);
-        this.price = price;
-        this.weight = weight;
+        super(candyName, weight, price);
+
     }
 
     @Override

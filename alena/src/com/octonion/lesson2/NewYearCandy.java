@@ -1,16 +1,11 @@
 package com.octonion.lesson2;
 
-/*
-Новогодний подарок.
-Определить иерархию конфет и прочих сладостей.
-Создать несколько объектов-конфет. Собрать детский подарок с определением его веса.
-Провести сортировку конфет в подарке на основе одного из параметров. Найти конфету в подарке, соответствующую заданному диапазону содержания сахара.
- */
+
 public abstract class NewYearCandy {
     public String candyName;
     private final int SUGAR_IN_GRAMM = 5;
-    private int weight;
-    private  int price;
+    protected int weight;
+    protected int price;
     protected int totalSugar;
 
     public NewYearCandy() {
@@ -20,7 +15,7 @@ public abstract class NewYearCandy {
         this.candyName = candyName;
         this.weight=weight;
         this.price= price;
-        System.out.println(candyName + " -  цена: " + price);
+        System.out.println(getName() + " -  цена: " + price);
     }
 
     public int calculateTotalSugar(int weight) {
@@ -30,5 +25,8 @@ public abstract class NewYearCandy {
     }
     public abstract int getWeight();
     public abstract  int getPrice();
+    public String getName(){
+        return candyName;
+    }
 
 }
