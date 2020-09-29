@@ -8,20 +8,20 @@ public class Main {
     //2. Создать объекты цветы +
     //3. Создать букет цветов с аксессуарами +
     //4. Определить стоимость букета +
-    //5. Сортировка по уровню свежести
-    //6. Найти цветов по диапазону стебля
+    //5. Сортировка по уровню свежести +
+    //6. Найти цветов по диапазону стебля +
 
     public static void main(String[] args) {
         ArrayList<Flower> flowerList = new ArrayList();
-        Flower chamomile = new ForestFlower("Chamomile", 2,50);//Ромашка
-        Flower hydrangea = new GardenFlower("Hydrangea", 7, 45);//Гортензия
-        Flower knapweed = new ForestFlower("Knapweed", 9, 20);//Василек
-        Flower peony = new GardenFlower("Peony", 7,60);
-        Flower rose = new GardenFlower("Rose", 8,100);
-        Flower narcissus = new GardenFlower("Narcissus",3,29);
-        Flower lily = new GardenFlower("Lily", 10,35);
+        Flower chamomile = new ForestFlower("Chamomile", 2,50, 10);//Ромашка
+        Flower hydrangea = new GardenFlower("Hydrangea", 7, 45, 4);//Гортензия
+        Flower knapweed = new ForestFlower("Knapweed", 9, 20, 2);//Василек
+        Flower peony = new GardenFlower("Peony", 7,60, 9);
+        Flower rose = new GardenFlower("Rose", 8,100, 7);
+        Flower narcissus = new GardenFlower("Narcissus",3,29, 8);
+        Flower lily = new GardenFlower("Lily", 10,35, 9);
 
-        flowerList.add(chamomile);//Добавление элементов
+        flowerList.add(chamomile);
         flowerList.add(hydrangea);
         flowerList.add(knapweed);
         flowerList.add(peony);
@@ -42,22 +42,32 @@ public class Main {
         first.accessories = Accessories.PAPER;
         first.accessories = Accessories.BEADS;
         first.addFlowers(rose);
+        first.addFlowers(rose);
+
+
 
         Bouquet second = new Bouquet();
         second.setFlowerList(flowerList);
         second.accessories = Accessories.RIBBON;
 
-        System.out.println("Bouquet Autumn morning: " + second + Accessories.RIBBON);
         System.out.println("Bouquet First frost: " + first + Accessories.PAPER + ", " + Accessories.BEADS);
+        System.out.println("Bouquet Autumn morning: " + second + Accessories.RIBBON);
+
 
         int index = flowerList.indexOf(peony);
         System.out.println("Peony number: " + index);
 
-        System.out.println("Price Bouquet: Autumn morning = " + first.getPrice());
+        System.out.println("Price Bouquet: First frost = " + first.getPrice());
+        System.out.println("Price Bouquet: Autumn morning = " + second.getPrice());
 
         System.out.println(first.getFlowers().size());
-        //System.out.println(first.getPrice());
         System.out.println(first.getFlowerStemLength(35,70));
+
+        first.printFlower();
+        first.sortFlowerFreshFlower();
+        first.printFlower();
+
+
 
 
 

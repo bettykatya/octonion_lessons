@@ -1,16 +1,13 @@
 package com.company.kshebeko_class;
 
 public class GardenFlower extends Flower {
-    public int stemLength ;
-    public String flowerBud;
+    private int stemLength ;
+    private int freshFlower;
 
-    public GardenFlower(String flowerBud) {
-        this.flowerBud = flowerBud;
-    }
-
-    public GardenFlower(String name, int price, int stemLength) {
+    public GardenFlower(String name, int price, int stemLength, int freshFlower) {
         super(name,price);
         this.stemLength = stemLength;
+        this.freshFlower = freshFlower;
         System.out.println("Garden flower : " + this.getName());
     }
 
@@ -27,6 +24,11 @@ public class GardenFlower extends Flower {
     @Override
     public int getStemLength() {
         return stemLength;
+    }
+
+    @Override
+    public int getFreshFlower() {
+        return freshFlower;
     }
 
 }

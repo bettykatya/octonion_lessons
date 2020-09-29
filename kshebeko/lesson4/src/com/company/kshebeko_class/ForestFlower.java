@@ -1,11 +1,15 @@
 package com.company.kshebeko_class;
 
-public class ForestFlower extends Flower {
-    public int stemLength;
+import java.util.ArrayList;
 
-    public ForestFlower(String name, int price, int stemLength){
+public class ForestFlower extends Flower {
+    private int stemLength;
+    private int freshFlower;
+
+    public ForestFlower(String name, int price, int stemLength, int freshFlower){
         super(name, price);
         this.stemLength = stemLength;
+        this.freshFlower = freshFlower;
         System.out.println("Forest flower : " + this.getName() + this.setName());
     }
 
@@ -22,6 +26,11 @@ public class ForestFlower extends Flower {
     @Override
     public int getStemLength() {
         return stemLength;
+    }
+
+    @Override
+    public int getFreshFlower() {
+        return freshFlower;
     }
 
 }

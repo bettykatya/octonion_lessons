@@ -1,24 +1,20 @@
 package com.company.kshebeko_class;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Bouquet {
     public Accessories accessories;
-    public String freshFlower;
     private int price;
-    private String name;
-
-    private ArrayList<Flower> flowerList = new ArrayList();
-
-    public Bouquet(String freshFlower) {
-        this.freshFlower = freshFlower;
-    }
 
     public Bouquet() {
     }
 
+    private ArrayList<Flower> flowerList = new ArrayList();
+
     public void setFlowerList(ArrayList<Flower> list) {
         this.flowerList = list;
+        countPriceBouquet();
     }
 
     public ArrayList<Flower> flowers = new ArrayList<>();
@@ -44,7 +40,6 @@ public class Bouquet {
     }
 
     public int getPrice() {
-        countPriceBouquet();
         return price;
     }
 
@@ -67,7 +62,32 @@ public class Bouquet {
         return flowersStem;
     }
 
+    public void sortFlowerFreshFlower() {
 
+        List<Flower> sortedList = new ArrayList();
 
+        int size = flowerList.size();
+        //while (flowerList.size() != 0) {
+        for (int i = 0; i < size; i++) { // 10 4 2 9 7 8 9
+            Flower flowerMin = flowerList.get(0);
 
+            for (int j = 1; j < flowerList.size(); j++) {
+                Flower flower = flowerList.get(j);
+                if (flower.getFreshFlower() < flowerMin.getFreshFlower()) {
+                    flowerMin = flower;
+                }
+            }
+            sortedList.add(flowerMin);
+            flowerList.remove(flowerMin);
+
+        }
+        flowerList = (ArrayList<Flower>) sortedList;
+    }
+
+    public void printFlower() {
+        System.out.println("Flower in bouquet : ");
+        for (int i = 0; i < flowerList.size(); i++) {
+            System.out.println(" " + flowerList.get(i).getName());
+        }
+    }
 }

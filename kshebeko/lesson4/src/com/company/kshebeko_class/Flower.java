@@ -5,12 +5,9 @@ public abstract class Flower {
     protected int price;
 
 
-    public Flower(String name, int price) { //Конструктор
+    public Flower(String name, int price) {
         this.name = name;
         this.price = price;
-    }
-
-    public Flower() { //Конструктор
     }
 
     public String getName() {
@@ -19,7 +16,7 @@ public abstract class Flower {
 
     @Override
     public String toString() {
-        return "Flower name: " + name + " Price  = " + price;
+        return name + " Price  = " + price;
     }
 
     protected abstract String setName();
@@ -27,4 +24,6 @@ public abstract class Flower {
     public abstract int getPrice();
 
     public abstract int getStemLength();
+
+    public abstract int getFreshFlower();
 }
