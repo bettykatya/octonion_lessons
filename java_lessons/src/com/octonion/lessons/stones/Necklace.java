@@ -45,16 +45,17 @@ public class Necklace {
 
         List<Stone> sortedList = new ArrayList<>();
 
-        for (int i = 0; i < stones.size(); i++) {
-            Stone stoneMin = stones.get(i);
-            for (int j = i+1; j < stones.size(); j++) {
+        while (stones.size() > 0) {
+            Stone stoneMin = stones.get(0);
+            for (int j = 1; j < stones.size(); j++) {
                 Stone stoneCurr = stones.get(j);
 
-                if(stoneCurr.getPrice() < stoneMin.getPrice()) {
+                if (stoneCurr.getPrice() < stoneMin.getPrice()) {
                     stoneMin = stoneCurr;
                 }
             }
             sortedList.add(stoneMin);
+            stones.remove(stoneMin);
         }
         stones = sortedList;
     }
