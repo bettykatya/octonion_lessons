@@ -26,16 +26,17 @@ public class Present {
     public void sortCandies() {
         List<NewYearCandy> sortedList = new ArrayList<>();
 
-        for (int i = 0; i < candies.size(); i++) {
-            NewYearCandy candyMin = candies.get(i);
-            for (int j = i + 1; j < candies.size(); j++) {
-                NewYearCandy candyCurr = candies.get(j);
+        while (candies.size() > 0) {
+            NewYearCandy candyMin = candies.get(0);
+            for (int i = 1; i < candies.size(); i++) {
+                NewYearCandy candyCurr = candies.get(i);
 
                 if (candyCurr.getPrice() < candyMin.getPrice()) {
                     candyMin = candyCurr;
                 }
             }
             sortedList.add(candyMin);
+            candies.remove(candyMin);
         }
 
         candies = sortedList;
@@ -47,7 +48,6 @@ public class Present {
             System.out.println(" - " + candies.get(i).getName());
         }
     }
-
 
 
 }
