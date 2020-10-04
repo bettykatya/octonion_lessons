@@ -29,7 +29,7 @@ public class Company {
         price += tp.getPrice();
     }
 
-    public ArrayList<TariffPlan> getTpPrices(double left, double right) {   //сортировку тарифов на основе размера абонентской платы
+    public ArrayList<TariffPlan> getTpPrices(double left, double right) {
         ArrayList<TariffPlan> plansTr = new ArrayList<>();
 
         for (int i = 0; i < plans.size(); i++) {
