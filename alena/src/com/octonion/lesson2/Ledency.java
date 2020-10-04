@@ -16,6 +16,11 @@ public class Ledency extends NewYearCandy {
     public int getWeight() {
         return weight;
     }
+    @Override
+    public int calculateTotalSugar() {
+        totalSugar = 5 * weight;
+        return totalSugar;
+    }
 
 
 }

@@ -49,5 +49,18 @@ public class Present {
         }
     }
 
+    public ArrayList<NewYearCandy> calculateTotalSugar(int left, int right) {
+        ArrayList<NewYearCandy> candyTotalSugar = new ArrayList<>();
+
+        for (int i = 0; i < this.candies.size(); i++) {
+            NewYearCandy candy = this.candies.get(i);
+            int totalSugar = candy.calculateTotalSugar();
+            if (totalSugar > left && totalSugar < right) {
+                candyTotalSugar.add(candy);
+            }
+        }
+        return candyTotalSugar;
+    }
+
 
 }

@@ -3,7 +3,6 @@ package com.octonion.lesson2;
 
 public abstract class NewYearCandy {
     public String candyName;
-    private final int SUGAR_IN_GRAMM = 5;
     protected int weight;
     protected int price;
     protected int totalSugar;
@@ -18,10 +17,7 @@ public abstract class NewYearCandy {
         System.out.println(getName() + " -  цена: " + price);
     }
 
-    public int calculateTotalSugar() {
-        totalSugar = SUGAR_IN_GRAMM * weight;
-        return totalSugar;
-    }
+    public abstract int calculateTotalSugar() ;
 
     public abstract int getWeight();
 
