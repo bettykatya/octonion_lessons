@@ -2,9 +2,9 @@ package com.octonion.lesson2;
 
 import java.util.ArrayList;
 
-public class Solty extends NewYearCandy{
+public class Solty extends NewYearCandy {
 
-    public Solty(String candyName, int weight, int price){
+    public Solty(String candyName, int weight, int price) {
         super(candyName, weight, price);
     }
 
@@ -17,6 +17,7 @@ public class Solty extends NewYearCandy{
     public int getWeight() {
         return weight;
     }
+
     @Override
     public int calculateTotalSugar() {
         totalSugar = 5 * weight;

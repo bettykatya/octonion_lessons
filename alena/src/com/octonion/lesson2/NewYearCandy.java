@@ -17,7 +17,7 @@ public abstract class NewYearCandy {
         System.out.println(getName() + " -  цена: " + price);
     }
 
-    public abstract int calculateTotalSugar() ;
+    public abstract int calculateTotalSugar();
 
     public abstract int getWeight();
 

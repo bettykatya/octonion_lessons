@@ -33,7 +33,7 @@ public class Main {
         System.out.println();
 
 
-       String cnd = "Total sugar in range - ";
+        String cnd = "Total sugar in range - ";
         ArrayList<NewYearCandy> calculateTotalSugar = present.calculateTotalSugar(30, 60);
         for (int i = 0; i < calculateTotalSugar.size(); i++) {
             NewYearCandy candy = calculateTotalSugar.get(i);
