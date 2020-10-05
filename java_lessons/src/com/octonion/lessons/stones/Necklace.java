@@ -20,7 +20,11 @@ public class Necklace {
         return price;
     }
 
-    public void addStone(Stone stone) {
+    public void addStone(Stone stone) throws EmptyStoneNameException {
+        if (stone.getName().isEmpty()) {
+            throw new EmptyStoneNameException();
+        }
+
         stones.add(stone);
         weightKr += stone.getWeigtKr();
         price += stone.getPrice();
