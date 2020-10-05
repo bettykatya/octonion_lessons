@@ -5,9 +5,9 @@ public abstract class TariffPlan {
     private String plan;
     protected int customers;
     protected double price;
-    protected Integer inet;
+    protected Double inet;
 
-    public TariffPlan(String plan, int customers, double price, Integer inet) {
+    public TariffPlan(String plan, int customers, double price, Double inet) {
         this.plan = plan;
         this.customers = customers;
         this.price = price;

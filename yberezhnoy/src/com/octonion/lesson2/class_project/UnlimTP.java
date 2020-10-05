@@ -4,7 +4,7 @@ public class UnlimTP extends TariffPlan {
 
     private int netSpeed;
 
-    public UnlimTP(String plan, int customers, Integer inet, int netSpeed, double price) {
+    public UnlimTP(String plan, int customers, Double inet, int netSpeed, double price) {
         super(plan, customers, price, inet);
         this.netSpeed = netSpeed;
     }

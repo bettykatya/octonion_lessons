@@ -6,7 +6,7 @@ public class SimpleTP extends TariffPlan {
     private int sms;
 
 
-    public SimpleTP(String plan, int customers, Integer inet, int minutes, int sms, double price) {
+    public SimpleTP(String plan, int customers, Double inet, int minutes, int sms, double price) {
         super(plan, customers, price, inet);
         this.minutes = minutes;
         this.sms = sms;
