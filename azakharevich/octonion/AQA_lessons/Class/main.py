@@ -15,7 +15,7 @@ class Task:
     helmet1.display_info()
 
     glove = Gloves('Alpinestar', 60, 300)
-    glove.fingerProtection('Nope') #для тренировки по разному реализовал передачу нового параметра в классах Helmet и Gloves
+    glove.protection('Nope') #для тренировки по разному реализовал передачу нового параметра в классах Helmet и Gloves
     glove.display_info()
 
     helmet2 = Helmet('Shark', 100, 1100, 'No')
@@ -28,8 +28,14 @@ class Task:
     man.addEquip(glove)
     man.addEquip(helmet2)
 
-    print('Full equip price:', man.fullEquipPrice())
+    print('Full equip price:', man.fullEquipPrice(), '$\n\r')
 
+    print('Equip list:')
+    man.equipWeightList()
     man.sortEquip()
+    print('Equip list:')
+    man.equipWeightList()
 
-    man.findEquip(80, 250)
+
+    result = man.findEquip(80, 250)
+    man.searchResult(result)

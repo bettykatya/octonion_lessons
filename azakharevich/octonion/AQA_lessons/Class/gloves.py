@@ -1,7 +1,7 @@
 from motoequip import *
 
 class Gloves(Motoequip):
-    def fingerProtection(self, protection):
+    def protection(self, protection):
         self.protection = protection
 
     def display_info(self):
