@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Present {
-    public int weight;
-    public int price;
+    private int weight;
+    private int price;
 
     private List<NewYearCandy> candies = new ArrayList();
 
