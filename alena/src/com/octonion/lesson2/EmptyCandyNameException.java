@@ -1,4 +1,4 @@
 package com.octonion.lesson2;
 
-public class EmptyCandyNameException {
+public class EmptyCandyNameException extends Exception {
 }
