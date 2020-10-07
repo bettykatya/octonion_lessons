@@ -17,7 +17,14 @@ public class Present {
         return price;
     }
 
-    public void addCandy(NewYearCandy candy) {
+    public List getCandies() {
+        return candies;
+    }
+
+    public void addCandy(NewYearCandy candy) throws EmptyCandyNameException {
+        if (candy.getName().isEmpty()) {
+            throw new EmptyCandyNameException();
+        }
         candies.add(candy);
         weight += candy.getWeight();
         price += candy.getPrice();
