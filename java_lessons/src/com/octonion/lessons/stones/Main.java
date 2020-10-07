@@ -41,12 +41,12 @@ public class Main {
                 throw new EmptyStoneNameException();
             }
 
-//        } catch (EmptyStoneNameException e) {
-//            System.out.println("exception");
-//        } catch (NullPointerException npe) {
-//            System.out.println("exception");
-//        } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-//            System.out.println("exception");
+        } catch (EmptyStoneNameException e) {
+            System.out.println("exception");
+        } catch (NullPointerException npe) {
+            System.out.println("exception");
+        } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
+            System.out.println("exception");
         } catch (Exception exception) {
             System.out.println("exception");
         }

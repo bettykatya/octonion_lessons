@@ -19,67 +19,44 @@ public class Main {
         Solty lakrica = new Solty("Lakrica", 4, 5);
 
         Chokolate emptyCandyName = new Chokolate("", 7, 14);
-
         Present present = new Present();
         try {
-            present.addCandy(lakrica);
-            present.getCandies(emptyCandyName).get(0);
-            try {
-                present.addCandy();
-                throw new ArrayIndexOutOfBoundsException();
-            } catch (NullPointerException npe) {
-                throw new EmptyCandyNameException();
-            }
-
+//            present.getCandies().get(0);
+            present.addCandy(lakrica); //5
+            present.addCandy(bounty); //14
+            present.addCandy(lakrica); //5
+            present.addCandy(barbariska); //6
+            present.addCandy(mars); //19
+            present.addCandy(barbariska); //6
+            present.addCandy(bounty); //14
+            present.addCandy(emptyCandyName);
         } catch (EmptyCandyNameException e) {
-            System.out.println("exception1");
+            System.out.println("empty candy exception");
         } catch (NullPointerException npe) {
-            System.out.println("exception2");
+            System.out.println("Null pointer exception");
         } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-            System.out.println("exception3");
+            System.out.println("Out of boundaries");
         } catch (Exception exception) {
-            System.out.println("exception4");
+            System.out.println("Exception");
         }
-//        present.getCandies().get(2);
-//        present.addCandy(lakrica); //5
-//        present.addCandy(bounty); //14
-//        present.addCandy(lakrica); //5
-//        present.addCandy(barbariska); //6
-//        present.addCandy(mars); //19
-//        present.addCandy(barbariska); //6
-//        present.addCandy(bounty); //14
 
+        System.out.println();
+        System.out.println("стоимость - " + present.getPrice());
+        System.out.println("Вес - " + present.getWeight());
+        System.out.println();
 
-//        try {
-//            present.addCandy(emptyCandyName);
-//            throw new EmptyCandyNameException();
-//        } catch (EmptyCandyNameException e) {
-//            System.out.println();
-//            System.out.println("empty candy name! Achtung!");
-//        }
-
-//        System.out.println();
-//        System.out.println("стоимость - " + present.getPrice());
-//        System.out.println("Вес - " + present.getWeight());
-//        System.out.println();
-//
-//
-//        String cnd = "Total sugar in range - ";
-//        ArrayList<NewYearCandy> calculateTotalSugar = present.calculateTotalSugar(30, 60);
-//        for (int i = 0; i < calculateTotalSugar.size(); i++) {
-//            NewYearCandy candy = calculateTotalSugar.get(i);
-//            cnd += " " + candy.getName();
-//        }
-//        System.out.println();
-//        System.out.println(cnd);
-//        System.out.println();
-//
-//
-//        present.printCandies();
-//        present.sortCandies();
-//        present.printCandies();
-//        System.out.println();
-
-
+        String cnd = "Total sugar in range - ";
+        ArrayList<NewYearCandy> calculateTotalSugar = present.calculateTotalSugar(30, 60);
+        for (int i = 0; i < calculateTotalSugar.size(); i++) {
+            NewYearCandy candy = calculateTotalSugar.get(i);
+            cnd += " " + candy.getName();
+        }
+        System.out.println();
+        System.out.println(cnd);
+        System.out.println();
+        present.printCandies();
+        present.sortCandies();
+        present.printCandies();
+        System.out.println();
     }
 }
