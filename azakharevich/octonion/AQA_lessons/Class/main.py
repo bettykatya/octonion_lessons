@@ -8,6 +8,8 @@
 from helmet import *
 from gloves import *
 from person import *
+import pickle
+import binascii
 
 
 class Task:
@@ -15,7 +17,7 @@ class Task:
     helmet1.display_info()
 
     glove = Gloves('Alpinestar', 60, 300)
-    glove.protection('Nope') #для тренировки по разному реализовал передачу нового параметра в классах Helmet и Gloves
+    glove.setProtection('Nope') #для тренировки по разному реализовал передачу нового параметра в классах Helmet и Gloves
     glove.display_info()
 
     helmet2 = Helmet('Shark', 100, 1100, 'No')
@@ -38,4 +40,21 @@ class Task:
 
 
     result = man.findEquip(80, 250)
-    man.searchResult(result)
+    #man.searchResult(result)
+
+    #serialization
+    serResult = pickle.dumps(result)
+
+    #file writing
+    file = open('file.txt', 'wb')
+    file.write(serResult)
+    file.close()
+
+    #file reading
+    file = open('file.txt', 'rb')
+    fileData = file.read()
+    file.close()
+
+    #deserialization
+    desData = pickle.loads(fileData)
+    man.searchResult(desData)
