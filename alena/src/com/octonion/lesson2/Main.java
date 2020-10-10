@@ -10,7 +10,7 @@ package com.octonion.lesson2;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) throws EmptyCandyNameException {
+    public static void main(String[] args) {
 
 
         Chokolate bounty = new Chokolate("", 7, 14);
