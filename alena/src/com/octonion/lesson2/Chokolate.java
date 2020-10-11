@@ -8,6 +8,11 @@ public class Chokolate extends NewYearCandy {
     }
 
     @Override
+    public void setName(String name) {
+        super.setName(name);
+    }
+
+    @Override
     public int getPrice() {
         return price;
     }

@@ -23,6 +23,10 @@ public abstract class NewYearCandy {
 
     public abstract int getPrice();
 
+    public void setName(String name){
+this.candyName= name;
+    }
+
     public String getName() {
         return candyName;
     }
