@@ -3,7 +3,3 @@ class Motoequip:
         self.model = model
         self.price = price
         self.weight = weight
-
-
-
-

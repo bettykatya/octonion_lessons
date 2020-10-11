@@ -10,6 +10,7 @@ from gloves import *
 from person import *
 import pickle
 import binascii
+import json
 
 
 class Task:
@@ -20,7 +21,11 @@ class Task:
     glove.setProtection('Nope') #для тренировки по разному реализовал передачу нового параметра в классах Helmet и Gloves
     glove.display_info()
 
-    helmet2 = Helmet('Shark', 100, 1100, 'No')
+    try:
+        helmet2 = Helmet('Shark', 100, 'No')
+    except TypeError:
+        print('Exception changed this object')
+        helmet2 = Helmet('Shark', 100, 1100, 'No')
     helmet2.display_info()
 
     print('')
@@ -38,9 +43,7 @@ class Task:
     print('Equip list:')
     man.equipWeightList()
 
-
     result = man.findEquip(80, 250)
-    #man.searchResult(result)
 
     #serialization
     serResult = pickle.dumps(result)
@@ -58,3 +61,11 @@ class Task:
     #deserialization
     desData = pickle.loads(fileData)
     man.searchResult(desData)
+
+    #JSON
+    with open("json.txt", "w") as write_file:
+        json.dump(man.to_json(), write_file)
+
+    with open("json.txt", "r") as json_file:
+        data = json.load(json_file)
+        print('\nJSON data:\n', data)

@@ -1,3 +1,5 @@
+import json
+
 class Person:
     def __init__(self) -> None:
         super().__init__()
@@ -44,7 +46,12 @@ class Person:
                 searchResult.append(self.equipArray[i])
         return searchResult
 
+
     def searchResult(self, searchResult):
         print('\n\rSearch equip from', self.min,'to', self.max, '$')
         for i in range(len(searchResult)):
             print('- Model:', searchResult[i].model, '; Price:', searchResult[i].price)
+
+
+    def to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__, indent=4)
