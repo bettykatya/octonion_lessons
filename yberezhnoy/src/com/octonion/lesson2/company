@@ -1,0 +1,13 @@
+<company>
+	<velcom>
+		<plans>
+			<tp plan= "comfort_S" customers="10" inet="19" minutes="60" sms="500" price="13.90" />
+			<tp plan= "comfort_M" customers="4" inet="6" minutes="120" sms="1000" price="20.90"/>
+			<tp plan= "comfort_L" customers="4" inet="5" minutes="240" sms="2000" price="29.90"/>
+			<tp plan= "comfort_XL" customers="4" inet="5" minutes="1000" sms="5000" price="39.90"/>
+			<tp plan= "unlimited_XS" customers="4" inet="POSITIVE_INFINITY" netspeed="1" price="8.90 "/>
+			<tp plan= "unlimited_S" customers="4" inet="POSITIVE_INFINITY " netspeed="2" price="12.90"/>
+			<tp plan= "unlimited_M" customers="4" inet="POSITIVE_INFINITY " netspeed="4" price="17.90"/>
+		</plans>
+	</velcom>
+</company>
