@@ -10,6 +10,7 @@ package com.octonion.lesson2;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.Serializable;
 
 public class Main {
     public static void main(String[] args) throws IOException, IndexOutOfBoundsException, ClassNotFoundException {
@@ -43,8 +44,8 @@ public class Main {
         }
 
         System.out.println();
-        System.out.println("стоимость - " + present.getPrice());
-        System.out.println("Вес - " + present.getWeight());
+        System.out.println("Price - " + present.getPrice());
+        System.out.println("Weight - " + present.getWeight());
         System.out.println();
 
         String cnd = "Total sugar in range - ";
@@ -84,26 +85,20 @@ public class Main {
 
         FileOutputStream fileOutputStream = new FileOutputStream(filename);
         ObjectOutputStream out = new ObjectOutputStream(fileOutputStream);
-/* не понятно почему не могу использовать bounty, mars. Пишет
-        Exception in thread "main" java.io.NotSerializableException: com.octonion.lesson2.Chokolate
-        at java.base/java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1185)
-        at java.base/java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:349)
-        at com.octonion.lesson2.Main.main(Main.java:88)
- */
 
-        out.writeObject(cnd); // �� t Total sugar in range -   Это считается за сериализацию?
+        out.writeObject(mars);
         out.close();
         fileOutputStream.close();
         //endregion
 
         //region deserialization
-//        FileInputStream fileInputStream = new FileInputStream(filename);
-//        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-//
+        FileInputStream fileInputStream = new FileInputStream(filename);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-//        Chokolate copyChocolate = (Chokolate) objectInputStream.readObject();
-//        System.out.println(String.format("copyChocolate - %s", copyChocolate));
-//        System.out.println(cnd);
+//        mars.setName("Name");
+        Chokolate marsCopy = (Chokolate) objectInputStream.readObject();
+//        System.out.println(String.format("marsCopy - name is %s, price is %s", marsCopy.getName(), marsCopy.getPrice()));
+        System.out.println(String.format("mars - name is %s, price is %s", mars.getName(), mars.getPrice()));
         //endregion
 
     }

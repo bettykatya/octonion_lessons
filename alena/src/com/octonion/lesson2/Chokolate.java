@@ -1,6 +1,8 @@
 package com.octonion.lesson2;
 
-public class Chokolate extends NewYearCandy {
+import java.io.Serializable;
+
+public class Chokolate extends NewYearCandy implements Serializable {
 
     public Chokolate(String candyName, int weight, int price) {
 
