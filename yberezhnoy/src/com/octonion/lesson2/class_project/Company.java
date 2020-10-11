@@ -10,34 +10,27 @@ public class Company {
 
     private List<TariffPlan> plans = new ArrayList();
 
-    public List getPlans() {
-        return plans;
-    }
-
     public int getCustomers() {
         return customers;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-
-    public void addTp(TariffPlan tp) {
+    public void addTp(TariffPlan tp) throws EmptyTariffPlanNameException{
+        if (tp.getPlan().isEmpty())
+            throw new EmptyTariffPlanNameException();
         plans.add(tp);
         customers += tp.getCustomers();
         price += tp.getPrice();
     }
 
-    public ArrayList<TariffPlan> getTpPrices(double left, double right) {
+    public ArrayList<TariffPlan> getPriceRange(double left, double right) {
         ArrayList<TariffPlan> plansTr = new ArrayList<>();
 
         for (int i = 0; i < plans.size(); i++) {
             TariffPlan tp = plans.get(i);
             double price = tp.getPrice();
             if (price > left && price < right) {
-                System.out.println(tp.getPlan());
                 plansTr.add(tp);
+                System.out.println(tp.getPlan());
             }
         }
 

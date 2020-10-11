@@ -14,9 +14,6 @@ public abstract class TariffPlan {
         this.inet = inet;
     }
 
-    public TariffPlan() {
-    }
-
     public String getPlan() {
         return plan;
     }
