@@ -3,17 +3,17 @@ import json
 class Person:
     def __init__(self) -> None:
         super().__init__()
-        self.itemPrice = 0
+        self.itemsPrice = 0
         self.equipArray = []
 
 
     def addEquip(self, object):
-        self.itemPrice += object.price
+        self.itemsPrice += object.price
         self.equipArray.append(object)
 
 
     def fullEquipPrice(self):
-        return self.itemPrice
+        return self.itemsPrice
 
 
     def sortEquip(self):
@@ -38,19 +38,17 @@ class Person:
 
 
     def findEquip(self, min, max):
-        self.min = min
-        self.max = max
         searchResult = []
         for i in range(len(self.equipArray)):
             if min < self.equipArray[i].price < max:
                 searchResult.append(self.equipArray[i])
-        return searchResult
+        return searchResult, min, max
 
 
     def searchResult(self, searchResult):
-        print('\n\rSearch equip from', self.min,'to', self.max, '$')
-        for i in range(len(searchResult)):
-            print('- Model:', searchResult[i].model, '; Price:', searchResult[i].price)
+        print('\n\rSearch equip from', searchResult[1],'to', searchResult[2], '$')
+        for i in range(len(searchResult[0])):
+            print('- Model:', searchResult[0][i].model, '; Price:', searchResult[0][i].price)
 
 
     def to_json(self):
