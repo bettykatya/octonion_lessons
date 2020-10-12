@@ -1,20 +1,23 @@
 package com.company.kshebeko_class;
 
-import java.util.ArrayList;
 
-public class ForestFlower extends Flower {
+public class ForestFlower extends Flower{
     private int stemLength;
     private int freshFlower;
 
-    public ForestFlower(String name, int price, int stemLength, int freshFlower){
+    public ForestFlower(String name, int price, int stemLength, int freshFlower) {
         super(name, price);
         this.stemLength = stemLength;
         this.freshFlower = freshFlower;
-        System.out.println("Forest flower : " + this.getName() + this.setName());
     }
 
     @Override
-    protected String setName() {
+    public String toString() {
+        return "Forest flower : " + this.getName() + " flower price = " + price;
+    }
+
+    @Override
+    public String setName() {
         return null;
     }
 
@@ -32,5 +35,6 @@ public class ForestFlower extends Flower {
     public int getFreshFlower() {
         return freshFlower;
     }
+
 
 }

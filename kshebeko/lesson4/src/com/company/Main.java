@@ -190,7 +190,7 @@ public class Main {
         System.out.println("Минималььный элемент: " + min);
          */
 
-        int[][] matrix1 = {{5, 3, 7, 0},
+        /*int[][] matrix1 = {{5, 3, 7, 0},
                 {7, 1, 9, 2},
                 {3, 4, 7, 6}};
         int[][] matrix2 = {{4, 8},
@@ -208,10 +208,8 @@ public class Main {
                 }
             }
 
+        }*/
         }
-
-        }
-
     }
 
 

@@ -1,29 +1,38 @@
 package com.company.kshebeko_class;
 
-public abstract class Flower {
+import java.io.Serializable;
+
+public abstract class Flower implements Comparable<Flower>, Serializable {
     protected String name;
     protected int price;
 
 
-    public Flower(String name, int price) {
+    protected Flower(String name, int price) {
         this.name = name;
         this.price = price;
     }
+
+   /* @Override
+    public String toString() {
+        return name + " flower price = " + price;
+    }*/
 
     public String getName() {
         return name;
     }
 
+    public abstract String setName();
+
+    public int getPrice() {
+        return price;
+    };
+
+    protected abstract int getStemLength();
+
+    protected abstract int getFreshFlower();
+
     @Override
-    public String toString() {
-        return name + " Price  = " + price;
+    public int compareTo(Flower o) {
+        return Integer.valueOf(this.price).compareTo(Integer.valueOf(o.price));
     }
-
-    protected abstract String setName();
-
-    public abstract int getPrice();
-
-    public abstract int getStemLength();
-
-    public abstract int getFreshFlower();
 }

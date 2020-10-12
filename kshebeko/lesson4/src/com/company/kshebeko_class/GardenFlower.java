@@ -1,6 +1,6 @@
 package com.company.kshebeko_class;
 
-public class GardenFlower extends Flower {
+public class GardenFlower extends Flower  {
     private int stemLength ;
     private int freshFlower;
 
@@ -8,11 +8,15 @@ public class GardenFlower extends Flower {
         super(name,price);
         this.stemLength = stemLength;
         this.freshFlower = freshFlower;
-        System.out.println("Garden flower : " + this.getName());
     }
 
     @Override
-    protected String setName() {
+    public String toString() {
+        return "Garden flower : " + this.getName() + " flower price = " + price;
+    }
+
+    @Override
+    public String setName() {
         return null;
     }
 

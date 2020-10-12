@@ -7,19 +7,17 @@ public class Bouquet {
     public Accessories accessories;
     private int price;
 
+    private ArrayList<Flower> flowerList = new ArrayList();
+
     public Bouquet() {
     }
-
-    private ArrayList<Flower> flowerList = new ArrayList();
 
     public void setFlowerList(ArrayList<Flower> list) {
         this.flowerList = list;
         countPriceBouquet();
     }
 
-    public ArrayList<Flower> flowers = new ArrayList<>();
-
-    public ArrayList getFlowers() { return flowers;}
+    public ArrayList getFlowerList() { return flowerList;}
 
     @Override
     public String toString() {
@@ -28,7 +26,7 @@ public class Bouquet {
             Flower flower = flowerList.get(i);
             str += flower.getName() + "; ";
         }
-        return str;
+        return str + " with " + Accessories.BEADS + " " + Accessories.RIBBON;
     }
 
     public int countPriceBouquet() {
@@ -43,8 +41,11 @@ public class Bouquet {
         return price;
     }
 
-    public void addFlowers(Flower flower) {
-        flowers.add(flower);
+    public void addFlowerList(Flower flower) throws EmptyFlowerNameException {
+        if (flower.getName().isEmpty()) { // проверка на пустое имя. если имя пустое выбросит исключения если нет, то добавит в букет
+            throw new EmptyFlowerNameException();
+        }
+        flowerList.add(flower);
         price += flower.getPrice();
     }
 
@@ -62,32 +63,33 @@ public class Bouquet {
         return flowersStem;
     }
 
-    public void sortFlowerFreshFlower() {
+    public void sortFlowers() {
 
         List<Flower> sortedList = new ArrayList();
 
         int size = flowerList.size();
         //while (flowerList.size() != 0) {
         for (int i = 0; i < size; i++) { // 10 4 2 9 7 8 9
-            Flower flowerMin = flowerList.get(0);
+            Flower flower = flowerList.get(0);
 
             for (int j = 1; j < flowerList.size(); j++) {
-                Flower flower = flowerList.get(j);
-                if (flower.getFreshFlower() < flowerMin.getFreshFlower()) {
-                    flowerMin = flower;
+                Flower flowerJ = flowerList.get(j);
+                if (flowerJ.getFreshFlower() < flower.getFreshFlower()) {
+                    flower = flowerJ;
                 }
             }
-            sortedList.add(flowerMin);
-            flowerList.remove(flowerMin);
+            sortedList.add(flower);
+            flowerList.remove(flower);
 
         }
         flowerList = (ArrayList<Flower>) sortedList;
     }
 
-    public void printFlower() {
-        System.out.println("Flower in bouquet : ");
+    public void printFlowers() {
+        System.out.println("Flowers in bouquet: ");
         for (int i = 0; i < flowerList.size(); i++) {
             System.out.println(" " + flowerList.get(i).getName());
         }
     }
+
 }

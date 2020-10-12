@@ -1,6 +1,11 @@
 package com.company.kshebeko_class;
 
+
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
 
@@ -11,7 +16,7 @@ public class Main {
     //5. Сортировка по уровню свежести +
     //6. Найти цветов по диапазону стебля +
 
-    public static void main(String[] args) {
+    public static <ObjectInputStreamn> void main(String[] args) throws Exception {
         ArrayList<Flower> flowerList = new ArrayList();
         Flower chamomile = new ForestFlower("Chamomile", 2,50, 10);//Ромашка
         Flower hydrangea = new GardenFlower("Hydrangea", 7, 45, 4);//Гортензия
@@ -20,6 +25,7 @@ public class Main {
         Flower rose = new GardenFlower("Rose", 8,100, 7);
         Flower narcissus = new GardenFlower("Narcissus",3,29, 8);
         Flower lily = new GardenFlower("Lily", 10,35, 9);
+        Flower emptyFlowerName = new ForestFlower("",4, 6, 10);
 
         flowerList.add(chamomile);
         flowerList.add(hydrangea);
@@ -36,36 +42,98 @@ public class Main {
         System.out.println(rose);
         System.out.println(narcissus);
         System.out.println(lily);
+        System.out.println("\t");
 
         Bouquet first = new Bouquet();
         first.setFlowerList(flowerList);
         first.accessories = Accessories.PAPER;
         first.accessories = Accessories.BEADS;
-        first.addFlowers(rose);
-        first.addFlowers(rose);
 
+        try {
+            first.setFlowerList(flowerList);
+            //first.addFlowerList(flowerList);
+            first.addFlowerList(emptyFlowerName);
 
+        } catch (EmptyFlowerNameException e) {
+            System.out.println("Empty flower name in first bouquet");
+        }
 
         Bouquet second = new Bouquet();
         second.setFlowerList(flowerList);
         second.accessories = Accessories.RIBBON;
 
-        System.out.println("Bouquet First frost: " + first + Accessories.PAPER + ", " + Accessories.BEADS);
-        System.out.println("Bouquet Autumn morning: " + second + Accessories.RIBBON);
+        try {
+            second.setFlowerList(flowerList);
+            second.addFlowerList(emptyFlowerName);
+
+        } catch (EmptyFlowerNameException e) {
+            System.out.println("Empty flower name in second bouquet");
+        }
+
+        System.out.println("\t");
+        System.out.println("Bouquet First frost: " + first);
+        System.out.println("Bouquet Autumn morning: " + second);
+        System.out.println("\t");
 
 
         int index = flowerList.indexOf(peony);
         System.out.println("Peony number: " + index);
 
+        System.out.println("\t");
         System.out.println("Price Bouquet: First frost = " + first.getPrice());
         System.out.println("Price Bouquet: Autumn morning = " + second.getPrice());
 
-        System.out.println(first.getFlowers().size());
-        System.out.println(first.getFlowerStemLength(35,70));
+        System.out.println("\t");
+        System.out.println("Quantity in bouquet: " + first.getFlowerList().size());
+        System.out.println( "Flower stem range 35 - 70 " + first.getFlowerStemLength(35,70));
 
-        first.printFlower();
-        first.sortFlowerFreshFlower();
-        first.printFlower();
+        System.out.println("\t");
+        System.out.println(flowerList);
+        Collections.sort(flowerList);
+        System.out.println(flowerList);
+
+        System.out.println("\t");
+        first.printFlowers();
+        first.sortFlowers();
+        first.printFlowers();
+
+        //File
+        File f = new File("file.txt");
+        //f.createNewFile();
+        System.out.println(f.exists());
+
+        /*String str = "Bouquet";
+        FileWriter fileWriter = new FileWriter(f, true);
+        fileWriter.write(str);
+        fileWriter.close();*/
+
+        FileReader fileReader = new FileReader(f);
+        int b;
+        while ((b = fileReader.read()) != -1) {
+            System.out.print((char) b);
+        }
+        fileReader.close();
+
+        //Serialization
+        String filename = "file.ser";
+
+        FileOutputStream fileOutputStream = new FileOutputStream(filename);
+        ObjectOutputStream out = new ObjectOutputStream(fileOutputStream);
+
+        out.writeObject(chamomile);
+
+        out.close();
+        fileOutputStream.close();
+
+        //deserialization
+        FileInputStream fileInputStream = new FileInputStream(filename);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+        Flower chamomileCope = (Flower) objectInputStream.readObject();
+        chamomile.setName();
+        System.out.println(String.format("nameCopy is %s, price is %s", chamomileCope.getName(),chamomileCope.getPrice()));
+        System.out.println(String.format("name is %s, price is %s", chamomile.getName(),chamomile.getPrice()));
+
 
 
 
