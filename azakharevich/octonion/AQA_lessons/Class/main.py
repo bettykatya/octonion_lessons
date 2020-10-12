@@ -35,13 +35,13 @@ class Task:
     man.addEquip(glove)
     man.addEquip(helmet2)
 
-    print('Full equip price:', man.fullEquipPrice(), '$\n\r')
+    print('Full equip price:', man.getFullPrice(), '$\n\r')
 
     print('Equip list:')
-    man.equipWeightList()
+    man.getWeightList()
     man.sortEquip()
     print('Equip list:')
-    man.equipWeightList()
+    man.getWeightList()
 
     result = man.findEquip(80, 250)
 

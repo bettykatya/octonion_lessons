@@ -12,7 +12,7 @@ class Person:
         self.equipArray.append(object)
 
 
-    def fullEquipPrice(self):
+    def getFullPrice(self):
         return self.itemsPrice
 
 
@@ -32,7 +32,7 @@ class Person:
         self.equipArray = sortedArray
 
 
-    def equipWeightList(self):
+    def getWeightList(self):
         for i in range(len(self.equipArray)):
             print('-', self.equipArray[i].weight)
 
