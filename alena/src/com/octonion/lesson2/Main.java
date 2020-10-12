@@ -7,13 +7,14 @@ package com.octonion.lesson2;
 Найти конфету в подарке, соответствующую заданному диапазону содержания сахара. - Done
  */
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.Serializable;
 
 public class Main {
-    public static void main(String[] args) throws IOException, IndexOutOfBoundsException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, IndexOutOfBoundsException, ClassNotFoundException, JAXBException {
 
 
         Chokolate bounty = new Chokolate("", 7, 14);
@@ -101,6 +102,19 @@ public class Main {
         System.out.println(String.format("mars - name is %s, price is %s", mars.getName(), mars.getPrice()));
         //endregion
 
+        //region object to xml
+        Chokolate candy = new Chokolate("mars", 15, 5);
+
+        File file = new File("chokolate.xml");
+        JAXBContext jaxbContext = JAXBContext.newInstance(Chokolate.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+
+        // output pretty printed
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        jaxbMarshaller.marshal(candy, file);
+        jaxbMarshaller.marshal(candy, System.out);
+        //endregion
     }
 
 }
