@@ -1,14 +1,10 @@
 package com.octonion.lesson2.class_project;
 
-import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, IndexOutOfBoundsException, ClassNotFoundException{
+    public static void main(String[] args) throws EmptyTariffPlanNameException {
 
 
         /*
@@ -31,7 +27,6 @@ public class Main {
 
         SimpleTP emptyTariffPlanName = new SimpleTP("", 4761, 1.0, 60, 500, 13.90);
         Company velcom = new Company();
-//        velcom.addTp(emptyTariffPlanName);
         try {
             velcom.addTp(comfort_S); //13.90
             velcom.addTp(comfort_M); //20.90
@@ -43,16 +38,12 @@ public class Main {
             velcom.addTp(emptyTariffPlanName);
         } catch (EmptyTariffPlanNameException em) {
             System.out.println("empty tariff plan name exception");
-//        } catch (NullPointerException npe) {
-//            System.out.println("Null pointer exception");
-//        } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-//            System.out.println("Out of boundaries");
-//       } catch (Exception exception) {
-//            System.out.println("Exception");
-       }
+
+        }
 
         System.out.println("Общая численность клиентов = " + velcom.getCustomers());
         System.out.println("Cортировка на основе размера стоимости тарифного плана: " );
+
         velcom.sortTP();
         String str = "Тарифные планы в диапазоне заданных цен :";
 
