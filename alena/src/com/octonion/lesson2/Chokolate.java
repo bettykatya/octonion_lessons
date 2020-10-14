@@ -33,6 +33,6 @@ public class Chokolate extends NewYearCandy implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("name - %s, id - %s, age - %d", candyName, weight, price);
+        return String.format("name - %s, weight - %s, price - %d", candyName, weight, price);
     }
 }
