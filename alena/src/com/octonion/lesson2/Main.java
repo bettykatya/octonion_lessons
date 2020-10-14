@@ -7,10 +7,13 @@ package com.octonion.lesson2;
 Найти конфету в подарке, соответствующую заданному диапазону содержания сахара. - Done
  */
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class Main {
@@ -105,15 +108,27 @@ public class Main {
         //region object to xml
         Chokolate candy = new Chokolate("mars", 15, 5);
 
-        File file = new File("chokolate.xml");
-        JAXBContext jaxbContext = JAXBContext.newInstance(Chokolate.class);
-        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+//        File file = new File("chokolate.xml");
+//        JAXBContext jaxbContext = JAXBContext.newInstance(Chokolate.class);
+//        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+//
+//        // output pretty printed
+//        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//
+//        jaxbMarshaller.marshal(candy, file);
+//        jaxbMarshaller.marshal(candy, System.out);
+//        //endregion
 
-        // output pretty printed
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-        jaxbMarshaller.marshal(candy, file);
-        jaxbMarshaller.marshal(candy, System.out);
+        //region object to json
+        File jsonFile = new File("candy.json");
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.writeValue(jsonFile, candy);
+        //endregion
+        //region json to object
+        byte[] encoded = Files.readAllBytes(jsonFile.toPath());
+        String json = new String(encoded);
+        Chokolate candyFromJson = objectMapper.readValue(json, Chokolate.class);
+        System.out.println(candyFromJson);
         //endregion
     }
 
