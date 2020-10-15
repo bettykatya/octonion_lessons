@@ -2,7 +2,7 @@ package com.octonion.lesson2;
 
 import java.io.Serializable;
 
-public class Chokolate extends NewYearCandy implements Serializable {
+public class Chokolate extends NewYearCandy implements Serializable, Comparable<Chokolate> {
     public Chokolate() {
     }
 
@@ -33,6 +33,19 @@ public class Chokolate extends NewYearCandy implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("name - %s, weight - %s, price - %d", candyName, weight, price);
+        return String.format("name - %s, weight - %s, price - %s", candyName, weight, price);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Chokolate that = (Chokolate) o;
+        return price == that.price;
+    }
+
+    @Override
+    public int compareTo(Chokolate o) {
+        return Integer.valueOf(this.price).compareTo(Integer.valueOf(o.price));
     }
 }

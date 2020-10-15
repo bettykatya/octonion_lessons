@@ -4,7 +4,6 @@ public class Ledency extends NewYearCandy {
 
     public Ledency(String candyName, int weight, int price) {
         super(candyName, weight, price);
-
     }
 
     @Override

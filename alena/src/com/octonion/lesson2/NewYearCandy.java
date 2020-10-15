@@ -1,6 +1,5 @@
 package com.octonion.lesson2;
 
-
 public abstract class NewYearCandy {
     public String candyName;
     protected int weight;
@@ -23,8 +22,8 @@ public abstract class NewYearCandy {
 
     public abstract int getPrice();
 
-    public void setName(String name){
-this.candyName= name;
+    public void setName(String name) {
+        this.candyName = name;
     }
 
     public String getName() {

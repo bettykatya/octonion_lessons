@@ -8,34 +8,28 @@ package com.octonion.lesson2;
  */
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) throws IOException, IndexOutOfBoundsException, ClassNotFoundException, JAXBException {
-
-
-        Chokolate bounty = new Chokolate("", 7, 14);
-        Chokolate mars = new Chokolate("Mars", 10, 19);
+    public static void main(String[] args) throws IOException, IndexOutOfBoundsException, ClassNotFoundException {
+        Chokolate bounty = new Chokolate("Bounty", 7, 21);
+        Chokolate mars = new Chokolate("Mars", 10, 11);
         Ledency barbariska = new Ledency("Barbariska", 4, 6);
         Solty lakrica = new Solty("Lakrica", 4, 5);
         Chokolate emptyCandyName = new Chokolate("", 7, 14);
 
         Present present = new Present();
         try {
-//            present.getCandies().get(0);
-            present.addCandy(lakrica); //5
-            present.addCandy(bounty); //14
-            present.addCandy(lakrica); //5
-            present.addCandy(barbariska); //6
-            present.addCandy(mars); //19
-            present.addCandy(barbariska); //6
-            present.addCandy(bounty); //14
+//          present.getCandies().get(0);
+            present.addCandy(lakrica);
+            present.addCandy(bounty);
+            present.addCandy(lakrica);
+            present.addCandy(barbariska);
+            present.addCandy(mars);
+            present.addCandy(barbariska);
+            present.addCandy(bounty);
             present.addCandy(emptyCandyName);
         } catch (EmptyCandyNameException e) {
             System.out.println("empty candy exception");
@@ -66,9 +60,8 @@ public class Main {
         present.printCandies();
         System.out.println();
 
-
         File f = new File("file.txt");
-//        f.createNewFile();
+//      f.createNewFile();
         System.out.println(f.exists());
 
 //        String str = "Hi";
@@ -78,13 +71,12 @@ public class Main {
 
 //        System.out.println();
 //        Scanner scanner = new Scanner(f);
-//        while(scanner.hasNextLine()) {
+//        while (scanner.hasNextLine()) {
 //            System.out.println(scanner.nextLine());
 //        }
-//        scanner.close();
+//      scanner.close();
 
-
-//region serialization
+//      region serialization
         String filename = "file.ser";
 
         FileOutputStream fileOutputStream = new FileOutputStream(filename);
@@ -99,37 +91,30 @@ public class Main {
         FileInputStream fileInputStream = new FileInputStream(filename);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-//        mars.setName("Name");
+//      mars.setName("Name");
         Chokolate marsCopy = (Chokolate) objectInputStream.readObject();
-//        System.out.println(String.format("marsCopy - name is %s, price is %s", marsCopy.getName(), marsCopy.getPrice()));
+//      System.out.println(String.format("marsCopy - name is %s, price is %s", marsCopy.getName(), marsCopy.getPrice()));
         System.out.println(String.format("mars - name is %s, price is %s", mars.getName(), mars.getPrice()));
         //endregion
 
-        //region object to xml
         Chokolate candy = new Chokolate("mars", 15, 5);
-
-//        File file = new File("chokolate.xml");
-//        JAXBContext jaxbContext = JAXBContext.newInstance(Chokolate.class);
-//        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-//
-//        // output pretty printed
-//        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-//
-//        jaxbMarshaller.marshal(candy, file);
-//        jaxbMarshaller.marshal(candy, System.out);
-//        //endregion
 
         //region object to json
         File jsonFile = new File("candy.json");
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.writeValue(jsonFile, candy);
         //endregion
+
         //region json to object
         byte[] encoded = Files.readAllBytes(jsonFile.toPath());
         String json = new String(encoded);
         Chokolate candyFromJson = objectMapper.readValue(json, Chokolate.class);
         System.out.println(candyFromJson);
         //endregion
-    }
 
+        System.out.println();
+        System.out.println("Сравнение цены одной конфетки с другой");
+        System.out.println(mars.equals(bounty));
+        System.out.println(mars.compareTo(bounty));
+    }
 }
