@@ -1,6 +1,7 @@
 package com.company.kshebeko_class;
 
-public class GardenFlower extends Flower  {
+
+public class GardenFlower extends Flower {
     private int stemLength ;
     private int freshFlower;
 
@@ -33,6 +34,10 @@ public class GardenFlower extends Flower  {
     @Override
     public int getFreshFlower() {
         return freshFlower;
+    }
+
+    public GardenFlower() {
+
     }
 
 }

@@ -36,5 +36,10 @@ public class ForestFlower extends Flower{
         return freshFlower;
     }
 
+    public ForestFlower() {
+        super();
+
+    }
+
 
 }

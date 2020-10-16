@@ -1,16 +1,31 @@
 package com.company.kshebeko_class;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.io.Serializable;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(name = "ForestFlower", value = ForestFlower.class),
+        @JsonSubTypes.Type(name = "GardenFlower", value = GardenFlower.class)
+})
+
 
 public abstract class Flower implements Comparable<Flower>, Serializable {
     protected String name;
     protected int price;
 
 
-    protected Flower(String name, int price) {
+    public Flower(String name, int price) {
         this.name = name;
         this.price = price;
     }
+
+    public Flower() {
+    }
+
 
    /* @Override
     public String toString() {

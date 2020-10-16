@@ -1,13 +1,18 @@
 package com.company.kshebeko_class;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bouquet {
+public class Bouquet implements Serializable {
     public Accessories accessories;
     private int price;
 
-    private ArrayList<Flower> flowerList = new ArrayList();
+    //@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+
+    public ArrayList<Flower> flowerList = new ArrayList();
 
     public Bouquet() {
     }
@@ -91,5 +96,7 @@ public class Bouquet {
             System.out.println(" " + flowerList.get(i).getName());
         }
     }
+
+    public void getFirst() {}
 
 }

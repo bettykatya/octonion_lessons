@@ -1,11 +1,20 @@
 package com.company.kshebeko_class;
 
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+
+
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
+
 
 public class Main {
 
@@ -16,7 +25,7 @@ public class Main {
     //5. Сортировка по уровню свежести +
     //6. Найти цветов по диапазону стебля +
 
-    public static <ObjectInputStreamn> void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
         ArrayList<Flower> flowerList = new ArrayList();
         Flower chamomile = new ForestFlower("Chamomile", 2,50, 10);//Ромашка
         Flower hydrangea = new GardenFlower("Hydrangea", 7, 45, 4);//Гортензия
@@ -126,16 +135,36 @@ public class Main {
         fileOutputStream.close();
 
         //deserialization
-        FileInputStream fileInputStream = new FileInputStream(filename);
+       /* FileInputStream fileInputStream = new FileInputStream(filename);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
         Flower chamomileCope = (Flower) objectInputStream.readObject();
         chamomile.setName();
         System.out.println(String.format("nameCopy is %s, price is %s", chamomileCope.getName(),chamomileCope.getPrice()));
-        System.out.println(String.format("name is %s, price is %s", chamomile.getName(),chamomile.getPrice()));
+        System.out.println(String.format("name is %s, price is %s", chamomile.getName(),chamomile.getPrice()));*/
 
 
+        FileInputStream fileInputStream = new FileInputStream(filename);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        //first = (Bouquet) objectInputStream.readObject();
+        System.out.println(String.format("first bouquet", first.getPrice()));//System.out.println(String.format("firstCopy",firstCopy.getPrice()));
 
+
+        //region object to json
+        File jsonFile = new File("first.json");
+        ObjectMapper objectMapper = new ObjectMapper();
+        //objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.OBJECT_AND_NON_CONCRETE, JsonTypeInfo.As.PROPERTY);
+        objectMapper.writeValue(jsonFile, first);
+
+        //region json to object
+        byte[] encoded = Files.readAllBytes(jsonFile.toPath());
+        String json = new String(encoded);
+        try {
+            Bouquet firstFromJson = objectMapper.readValue(json, Bouquet.class);
+            System.out.println(firstFromJson);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
 
