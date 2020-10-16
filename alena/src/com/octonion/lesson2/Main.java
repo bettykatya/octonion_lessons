@@ -8,9 +8,11 @@ package com.octonion.lesson2;
  */
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, IndexOutOfBoundsException, ClassNotFoundException {
@@ -22,7 +24,6 @@ public class Main {
 
         Present present = new Present();
         try {
-//          present.getCandies().get(0);
             present.addCandy(lakrica);
             present.addCandy(bounty);
             present.addCandy(lakrica);
@@ -61,20 +62,20 @@ public class Main {
         System.out.println();
 
         File f = new File("file.txt");
-//      f.createNewFile();
+        f.createNewFile();
         System.out.println(f.exists());
 
-//        String str = "Hi";
-//        FileWriter fileWriter = new FileWriter(f, true);
-//        fileWriter.write(str);
-//        fileWriter.close();
+        String str = "Hi";
+        FileWriter fileWriter = new FileWriter(f, true);
+        fileWriter.write(str);
+        fileWriter.close();
 
-//        System.out.println();
-//        Scanner scanner = new Scanner(f);
-//        while (scanner.hasNextLine()) {
-//            System.out.println(scanner.nextLine());
-//        }
-//      scanner.close();
+        System.out.println();
+        Scanner scanner = new Scanner(f);
+        while (scanner.hasNextLine()) {
+            System.out.println(scanner.nextLine());
+        }
+        scanner.close();
 
 //      region serialization
         String filename = "file.ser";
