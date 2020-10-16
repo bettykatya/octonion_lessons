@@ -1,0 +1,7 @@
+<present>
+	<candies>
+		<candy name= "Mars" weight="10" price="19" />
+		<candy name= "Barbariska" weight="4" price="6" />
+		<candy name= "Lakrica" weight="4" price="5" />
+	<candies>
+</present>
