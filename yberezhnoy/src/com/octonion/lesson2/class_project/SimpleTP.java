@@ -23,4 +23,9 @@ public class SimpleTP extends TariffPlan {
         return price;
     }
 
+    @Override
+    public Double getInet() {
+        return inet;
+    }
+
 }

@@ -2,7 +2,7 @@ package com.octonion.lesson2.class_project;
 
 
 public abstract class TariffPlan {
-    private String plan;
+    protected String plan;
     protected int customers;
     protected double price;
     protected Double inet;
@@ -21,5 +21,8 @@ public abstract class TariffPlan {
     public abstract int getCustomers();
 
     public abstract double getPrice();
+
+    public abstract Double getInet();
+
 
 }

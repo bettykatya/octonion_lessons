@@ -28,9 +28,9 @@ public class Company {
         for (int i = 0; i < plans.size(); i++) {
             TariffPlan tp = plans.get(i);
             double price = tp.getPrice();
+            System.out.println(tp.getPlan() + " = " + tp.getPrice());
             if (price > left && price < right) {
                 plansTr.add(tp);
-                System.out.println(tp.getPlan());
             }
         }
 
