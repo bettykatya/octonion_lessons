@@ -1,0 +1,21 @@
+{
+"present": [
+	"candies":[
+	{
+		"name": "Mars",
+		"weight": 10,
+		"price": 19
+	},
+	{
+		"name": "Barbariska",
+		"weight": 4,
+		"price": 6
+	},
+	{
+		"name": "Lakrica",
+		"weight": 4,
+		"price": 5
+	}
+	]
+]
+}
