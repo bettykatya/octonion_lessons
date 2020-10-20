@@ -1,0 +1,13 @@
+<suite name="Sample calculator test suite">
+
+    <test name="Sample test">
+        <classes>
+            <class name="com.octonion.automation_lessons.calculator.CalculatorTest">
+                <methods>
+                    <include name="sumPositiveDataProvider" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
