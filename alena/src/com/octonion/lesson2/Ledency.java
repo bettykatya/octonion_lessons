@@ -1,7 +1,7 @@
 package com.octonion.lesson2;
 
 public class Ledency extends NewYearCandy {
-
+// %procent
     public Ledency(String candyName, int weight, int price) {
         super(candyName, weight, price);
     }

@@ -2,6 +2,10 @@ package com.octonion.lesson2;
 
 import java.io.Serializable;
 
+// ввести шоколад %
+//и натуральность в леденцах
+//подарок в котором все леденцы натуральные или %шоколада > 80%
+
 public class Chokolate extends NewYearCandy implements Serializable, Comparable<Chokolate> {
     public Chokolate() {
     }

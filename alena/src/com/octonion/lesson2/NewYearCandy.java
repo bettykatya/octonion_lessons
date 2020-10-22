@@ -1,7 +1,7 @@
 package com.octonion.lesson2;
 
 public abstract class NewYearCandy {
-    public String candyName;
+    protected String candyName;
     protected int weight;
     protected int price;
     protected int totalSugar;

@@ -3,6 +3,7 @@ package com.octonion.lesson2;
 import java.util.ArrayList;
 import java.util.List;
 
+//собрать подарок шоколад % > 70 и сок есть в леденцах
 
 public class Present {
     private int weight;
