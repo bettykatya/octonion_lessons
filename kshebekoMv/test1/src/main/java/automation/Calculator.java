@@ -1,4 +1,7 @@
 package automation;
 
-public class calculator {
+public class Calculator {
+
+    public double degree(double a, double b) { return Math.pow(a, b);}
+
 }
