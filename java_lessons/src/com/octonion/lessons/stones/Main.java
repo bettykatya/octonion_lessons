@@ -13,7 +13,7 @@ public class Main {
      */
 
     public static void main(String[] args) throws Exception{
-        SemipreciosStone amber = new SemipreciosStone(2, "Amber", 3, 33);
+        SemipreciosStone amber = new SemipreciosStone(2, "Amber", 8, 33);
         SemipreciosStone amber2 = new SemipreciosStone(32, "Amber2", 7, 43);
         SemipreciosStone amber3 = new SemipreciosStone(32, "Amber2", 2, 43);
 
@@ -29,7 +29,7 @@ public class Main {
         stones.add(amber2);
         stones.add(amber3);
 
-        SemipreciosStone emptyNameStone = new SemipreciosStone(2, "", 3, 33);
+        SemipreciosStone emptyNameStone = new SemipreciosStone(2, "Name_name", 3, 33);
 
         Necklace necklace = new Necklace();
         necklace.addStone(emptyNameStone);
@@ -44,12 +44,12 @@ public class Main {
                 throw new EmptyStoneNameException();
             }
 
-//        } catch (EmptyStoneNameException e) {
-//            System.out.println("exception");
-//        } catch (NullPointerException npe) {
-//            System.out.println("exception");
-//        } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-//            System.out.println("exception");
+        } catch (EmptyStoneNameException e) {
+            System.out.println("exception");
+        } catch (NullPointerException npe) {
+            System.out.println("exception");
+        } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
+            System.out.println("exception");
         } catch (Exception exception) {
             System.out.println("exception");
         }
@@ -58,11 +58,12 @@ public class Main {
         necklace.addStone(amber); //3
         necklace.addStone(ametist); //25
 
-
+        System.out.println("Сравнение");
         System.out.println(amber.equals(amber2));
         System.out.println(amber.compareTo(amber));
         System.out.println(amber.compareTo(amber2));
         System.out.println(amber.compareTo(amber3));
+        System.out.println();
 
         System.out.println(stones);
         Collections.sort(stones);

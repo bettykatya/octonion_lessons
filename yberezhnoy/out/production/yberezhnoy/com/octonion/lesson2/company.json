@@ -1,0 +1,63 @@
+{
+    "company": {
+        "velcom": {
+            "plans": {
+                "tp": [
+                    {
+                        "_plan": "comfort_S",
+                        "_customers": "10",
+                        "_inet": "19",
+                        "_minutes": "60",
+                        "_sms": "500",
+                        "_price": "13.90"
+                    },
+                    {
+                        "_plan": "comfort_M",
+                        "_customers": "4",
+                        "_inet": "6",
+                        "_minutes": "120",
+                        "_sms": "1000",
+                        "_price": "20.90"
+                    },
+                    {
+                        "_plan": "comfort_L",
+                        "_customers": "4",
+                        "_inet": "5",
+                        "_minutes": "240",
+                        "_sms": "2000",
+                        "_price": "29.90"
+                    },
+                    {
+                        "_plan": "comfort_XL",
+                        "_customers": "4",
+                        "_inet": "5",
+                        "_minutes": "1000",
+                        "_sms": "5000",
+                        "_price": "39.90"
+                    },
+                    {
+                        "_plan": "unlimited_XS",
+                        "_customers": "4",
+                        "_inet": "POSITIVE_INFINITY",
+                        "_netspeed": "1",
+                        "_price": "8.90 "
+                    },
+                    {
+                        "_plan": "unlimited_S",
+                        "_customers": "4",
+                        "_inet": "POSITIVE_INFINITY ",
+                        "_netspeed": "2",
+                        "_price": "12.90"
+                    },
+                    {
+                        "_plan": "unlimited_M",
+                        "_customers": "4",
+                        "_inet": "POSITIVE_INFINITY ",
+                        "_netspeed": "4",
+                        "_price": "17.90"
+                    }
+                ]
+            }
+        }
+    }
+} 
