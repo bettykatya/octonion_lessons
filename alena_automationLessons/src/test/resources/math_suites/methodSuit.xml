@@ -1,0 +1,14 @@
+<suite name="Sample calculator test suite">
+
+    <test name="method Suit">
+        <classes>
+            <class name="com.octonion.MathTest">
+                <methods>
+                    <include name="testSoftAssert" />
+                    <include name="testSoftAssert2" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
