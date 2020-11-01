@@ -6,20 +6,28 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import org.w3c.dom.ls.LSOutput;
+
+import java.sql.SQLOutput;
 
 public class MathTest {
 
-    public Math math;
+
 
 
     @Test
     public void testSoftAssert() {
-        Assert.assertEquals(Math.sqrt(4), 2);
+        Assert.assertEquals(Math.sqrt(4), 1);
     }
 
     @Test
     public void testSoftAssert2() {
-        Assert.assertEquals(Math.sqrt(6), 1);
+        Assert.assertEquals(Math.sqrt(9), 3);
+
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(3 == 2);
+        softAssert.assertTrue(3 * 2 == 6);
+        softAssert.assertAll();
     }
 
     @DataProvider(name = "testWithDataProvider")
@@ -38,8 +46,12 @@ public class MathTest {
     }
 
     @AfterMethod
-    public void checkPowerOfNumber() {
-        System.out.println("Aftermethod");
+    public void afterClassMethod() {
+        System.out.println("After method");
+    }
+    @BeforeClass
+    public void beforeClass() {
+        System.out.println("beforeClass");
     }
 
 
