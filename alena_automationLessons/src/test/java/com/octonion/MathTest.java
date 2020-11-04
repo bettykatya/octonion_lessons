@@ -15,12 +15,12 @@ public class MathTest {
 
 
 
-    @Test
+    @Test(groups = {"critical","positive"})
     public void testSoftAssert() {
         Assert.assertEquals(Math.sqrt(4), 1);
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void testSoftAssert2() {
         Assert.assertEquals(Math.sqrt(9), 3);
 
@@ -40,7 +40,7 @@ public class MathTest {
     }
 
 
-    @Test(dataProvider = "testWithDataProvider")
+    @Test(dataProvider = "testWithDataProvider", groups = "positiveChoices")
     public void checkPowerOfNumber(int a, int b, int res) {
         Assert.assertEquals(Math.pow(a, b), res);
     }
