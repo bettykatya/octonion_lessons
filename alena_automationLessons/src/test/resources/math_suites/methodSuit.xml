@@ -1,4 +1,5 @@
-<suite name="Sample calculator test suite">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="methodSuit">
 
     <test name="method Suit">
         <classes>
@@ -6,9 +7,11 @@
                 <methods>
                     <include name="testSoftAssert" />
                     <include name="testSoftAssert2" />
+                    <include name="roundNumber2" />
+                    <include name="roundNumber1" />
+                    <include name="roundNumber3" />
                 </methods>
             </class>
         </classes>
     </test>
-
 </suite>
