@@ -18,7 +18,7 @@ public class FirstTest {
         System.out.println("setUp2");
     }
 
-    @Test
+    @Test(priority = 2)
     public void test1() {
         System.out.println("test1");}
 
@@ -29,7 +29,7 @@ public class FirstTest {
     public void notTest() {
         System.out.println("not.Test");}
 
-    @Test
+    @Test(priority = 1)
     private void test() {
         System.out.println("privateTest");
     }
