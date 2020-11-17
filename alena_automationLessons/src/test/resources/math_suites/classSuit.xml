@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Class suit">
+
+    <test name="method Suit">
+        <classes>
+            <class name="com.octonion.MathTest" />
+        </classes>
+    </test>
+
+</suite>

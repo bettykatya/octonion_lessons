@@ -19,11 +19,14 @@ public class Main {
         Chokolate bounty = new Chokolate("Bounty", 7, 21);
         Chokolate mars = new Chokolate("Mars", 10, 11);
         Ledency barbariska = new Ledency("Barbariska", 4, 6);
+        Solty lakrica = new Solty("Lakrica", 4, 5);
         Chokolate emptyCandyName = new Chokolate("", 7, 14);
 
         Present present = new Present();
         try {
+            present.addCandy(lakrica);
             present.addCandy(bounty);
+            present.addCandy(lakrica);
             present.addCandy(barbariska);
             present.addCandy(mars);
             present.addCandy(barbariska);

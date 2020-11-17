@@ -1,8 +1,8 @@
 package com.octonion.lesson2;
 
-public class Ledency extends NewYearCandy {
+public class Solty extends NewYearCandy {
 
-    public Ledency(String candyName, int weight, int price) {
+    public Solty(String candyName, int weight, int price) {
         super(candyName, weight, price);
     }
 
@@ -21,6 +21,5 @@ public class Ledency extends NewYearCandy {
         totalSugar = 5 * weight;
         return totalSugar;
     }
-
 
 }
