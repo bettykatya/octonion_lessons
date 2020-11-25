@@ -20,14 +20,13 @@ public class AILabLogin {
         emailInput.sendKeys("amitrafanava@octonion.com");
 
         WebElement passwordInput = driver.findElement(By.cssSelector("input#password-field"));
-        passwordInput.sendKeys("qwertyQ2");
+        passwordInput.sendKeys("qwertyQ1");
 
         WebElement submitBtn = driver.findElement(By.xpath("//button[@type='submit']"));
         submitBtn.click();
         emailInput.findElements(By.xpath("//button[@type='submit']"));
-//        Thread.sleep(5000);
-//        Assert.assertFalse(emailInput.isDisplayed());
-
+        Thread.sleep(5000);
+        WebElement checkBox = driver.findElement(By.xpath("//div[@class='sidebar-menu__item-title oct-h12']"));
         driver.quit();
     }
 }
