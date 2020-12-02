@@ -7,6 +7,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class MathTest {
 
     @Test(groups = {"critical", "positive"})
@@ -53,7 +56,7 @@ public class MathTest {
     @Test(groups = "round")
     public void roundNumber2() {
         System.out.println("roundNumber2");
-        Assert.assertEquals(Math.round(58.6), 3, "2.533 = 3");
+        assertThat(Math.round(58.6), equalTo(3L));
     }
 
     @AfterMethod
