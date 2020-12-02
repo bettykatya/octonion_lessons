@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
-public class SecondTestTest {
+public class SecondTest {
 
     private Calculator calculator;
 

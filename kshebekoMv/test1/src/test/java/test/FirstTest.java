@@ -8,14 +8,19 @@ import org.testng.annotations.Test;
 
 public class FirstTest {
 
-    @BeforeMethod
-    public void setUp() {
-        System.out.println("setUp");
+    @Test(groups = "positive")
+    public void positiveTest() {
+        System.out.println("positive test");
     }
 
-    @BeforeMethod
-    public void setUp2() {
-        System.out.println("setUp2");
+    @Test(groups = {"broken", "positive"})
+    public void brokenPositiveTest() {
+        System.out.println("positiveBrokenTest");
+    }
+
+    @Test(groups = "negative")
+    public void negativeTest() {
+        System.out.println("negativeTest");
     }
 
     @Test(priority = 2)
@@ -34,10 +39,6 @@ public class FirstTest {
         System.out.println("privateTest");
     }
 
-    @AfterMethod
-    public void tearDown() {
-        System.out.println("tearDown");
-    }
 
 
 
