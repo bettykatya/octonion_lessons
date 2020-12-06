@@ -26,6 +26,13 @@ public class BrainiumLogin {
         emailInput.findElements(By.xpath("//button[@type='submit']"));
         Thread.sleep(5000);
         WebElement checkBox = driver.findElement(By.xpath("//div[@class='custom-icon left-sidebar__link-icon']"));
-        driver.quit();
+
+        //create project
+        WebElement submitBtn2 = driver.findElement(By.xpath("//button[@class='btn btn--floating oct-h8']"));
+        submitBtn2.click();
+        WebElement nameInput = driver.findElement(By.xpath("//input[@id=\"project-name\"]"));
+        emailInput.sendKeys("test");
+
+//        driver.quit();
     }
 }
