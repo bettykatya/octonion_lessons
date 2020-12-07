@@ -60,17 +60,23 @@ public class BraunfieldTests {
 
     //    List<WebElement> addDeviceBtn = driver.findElements(By.xpath("//button[@class='btn btn--floating oct-h8']"));
     @Test(dependsOnMethods = "addDevice")
-    public void addWidget() {
+    public void addWidget() throws InterruptedException {
         WebElement createWidgetBtn = driver.findElement(By.xpath("//button[@aria-controls='tabs--1--panel--0']"));
         createWidgetBtn.click();
+        Thread.sleep(2000);
 
         WebElement clickOnDropdown = driver.findElement(By.xpath("//button[.//span[text()='Create Widget']]"));
         clickOnDropdown.click();
+        Thread.sleep(2000);
+        WebElement widgetTypeInput = driver.findElement(By.xpath("//input[@id='react-select-4-input']"));
+        widgetTypeInput.sendKeys("Sound level");
+        Thread.sleep(5000);
 
-        WebElement selectDrpd = driver.findElement(By.xpath("//*[@id='fullscreen - modal - container']/div/div/div/div[2]/form/div[3]/div[2]/div/div[2]"));
-        selectDrpd.click();
-        WebElement projectsTab = driver.findElement(By.xpath("//*[@id='fullscreen - modal - container']/div/div/div/div[2]/form/div[3]/div[2]/div/div[2]"));
-        projectsTab.click();
+        WebElement visualisationTypeInput = driver.findElement(By.xpath("//input[@id='react-select-4-input']"));
+        visualisationTypeInput.sendKeys("Line chart");
+
+        WebElement finishBtn = driver.findElement(By.xpath("//button[.//span[text()='Finish']]"));
+        finishBtn.click();
     }
 
 //        driver.quit();
