@@ -4,16 +4,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class BrainiumLogin {
-    @Test
-    public void login() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "D:/install/WebDriver/chromedriver.exe");
+import java.util.List;
 
-        WebDriver driver = new ChromeDriver();
+public class BraunfieldTests {
+    WebDriver driver;
+
+    @BeforeClass
+    public void openDriver() {
+        System.setProperty("webdriver.chrome.driver", "D:/install/WebDriver/chromedriver.exe");
+        driver = new ChromeDriver();
         driver.navigate().to("https://exp6-spa-milfei.octonion.com/login");
         driver.manage().window().maximize();
+    }
+
+    @Test
+    public void login() throws InterruptedException {
 
         WebElement emailInput = driver.findElement(By.cssSelector("input#email"));
         emailInput.sendKeys("amitrafanava@octonion.com");
@@ -26,28 +34,47 @@ public class BrainiumLogin {
         emailInput.findElements(By.xpath("//button[@type='submit']"));
         Thread.sleep(5000);
         WebElement checkBox = driver.findElement(By.xpath("//div[@class='custom-icon left-sidebar__link-icon']"));
+    }
 
-// create project
+    // create project
+    @Test(dependsOnMethods = "login")
+    public void createProject() {
         WebElement createProjectBtn1 = driver.findElement(By.xpath("//button[@class='btn btn--floating oct-h8']"));
         createProjectBtn1.click();
         WebElement nameInput = driver.findElement(By.xpath("//input[@id=\"project-name\"]"));
         nameInput.sendKeys("test");
         WebElement createProjectBtn2 = driver.findElement(By.xpath("//span[text()=\"Create Project\"]/ancestor::button"));
         createProjectBtn2.click();
+    }
 
-        //add device to project  -- not work -  element not interactable
-        WebElement addDeviceBtn = driver.findElement(By.xpath("//div[@class='btn--floating__label']"));
+    @Test(dependsOnMethods = "createProject")
+    public void addDevice() throws InterruptedException {
+        //add device to project
+        Thread.sleep(2000);
+        WebElement addDeviceBtn = driver.findElement(By.xpath("//button[@class='btn btn--floating oct-h8']"));
         addDeviceBtn.click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         WebElement addToTheProjectBtn = driver.findElement(By.xpath("//button[@class='btn btn--contained oct-h9 btn--primary']"));
         addToTheProjectBtn.click();
+    }
 
-        //add widget
-        WebElement projectsTab = driver.findElement(By.xpath("//button[@aria-controls='tabs--24--panel--0']"));
+    //    List<WebElement> addDeviceBtn = driver.findElements(By.xpath("//button[@class='btn btn--floating oct-h8']"));
+    @Test(dependsOnMethods = "addDevice")
+    public void addWidget() {
+        WebElement createWidgetBtn = driver.findElement(By.xpath("//button[@aria-controls='tabs--1--panel--0']"));
+        createWidgetBtn.click();
+
+        WebElement clickOnDropdown = driver.findElement(By.xpath("//button[.//span[text()='Create Widget']]"));
+        clickOnDropdown.click();
+
+        WebElement selectDrpd = driver.findElement(By.xpath("//*[@id='fullscreen - modal - container']/div/div/div/div[2]/form/div[3]/div[2]/div/div[2]"));
+        selectDrpd.click();
+        WebElement projectsTab = driver.findElement(By.xpath("//*[@id='fullscreen - modal - container']/div/div/div/div[2]/form/div[3]/div[2]/div/div[2]"));
         projectsTab.click();
-
+    }
 
 //        driver.quit();
-    }
 }
+
+
 
