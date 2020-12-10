@@ -7,8 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.List;
-
 public class BraunfieldTests {
     WebDriver driver;
 
@@ -33,7 +31,7 @@ public class BraunfieldTests {
         submitBtn.click();
         emailInput.findElements(By.xpath("//button[@type='submit']"));
         Thread.sleep(5000);
-        WebElement checkBox = driver.findElement(By.xpath("//div[@class='custom-icon left-sidebar__link-icon']"));
+//        WebElement checkBox = driver.findElement(By.xpath("//div[@class='custom-icon left-sidebar__link-icon']"));
     }
 
     // create project
@@ -70,15 +68,31 @@ public class BraunfieldTests {
         Thread.sleep(2000);
         WebElement widgetTypeInput = driver.findElement(By.xpath("//input[@id='react-select-4-input']"));
         widgetTypeInput.sendKeys("Sound level");
+    }
+/*
+    widgetTypeInput.isSelected();
+        widgetTypeInput.click();
+
         Thread.sleep(5000);
 
         WebElement visualisationTypeInput = driver.findElement(By.xpath("//input[@id='react-select-4-input']"));
         visualisationTypeInput.sendKeys("Line chart");
+        visualisationTypeInput.submit();
 
         WebElement finishBtn = driver.findElement(By.xpath("//button[.//span[text()='Finish']]"));
         finishBtn.click();
+ */
+    @Test(dependsOnMethods = "addWidget")
+    public void deleteWidget() {
+        WebElement openProjects = driver.findElement(By.xpath("//a[@href=\"/projects\"]"));
+        openProjects.click();
+        WebElement threeDropsMenu = driver.findElement(By.xpath("//div[@class='project-card__context-menu-button']"));
+        threeDropsMenu.click();
+        WebElement removeLink = driver.findElement(By.xpath("//button[.//span[text()=\"Remove\"]]"));
+        removeLink.click();
+        WebElement confirmBtn = driver.findElement(By.xpath("//button[.//span[text()=\"Confirm\"]]"));
+        confirmBtn.click();
     }
-
 //        driver.quit();
 }
 
