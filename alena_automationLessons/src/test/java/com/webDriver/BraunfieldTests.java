@@ -68,32 +68,35 @@ public class BraunfieldTests {
         Thread.sleep(2000);
         WebElement widgetTypeInput = driver.findElement(By.xpath("//input[@id='react-select-4-input']"));
         widgetTypeInput.sendKeys("Sound level");
-    }
-/*
-    widgetTypeInput.isSelected();
-        widgetTypeInput.click();
+        WebElement clickInsideDropdown = driver.findElement(By.xpath("//div[@class=\" css-lnoo1q-menu\"]"));
+        clickInsideDropdown.click();
 
-        Thread.sleep(5000);
+        WebElement clickVisualisationDropdown = driver.findElement(By.xpath("//*[@class=' css-17uj9bd-placeholder'][text()='Visualization type']"));
+        clickVisualisationDropdown.click();
 
-        WebElement visualisationTypeInput = driver.findElement(By.xpath("//input[@id='react-select-4-input']"));
-        visualisationTypeInput.sendKeys("Line chart");
-        visualisationTypeInput.submit();
+        WebElement VisualisationTypeInput = driver.findElement(By.xpath("//input[@id='react-select-5-input']"));
+        VisualisationTypeInput.sendKeys("Line");
 
-        WebElement finishBtn = driver.findElement(By.xpath("//button[.//span[text()='Finish']]"));
+        WebElement clickInsideVisualisationDrpd = driver.findElement(By.xpath("//div[@class=\" css-lnoo1q-menu\"]"));
+        clickInsideVisualisationDrpd.click();
+
+        WebElement finishBtn = driver.findElement(By.xpath(" //div[span[text()='Finish']]"));
         finishBtn.click();
- */
+    }
+
     @Test(dependsOnMethods = "addWidget")
-    public void deleteWidget() {
+    public void deleteWidget() throws InterruptedException {
         WebElement openProjects = driver.findElement(By.xpath("//a[@href=\"/projects\"]"));
         openProjects.click();
-        WebElement threeDropsMenu = driver.findElement(By.xpath("//div[@class='project-card__context-menu-button']"));
+        Thread.sleep(2000);
+        WebElement threeDropsMenu = driver.findElement(By.xpath("//div[@class='project-card__context-menu-button-wrapper']"));
         threeDropsMenu.click();
         WebElement removeLink = driver.findElement(By.xpath("//button[.//span[text()=\"Remove\"]]"));
         removeLink.click();
         WebElement confirmBtn = driver.findElement(By.xpath("//button[.//span[text()=\"Confirm\"]]"));
         confirmBtn.click();
+        driver.quit();
     }
-//        driver.quit();
 }
 
 
