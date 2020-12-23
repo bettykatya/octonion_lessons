@@ -31,10 +31,8 @@ public class BraunfieldTests {
         submitBtn.click();
         emailInput.findElements(By.xpath("//button[@type='submit']"));
         Thread.sleep(5000);
-//        WebElement checkBox = driver.findElement(By.xpath("//div[@class='custom-icon left-sidebar__link-icon']"));
     }
 
-    // create project
     @Test(dependsOnMethods = "login")
     public void createProject() {
         WebElement createProjectBtn1 = driver.findElement(By.xpath("//button[@class='btn btn--floating oct-h8']"));
@@ -52,11 +50,15 @@ public class BraunfieldTests {
         WebElement addDeviceBtn = driver.findElement(By.xpath("//button[@class='btn btn--floating oct-h8']"));
         addDeviceBtn.click();
         Thread.sleep(2000);
+
+        WebElement availableDevicesDrpd = driver.findElement(By.xpath("//div[@class='select-dropdown css-2b097c-container']"));
+        availableDevicesDrpd.click();
+        WebElement selectDevice = driver.findElement(By.xpath("//*[div[text()='29f']]"));
+        selectDevice.click();
         WebElement addToTheProjectBtn = driver.findElement(By.xpath("//button[@class='btn btn--contained oct-h9 btn--primary']"));
         addToTheProjectBtn.click();
     }
 
-    //    List<WebElement> addDeviceBtn = driver.findElements(By.xpath("//button[@class='btn btn--floating oct-h8']"));
     @Test(dependsOnMethods = "addDevice")
     public void addWidget() throws InterruptedException {
         WebElement createWidgetBtn = driver.findElement(By.xpath("//button[@aria-controls='tabs--1--panel--0']"));
