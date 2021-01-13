@@ -4,11 +4,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 public class BraunfieldTests {
     WebDriver driver;
+    private WebDriverWait wait;
 
     @BeforeClass
     public void openDriver() {
@@ -16,7 +23,10 @@ public class BraunfieldTests {
         driver = new ChromeDriver();
         driver.navigate().to("https://exp6-spa-milfei.octonion.com/login");
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(20000, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, 30000);
     }
+
 
     @Test
     public void login() throws InterruptedException {
@@ -30,12 +40,11 @@ public class BraunfieldTests {
         WebElement submitBtn = driver.findElement(By.xpath("//button[@type='submit']"));
         submitBtn.click();
         emailInput.findElements(By.xpath("//button[@type='submit']"));
-        Thread.sleep(5000);
     }
 
     @Test(dependsOnMethods = "login")
     public void createProject() {
-        WebElement createProjectBtn1 = driver.findElement(By.xpath("//button[@class='btn btn--floating oct-h8']"));
+        WebElement createProjectBtn1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@class='btn btn--floating oct-h8']")));
         createProjectBtn1.click();
         WebElement nameInput = driver.findElement(By.xpath("//input[@id=\"project-name\"]"));
         nameInput.sendKeys("test");
@@ -45,15 +54,15 @@ public class BraunfieldTests {
 
     @Test(dependsOnMethods = "createProject")
     public void addDevice() throws InterruptedException {
-        //add device to project
-        Thread.sleep(2000);
+// 'nj  lksdjlks       Thread.sleep(2000);
+//        WebElement addDeviceBtn = driver.findElement(By.xpath("//button[@class='btn btn--floating oct-h8']"));
+//        WebElement addDeviceBtn = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@class='btn btn--floating oct-h8']")));
         WebElement addDeviceBtn = driver.findElement(By.xpath("//button[@class='btn btn--floating oct-h8']"));
         addDeviceBtn.click();
-        Thread.sleep(2000);
 
         WebElement availableDevicesDrpd = driver.findElement(By.xpath("//div[@class='select-dropdown css-2b097c-container']"));
         availableDevicesDrpd.click();
-        WebElement selectDevice = driver.findElement(By.xpath("//*[div[text()='29f']]"));
+        WebElement selectDevice = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[div[text()='29f']]")));
         selectDevice.click();
         WebElement addToTheProjectBtn = driver.findElement(By.xpath("//button[@class='btn btn--contained oct-h9 btn--primary']"));
         addToTheProjectBtn.click();
@@ -63,12 +72,10 @@ public class BraunfieldTests {
     public void addWidget() throws InterruptedException {
         WebElement createWidgetBtn = driver.findElement(By.xpath("//button[@aria-controls='tabs--1--panel--0']"));
         createWidgetBtn.click();
-        Thread.sleep(2000);
 
-        WebElement clickOnDropdown = driver.findElement(By.xpath("//button[.//span[text()='Create Widget']]"));
+        WebElement clickOnDropdown = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[.//span[text()='Create Widget']]")));
         clickOnDropdown.click();
-        Thread.sleep(2000);
-        WebElement widgetTypeInput = driver.findElement(By.xpath("//input[@id='react-select-4-input']"));
+        WebElement widgetTypeInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='react-select-4-input']")));
         widgetTypeInput.sendKeys("Sound level");
         WebElement clickInsideDropdown = driver.findElement(By.xpath("//div[@class=\" css-lnoo1q-menu\"]"));
         clickInsideDropdown.click();
@@ -90,8 +97,7 @@ public class BraunfieldTests {
     public void deleteWidget() throws InterruptedException {
         WebElement openProjects = driver.findElement(By.xpath("//a[@href=\"/projects\"]"));
         openProjects.click();
-        Thread.sleep(2000);
-        WebElement threeDropsMenu = driver.findElement(By.xpath("//div[@class='project-card__context-menu-button-wrapper']"));
+        WebElement threeDropsMenu = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='project-card__context-menu-button-wrapper']")));
         threeDropsMenu.click();
         WebElement removeLink = driver.findElement(By.xpath("//button[.//span[text()=\"Remove\"]]"));
         removeLink.click();
