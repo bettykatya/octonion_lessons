@@ -10,7 +10,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class ApiTest {
+public abstract class ApiTest {
 
     @Test
     public void verifyGetWeatherRequest() throws IOException, InterruptedException {
