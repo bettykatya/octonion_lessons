@@ -12,12 +12,27 @@ public class MainPage {
     @FindBy(css = ".auth-link a")
     private WebElement loginBtn;
 
-    public void clickLogin() {
+    @FindBy(css = ".main-header-top .main-header-right a.btn")
+    private WebElement logoutBtn;
+
+    @FindBy(xpath = "//div[@id='residentialInputs']//span[text()='Расширенный поиск']")
+    private WebElement searchBtn;
+
+    public LoginPopup clickLogin() {
         loginBtn.click();
+        return new LoginPopup(driver);
+    }
+
+    public void clickSearch() {
+        searchBtn.click();
     }
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public WebElement getLogoutBtn() {
+        return logoutBtn;
     }
 }

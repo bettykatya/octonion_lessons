@@ -18,6 +18,9 @@ public class LoginPopup {
     @FindBy(css = "[type=submit]")
     private WebElement submitBtn;
 
+    @FindBy(xpath = "//div[text()='Авторизация']")
+    private WebElement headerLbl;
+
     public LoginPopup(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -33,5 +36,9 @@ public class LoginPopup {
 
     public void submit() {
         submitBtn.click();
+    }
+
+    public WebElement getHeaderLbl() {
+        return headerLbl;
     }
 }
