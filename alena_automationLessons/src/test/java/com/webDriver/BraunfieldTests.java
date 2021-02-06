@@ -19,7 +19,6 @@ public class BraunfieldTests {
 
     @BeforeClass
     public void openDriver() {
-        System.setProperty("webdriver.chrome.driver", "D:/install/WebDriver/chromedriver.exe");
         driver = new ChromeDriver();
         driver.navigate().to("https://exp6-spa-milfei.octonion.com/login");
         driver.manage().window().maximize();
