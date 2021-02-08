@@ -1,32 +1,31 @@
 package com.octonion.automation_lessons.realt;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SearchTest {
+public class SearchTest extends BaseTest {
 
-    private WebDriver driver;
-    private MainPage mainPage;
-
-    @BeforeClass
-    public void initDriver() {
-        driver = new ChromeDriver();
-        driver.navigate().to("https://realt.by/");
-        driver.manage().window().maximize();
-        mainPage = new MainPage(driver);
-    }
+    private SearchPage searchPage;
 
     @Test
     public void verifyOpenSearchPage() {
-        mainPage.clickSearch();
-        //todo assert search page is opened
+        searchPage = mainPage.clickSearch();
+        Assert.assertTrue(searchPage.getFilterForm().isDisplayed());
     }
 
-    @AfterClass
-    public void close() {
-        driver.close();
+    @Test(dependsOnMethods = "verifyOpenSearchPage")
+    public void verifySearch() throws InterruptedException {
+        searchPage.clickCityDropdown();
+        searchPage.clickCityDropdownValue();
+        searchPage.submitForm();
+
+        Thread.sleep(10000);
     }
+
+    /*
+    todo
+    открыть каждое объявление, там проверить город в заголовке
+    (+ проверить Копище)
+    (+ несколько страниц с результатами поиска)
+     */
 }
