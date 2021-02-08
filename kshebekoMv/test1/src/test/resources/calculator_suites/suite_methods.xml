@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="test suite">
+
+<test name="Sample test">
+    <classes>
+        <class name="test.SecondTest">
+            <methods>
+                <include name="sumPositiveDataProvider" />
+            </methods>
+        </class>
+    </classes>
+
+</test>
+
+</suite>
