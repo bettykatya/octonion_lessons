@@ -1,24 +1,30 @@
 package com.octonion.automation_lessons.realt;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SearchPage extends BasePage {
     private WebDriver driver;
 
-    @FindBy(css = "form[name='tx_uedbnewbuild_pi2']")
+    @FindBy(css = "form[name='tx_uedbflat_pi2']")
     private WebElement filterForm;
 
-    @FindBy(css = "[title='Город']")
-    private WebElement cityDropdown;
+    @FindBy(css = ".select2-search__field")
+    private WebElement cityInput;
 
-    @FindBy(css = "option[value='Копище']")
+    @FindBy(xpath = "//li[contains(@class,'select2-results__option')][1]")
     private WebElement cityDropdownValue;
 
     @FindBy(css = "a#search-list")
     private WebElement submitForm;
+
+    @FindBy(css = ".location.color-graydark")
+    private WebElement location;
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;
@@ -29,12 +35,15 @@ public class SearchPage extends BasePage {
         return filterForm;
     }
 
-    public SearchPage clickCityDropdown() {
-        cityDropdown.click();
+    public SearchPage enterCityInput(String city) {
+        cityInput.sendKeys(city);
         return this;
     }
 
     public SearchPage clickCityDropdownValue() {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        cityDropdownValue = wait.until(ExpectedConditions.visibilityOf(cityDropdownValue));
+//        cityDropdownValue = driver.findElement(By.xpath("//li[contains(@class,'select2-results__option')][1]"));
         cityDropdownValue.click();
         return this;
     }
@@ -42,5 +51,9 @@ public class SearchPage extends BasePage {
     public SearchPage submitForm() {
         submitForm.click();
         return this;
+    }
+
+    public WebElement getLocation() {
+        return location;
     }
 }
