@@ -9,4 +9,24 @@ public class LoginPage {
 
     private WebDriver driver;
 
+    @FindBy(css = "input#email")
+    private WebElement emailInput;
+
+    @FindBy(css = "input#password-field")
+    private WebElement passwordInput;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    private WebElement submitBtn;
+
+    public void enterEmail(String email) {
+        emailInput.sendKeys(email);
+    }
+
+    public void enterPassword(String psw) {
+        passwordInput.sendKeys(psw);
+    }
+
+    public void submit() {
+        submitBtn.click();
+    }
 }
