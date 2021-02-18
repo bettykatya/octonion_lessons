@@ -15,11 +15,14 @@ public class SearchTest extends BaseTest {
 
     @Test(dependsOnMethods = "verifyOpenSearchPage")
     public void verifySearch() throws InterruptedException {
-        searchPage.clickCityDropdown();
+        String city = "Минск";
+        searchPage.enterCityInput(city);
         searchPage.clickCityDropdownValue();
         searchPage.submitForm();
 
         Thread.sleep(10000);
+
+//        Assert.assertTrue(searchPage.getLocation().getText().contains(city));
     }
 
     /*
