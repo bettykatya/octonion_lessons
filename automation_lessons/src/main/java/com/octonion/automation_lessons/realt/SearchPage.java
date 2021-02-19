@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class SearchPage extends BasePage {
     private WebDriver driver;
 
@@ -17,14 +19,13 @@ public class SearchPage extends BasePage {
     @FindBy(css = ".select2-search__field")
     private WebElement cityInput;
 
-    @FindBy(xpath = "//li[contains(@class,'select2-results__option')][1]")
     private WebElement cityDropdownValue;
 
     @FindBy(css = "a#search-list")
     private WebElement submitForm;
 
     @FindBy(css = ".location.color-graydark")
-    private WebElement location;
+    private List<WebElement> location;
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;
@@ -40,10 +41,9 @@ public class SearchPage extends BasePage {
         return this;
     }
 
-    public SearchPage clickCityDropdownValue() {
+    public SearchPage clickCityDropdownValue(String city) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
-        cityDropdownValue = wait.until(ExpectedConditions.visibilityOf(cityDropdownValue));
-//        cityDropdownValue = driver.findElement(By.xpath("//li[contains(@class,'select2-results__option')][1]"));
+        cityDropdownValue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format("//li[contains(@class,'select2-results__option')][text()='%s']", city))));
         cityDropdownValue.click();
         return this;
     }
@@ -53,7 +53,7 @@ public class SearchPage extends BasePage {
         return this;
     }
 
-    public WebElement getLocation() {
+    public List<WebElement> getLocation() {
         return location;
     }
 }
