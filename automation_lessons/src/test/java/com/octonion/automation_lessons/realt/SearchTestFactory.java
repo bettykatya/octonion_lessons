@@ -2,16 +2,21 @@ package com.octonion.automation_lessons.realt;
 
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
-public class SearchTest extends BaseTest {
+public class SearchTestFactory extends BaseTest {
 
     private SearchPage searchPage;
-    private String city = "Минск";
+    private String city;
+
+    @Factory(dataProvider = "cities", dataProviderClass = SearchTestDataprovider.class)
+    public SearchTestFactory(String city) {
+        this.city = city;
+    }
 
     @Test
     public void verifyOpenSearchPage() {
@@ -39,8 +44,6 @@ public class SearchTest extends BaseTest {
         }
         softAssert.assertAll();
     }
-
-    //todo friday - check all pages in search result
 
     /*
     todo
