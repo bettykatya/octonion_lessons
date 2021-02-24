@@ -8,19 +8,29 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
-public class SearchTest extends BaseTest {
+public class SearchTestDataprovider extends BaseTest {
 
     private SearchPage searchPage;
     private String city = "Минск";
 
-    @Test
-    public void verifyOpenSearchPage() {
-        searchPage = mainPage.clickSearch();
-        Assert.assertTrue(searchPage.getFilterForm().isDisplayed());
+    @DataProvider
+    public Object[][] cities(){
+        return new Object[][] {
+                {"Брест"},
+                {"Минск"},
+                {"Гродно"}
+        };
     }
 
-    @Test(dependsOnMethods = "verifyOpenSearchPage")
-    public void verifySearch() throws InterruptedException {
+    @Test(dataProvider = "cities")
+    public void verifyOpenSearchPage(String city) throws InterruptedException {
+
+        driver.navigate().to("https://realt.by/");
+        mainPage = new MainPage(driver);
+
+        searchPage = mainPage.clickSearch();
+        Assert.assertTrue(searchPage.getFilterForm().isDisplayed());
+
         Thread.sleep(3000); //todo change to wait
 
         searchPage.enterCityInput(city);
@@ -39,8 +49,6 @@ public class SearchTest extends BaseTest {
         }
         softAssert.assertAll();
     }
-
-    //todo friday - check all pages in search result
 
     /*
     todo
