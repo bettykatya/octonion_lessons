@@ -27,6 +27,9 @@ public class SearchPage extends BasePage {
     @FindBy(css = ".location.color-graydark")
     private List<WebElement> location;
 
+    @FindBy(css = ".paging-list .active + a")
+    private WebElement nextPageBtn;
+
     public SearchPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -55,5 +58,10 @@ public class SearchPage extends BasePage {
 
     public List<WebElement> getLocation() {
         return location;
+    }
+
+    public SearchPage clickNextPageBtn() {
+        nextPageBtn.click();
+        return this;
     }
 }
