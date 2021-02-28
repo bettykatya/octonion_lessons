@@ -2,8 +2,8 @@
 
     <test name="Sample test">
         <classes>
-<!--            <class name="com.octonion.automation_lessons.realt.SearchTest"/>-->
-<!--            <class name="com.octonion.automation_lessons.realt.SearchTestDataprovider"/>-->
+            <class name="com.octonion.automation_lessons.realt.SearchTest"/>
+            <class name="com.octonion.automation_lessons.realt.SearchTestDataprovider"/>
             <class name="com.octonion.automation_lessons.realt.SearchTestFactory"/>
         </classes>
     </test>
