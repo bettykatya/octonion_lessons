@@ -27,9 +27,17 @@ public class SearchTest extends BaseTest {
         searchPage.submitForm();
         Thread.sleep(10000); //todo change to wait
 
-        for (int i = 0; i < 3; i++) { //todo get number of pages
+        //todo round to greater instead of +1
+        int pageNumber = searchPage.getSearchResultCounter() / SearchPage.RESULTS_PER_PAGE + 1;
+        System.out.println(" --- pageNumber " + pageNumber);
+
+        for (int i = 0; i < pageNumber; i++) {
+
+            // todo проверяем шапку
+            //1-30, 31-60, 61-90 ...   +30
+
             List<WebElement> locationList = searchPage.getLocation();
-            Assert.assertEquals(locationList.size(), 30);
+            Assert.assertEquals(locationList.size(), SearchPage.RESULTS_PER_PAGE); //todo fix for last page
 
             SoftAssert softAssert = new SoftAssert();
             for (int j = 0; j < locationList.size(); j++) {
@@ -41,13 +49,4 @@ public class SearchTest extends BaseTest {
             //todo check new page is opened
         }
     }
-
-    //todo friday - check all pages in search result
-
-    /*
-    todo
-    открыть каждое объявление, там проверить город в заголовке
-    (+ проверить Копище)
-    (+ несколько страниц с результатами поиска)
-     */
 }

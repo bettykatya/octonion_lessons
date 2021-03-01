@@ -13,6 +13,8 @@ import java.util.List;
 public class SearchPage extends BasePage {
     private WebDriver driver;
 
+    public static final int RESULTS_PER_PAGE = 30;
+
     @FindBy(css = "form[name='tx_uedbflat_pi2']")
     private WebElement filterForm;
 
@@ -30,6 +32,9 @@ public class SearchPage extends BasePage {
     @FindBy(css = ".paging-list .active + a")
     private WebElement nextPageBtn;
 
+    @FindBy(xpath = "//div[@class='mt-sm']/div/strong[1]")
+    private WebElement searchResultCounter;
+
     public SearchPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -37,6 +42,11 @@ public class SearchPage extends BasePage {
 
     public WebElement getFilterForm() {
         return filterForm;
+    }
+
+    public int getSearchResultCounter() {
+        String text = this.searchResultCounter.getText();
+        return Integer.parseInt(text);
     }
 
     public SearchPage enterCityInput(String city) {
