@@ -1,4 +1,4 @@
-package com.octonion.automation_lessons.realt;
+package com.pageObject;
 
 import com.octonion.pageObject.LoginPage;
 import org.openqa.selenium.WebDriver;
