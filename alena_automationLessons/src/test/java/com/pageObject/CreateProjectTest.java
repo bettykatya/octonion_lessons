@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 public class CreateProjectTest extends BaseTest {
 
     //todo verify projects page opened
+    //todo here to insert device name
 
     @Test
     public void verifyProjectCreated() throws InterruptedException {
