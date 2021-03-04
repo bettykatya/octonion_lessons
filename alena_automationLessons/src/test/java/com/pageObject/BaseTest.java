@@ -1,6 +1,7 @@
 package com.pageObject;
 
 import com.octonion.pageObject.LoginPage;
+import com.octonion.pageObject.ProjectsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -10,6 +11,7 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected LoginPage loginPage;
+    protected ProjectsPage projectsPage;
 
     @BeforeClass
     public void initDriver() {
@@ -17,6 +19,7 @@ public class BaseTest {
         driver.navigate().to("https://exp6-spa-milfei.octonion.com/login");
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
+//        projectsPage = new ProjectsPage(driver);
     }
 
     @AfterClass
