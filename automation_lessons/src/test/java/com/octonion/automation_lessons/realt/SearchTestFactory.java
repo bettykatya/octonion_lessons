@@ -37,7 +37,6 @@ public class SearchTestFactory extends BaseTest {
         Assert.assertEquals(locationList.size() , 30);
 
         SoftAssert softAssert = new SoftAssert();
-        //todo monday - use factory or dataprovider
         for (int i = 0; i < locationList.size(); i++) {
             WebElement location = locationList.get(i);
             softAssert.assertTrue(location.getText().contains(city), "city was expected " + city + ", but address was " + location.getText());
