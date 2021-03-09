@@ -1,15 +1,10 @@
 package com.pageObject;
 
-import com.octonion.pageObject.LoginPage;
 import com.octonion.pageObject.MenuPanel;
-import com.octonion.pageObject.ProjectsPage;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
-//    private ProjectsPage projectsPage;
-
 
     @Test
     public void verifyEnterLoginData() throws InterruptedException {
@@ -30,11 +25,18 @@ public class LoginTest extends BaseTest {
         Thread.sleep(2000);
         projectsPage.clickAddToTheProjectBtn();
         projectsPage.inputName("test1");
+//        Thread.sleep(2000);   похоже ненужная, очень странно
+//        projectsPage.clickAddToTheProjectBtn();
         Thread.sleep(2000);
         projectsPage.clickAddDeviceBtn();
+        Thread.sleep(2000);
         projectsPage.clickAvailableDevicesDrpd();
-//        projectsPage.clickSelectDevice();
-//        projectsPage.clickAddToTheProjectBtn();
+        projectsPage.clickSelectDevice();
+        Thread.sleep(2000);
+//todo click of selected device
+//todo input of device name like for email
+//todo waits
+        projectsPage.clickAddToTheProjectBtn();
     }
 
 }
