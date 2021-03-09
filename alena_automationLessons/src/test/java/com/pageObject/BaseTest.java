@@ -19,7 +19,7 @@ public class BaseTest {
         driver.navigate().to("https://exp6-spa-milfei.octonion.com/login");
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
-//        projectsPage = new ProjectsPage(driver);
+        projectsPage = new ProjectsPage(driver);
     }
 
     @AfterClass

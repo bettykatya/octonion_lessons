@@ -3,6 +3,7 @@ package com.octonion.pageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class ProjectsPage extends BasePage {
 
@@ -12,7 +13,7 @@ public class ProjectsPage extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn--floating oct-h8']")
     private WebElement addDeviceBtn;
 
-    @FindBy(xpath = "//input[@id=\\\"project-name\\")
+    @FindBy(xpath = "//input[@id=\"project-name\"]")
     private WebElement nameInputField;
 
     @FindBy(xpath = "//div[@class='select-dropdown css-2b097c-container']")
@@ -25,7 +26,12 @@ public class ProjectsPage extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn--contained oct-h9 btn--primary']")
     private WebElement addToTheProjectBtn;
 
-    public void inputName() {
+    public ProjectsPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    public void inputName(String name) {
         nameInputField.sendKeys(name);
     }
 
