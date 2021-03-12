@@ -8,7 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SearchPage extends BasePage {
     private WebDriver driver;
@@ -34,6 +37,9 @@ public class SearchPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='mt-sm']/div/strong[1]")
     private WebElement searchResultCounter;
+
+    @FindBy(css = ".fs-small  span.color-graydark")
+    private WebElement qtOfAdsOnPage;
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;
@@ -73,5 +79,23 @@ public class SearchPage extends BasePage {
     public SearchPage clickNextPageBtn() {
         nextPageBtn.click();
         return this;
+    }
+
+    public List<Integer> getFromToAdsNumber() {
+        Pattern pattern = Pattern.compile("\\(показаны объявления с (\\d*) по (\\d*)\\)\\.");
+        Matcher matcher = pattern.matcher(qtOfAdsOnPage.getText());
+        System.out.println(" --- " + qtOfAdsOnPage.getText());
+
+        String group1 = "0";
+        Integer group2 = 0;
+        if (matcher.find()) {
+            group1 = matcher.group(1);
+            System.out.println(" --- " + group1);
+
+            group2 = Integer.parseInt(matcher.group(2));
+            System.out.println(" --- " + group2);
+        }
+
+        return Arrays.asList(Integer.parseInt(group1), group2);
     }
 }
