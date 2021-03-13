@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class SearchTest extends BaseTest {
@@ -27,17 +28,35 @@ public class SearchTest extends BaseTest {
         searchPage.submitForm();
         Thread.sleep(10000); //todo change to wait
 
-        //todo round to greater instead of +1
-        int pageNumber = searchPage.getSearchResultCounter() / SearchPage.RESULTS_PER_PAGE + 1;
+        int pageNumber = (int) Math.ceil((double) searchPage.getSearchResultCounter() / SearchPage.RESULTS_PER_PAGE);
         System.out.println(" --- pageNumber " + pageNumber);
+
+        int lastPageSize = searchPage.getSearchResultCounter() % SearchPage.RESULTS_PER_PAGE;
+        System.out.println(" --- lastPageSize " + lastPageSize);
 
         for (int i = 0; i < pageNumber; i++) {
 
+            List<Integer> fromToAdsNumber = searchPage.getFromToAdsNumber();
+            int fromN = i * SearchPage.RESULTS_PER_PAGE + 1;
+            int toN = (i + 1) * SearchPage.RESULTS_PER_PAGE;
+            Assert.assertEquals(fromToAdsNumber, Arrays.asList(fromN, toN));
+
+            //  x-y    i 30
+            // i=0  x=i*30+1   y=(i+1)*30
+            //i=1   x=31 y=60
+            //i=2   x=61   y=90
+
+
             // todo проверяем шапку
             //1-30, 31-60, 61-90 ...   +30
+            //todo check new page is opened
 
             List<WebElement> locationList = searchPage.getLocation();
-            Assert.assertEquals(locationList.size(), SearchPage.RESULTS_PER_PAGE); //todo fix for last page
+            if (i == pageNumber - 1) {
+                Assert.assertEquals(locationList.size(), lastPageSize);
+            } else {
+                Assert.assertEquals(locationList.size(), SearchPage.RESULTS_PER_PAGE);
+            }
 
             SoftAssert softAssert = new SoftAssert();
             for (int j = 0; j < locationList.size(); j++) {
@@ -45,8 +64,9 @@ public class SearchTest extends BaseTest {
                 softAssert.assertTrue(location.getText().contains(city), "city was expected " + city + ", but address was " + location.getText());
             }
             softAssert.assertAll();
-            searchPage.clickNextPageBtn();
-            //todo check new page is opened
+            if (i != pageNumber - 1) {
+                searchPage.clickNextPageBtn();
+            }
         }
     }
 }
