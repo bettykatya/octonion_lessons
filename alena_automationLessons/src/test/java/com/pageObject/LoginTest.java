@@ -25,18 +25,35 @@ public class LoginTest extends BaseTest {
         Thread.sleep(2000);
         projectsPage.clickAddToTheProjectBtn();
         projectsPage.inputName("test1");
+        //todo why when i run test i see  test1 duplicate
 //        Thread.sleep(2000);   похоже ненужная, очень странно
 //        projectsPage.clickAddToTheProjectBtn();
         Thread.sleep(2000);
         projectsPage.clickAddDeviceBtn();
         Thread.sleep(2000);
         projectsPage.clickAvailableDevicesDrpd();
+        Thread.sleep(2000);
         projectsPage.clickSelectDevice();
         Thread.sleep(2000);
+        projectsPage.clickAddToTheProjectBtn();
 //todo click of selected device
 //todo input of device name like for email
-//todo waits
+//todo waits for elements
         projectsPage.clickAddToTheProjectBtn();
     }
+
+    @Test(dependsOnMethods = "verifyProjectCreated")
+    public void addWidget() throws InterruptedException {
+        projectsPage.clickCreateWidgetBtn();
+        Thread.sleep(2000);
+        projectsPage.clickOnDropdown();
+        projectsPage.doWidgetTypeInput();
+        projectsPage.clickInsideDropdown();
+        projectsPage.clickVisualisationDropdown();
+        projectsPage.inputVisualisationType();
+        projectsPage.clickInsideDropdown();
+        projectsPage.clickFinishBtn();
+    }
+
 
 }
