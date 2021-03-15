@@ -18,8 +18,8 @@ public class BaseTest {
         mainPage = new MainPage(driver);
     }
 
-    /*@AfterClass
+    @AfterClass
     public void close() {
         driver.close();
-    }*/
+    }
 }

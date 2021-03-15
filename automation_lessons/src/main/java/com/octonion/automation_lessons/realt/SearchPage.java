@@ -82,18 +82,18 @@ public class SearchPage extends BasePage {
     }
 
     public List<Integer> getFromToAdsNumber() {
-        Pattern pattern = Pattern.compile("\\(показаны объявления с (\\d*) по (\\d*)\\)\\.");
+        Pattern pattern = Pattern.compile("показаны объявления с (\\d*) по (\\d*)");
         Matcher matcher = pattern.matcher(qtOfAdsOnPage.getText());
         System.out.println(" --- " + qtOfAdsOnPage.getText());
 
         String group1 = "0";
         Integer group2 = 0;
-        if (matcher.find()) {
+        while (matcher.find()) {
             group1 = matcher.group(1);
-            System.out.println(" --- " + group1);
+            System.out.println(" ---group1 " + matcher.group(1));
 
             group2 = Integer.parseInt(matcher.group(2));
-            System.out.println(" --- " + group2);
+            System.out.println(" ---group2 " + matcher.group(2));
         }
 
         return Arrays.asList(Integer.parseInt(group1), group2);

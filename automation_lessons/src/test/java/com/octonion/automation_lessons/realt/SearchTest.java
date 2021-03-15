@@ -41,8 +41,17 @@ public class SearchTest extends BaseTest {
 
             List<Integer> fromToAdsNumber = searchPage.getFromToAdsNumber();
             int fromN = i * SearchPage.RESULTS_PER_PAGE + 1;
+            System.out.println("--- fromN " + fromN);
             int toN = (i + 1) * SearchPage.RESULTS_PER_PAGE;
-            Assert.assertEquals(fromToAdsNumber, Arrays.asList(fromN, toN));
+            System.out.println("--- toN " + toN);
+            int toNLastPage = toN + lastPageSize - 1;
+
+            if (i != pageNumber - 1) {
+                Assert.assertEquals(fromToAdsNumber, Arrays.asList(fromN, toN));
+            }
+            else {
+                Assert.assertEquals(fromToAdsNumber, Arrays.asList(fromN, toNLastPage));
+            }
 
             //  x-y    i 30
             // i=0  x=i*30+1   y=(i+1)*30
