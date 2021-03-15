@@ -90,10 +90,13 @@ public class SearchPage extends BasePage {
         Integer group2 = 0;
         while (matcher.find()) {
             group1 = matcher.group(1);
+
             System.out.println(" ---group1 " + matcher.group(1));
 
             group2 = Integer.parseInt(matcher.group(2));
             System.out.println(" ---group2 " + matcher.group(2));
+            group2 = Integer.parseInt(matcher.group(2));
+
         }
 
         return Arrays.asList(Integer.parseInt(group1), group2);
