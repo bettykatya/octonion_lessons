@@ -11,7 +11,7 @@ import java.util.List;
 public class SearchTest extends BaseTest {
 
     private SearchPage searchPage;
-    private String city = "Копище";
+    private String city = "Лида";
 
     @Test
     public void verifyOpenSearchPage() {
@@ -39,17 +39,12 @@ public class SearchTest extends BaseTest {
             List<Integer> fromToAdsNumber = searchPage.getFromToAdsNumber();
             int fromN = i * SearchPage.RESULTS_PER_PAGE + 1;
             int toN = (i + 1) * SearchPage.RESULTS_PER_PAGE;
-            Assert.assertEquals(fromToAdsNumber, Arrays.asList(fromN, toN));
-
-            //  x-y    i 30
-            // i=0  x=i*30+1   y=(i+1)*30
-            //i=1   x=31 y=60
-            //i=2   x=61   y=90
-
-
-            // todo проверяем шапку
-            //1-30, 31-60, 61-90 ...   +30
-            //todo check new page is opened
+            int toNLastPage = fromN + lastPageSize - 1;
+            if (i != pageNumber - 1) {
+                Assert.assertEquals(fromToAdsNumber, Arrays.asList(fromN, toN));
+            } else {
+                Assert.assertEquals(fromToAdsNumber, Arrays.asList(fromN, toNLastPage));
+            }
 
             List<WebElement> locationList = searchPage.getLocation();
             if (i == pageNumber - 1) {
