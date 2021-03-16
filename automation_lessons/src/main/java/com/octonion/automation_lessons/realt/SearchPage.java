@@ -14,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SearchPage extends BasePage {
+
     private WebDriver driver;
 
     public static final int RESULTS_PER_PAGE = 30;
@@ -38,7 +39,7 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = "//div[@class='mt-sm']/div/strong[1]")
     private WebElement searchResultCounter;
 
-    @FindBy(css = ".fs-small  span.color-graydark")
+    @FindBy(css = ".fs-small span.color-graydark")
     private WebElement qtOfAdsOnPage;
 
     public SearchPage(WebDriver driver) {
@@ -51,6 +52,8 @@ public class SearchPage extends BasePage {
     }
 
     public int getSearchResultCounter() {
+        /*WebDriverWait wait = new WebDriverWait(driver,10); //Явное ожидание
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='mt-sm']/div/strong[1]")));*/
         String text = this.searchResultCounter.getText();
         return Integer.parseInt(text);
     }
@@ -88,17 +91,11 @@ public class SearchPage extends BasePage {
 
         String group1 = "0";
         Integer group2 = 0;
-        while (matcher.find()) {
+        if (matcher.find()) {
             group1 = matcher.group(1);
-
-            System.out.println(" ---group1 " + matcher.group(1));
-
-            group2 = Integer.parseInt(matcher.group(2));
-            System.out.println(" ---group2 " + matcher.group(2));
             group2 = Integer.parseInt(matcher.group(2));
 
         }
-
         return Arrays.asList(Integer.parseInt(group1), group2);
     }
 }
