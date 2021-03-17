@@ -36,7 +36,7 @@ public class ProjectsPage extends BasePage {
     @FindBy(xpath = "//input[@id='react-select-4-input']")
     private WebElement widgetTypeInput;
 
-    @FindBy(xpath = "//div[@class= 'css-lnoo1q-menu']")
+    @FindBy(xpath = "//div[@class=' css-lnoo1q-menu']")
     private WebElement insideDropdown;
 
     @FindBy(xpath = "//*[@class=' css-17uj9bd-placeholder'][text()='Visualization type']")

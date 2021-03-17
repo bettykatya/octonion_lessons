@@ -1,6 +1,7 @@
 package com.pageObject;
 
 import com.octonion.pageObject.LoginPage;
+import com.octonion.pageObject.ProjectListing;
 import com.octonion.pageObject.ProjectsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +13,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected LoginPage loginPage;
     protected ProjectsPage projectsPage;
+    protected ProjectListing projectListing;
 
     @BeforeClass
     public void initDriver() {
@@ -20,6 +22,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         projectsPage = new ProjectsPage(driver);
+        projectListing = new ProjectListing(driver);
     }
 
     @AfterClass

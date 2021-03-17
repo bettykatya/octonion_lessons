@@ -36,18 +36,20 @@ public class LoginTest extends BaseTest {
         projectsPage.clickSelectDevice();
         Thread.sleep(2000);
         projectsPage.clickAddToTheProjectBtn();
-//todo click of selected device
+//        projectsPage.clickAddToTheProjectBtn();
+    }
+    //todo click of selected device
 //todo input of device name like for email
 //todo waits for elements
-        projectsPage.clickAddToTheProjectBtn();
-    }
 
     @Test(dependsOnMethods = "verifyProjectCreated")
     public void addWidget() throws InterruptedException {
         projectsPage.clickCreateWidgetBtn();
         Thread.sleep(2000);
         projectsPage.clickOnDropdown();
+        Thread.sleep(2000);
         projectsPage.doWidgetTypeInput();
+        Thread.sleep(2000);
         projectsPage.clickInsideDropdown();
         projectsPage.clickVisualisationDropdown();
         projectsPage.inputVisualisationType();
@@ -55,5 +57,13 @@ public class LoginTest extends BaseTest {
         projectsPage.clickFinishBtn();
     }
 
+    @Test(dependsOnMethods = "addWidget")
+    public void deleteWidget() throws InterruptedException {
+        projectListing.openProjectsListing();
+        Thread.sleep(2000);
+        projectListing.clickThreeDropsMenu();
+        projectListing.doRemoveOfProject();
+        projectListing.clickOnConfirmBtn();
+    }
 
 }
