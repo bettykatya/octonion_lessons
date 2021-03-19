@@ -11,7 +11,7 @@ import java.util.List;
 public class SearchTest extends BaseTest {
 
     private SearchPage searchPage;
-    private String city = "Лида";
+    private String city = "Копище";
 
     @Test
     public void verifyOpenSearchPage() {
@@ -20,13 +20,11 @@ public class SearchTest extends BaseTest {
     }
 
     @Test(dependsOnMethods = "verifyOpenSearchPage")
-    public void verifySearch() throws InterruptedException {
-        Thread.sleep(3000); //todo change to wait
+    public void verifySearch() {
 
         searchPage.enterCityInput(city);
         searchPage.clickCityDropdownValue(city);
         searchPage.submitForm();
-        Thread.sleep(10000); //todo change to wait
 
         int pageNumber = (int) Math.ceil((double) searchPage.getSearchResultCounter() / SearchPage.RESULTS_PER_PAGE);
         System.out.println(" --- pageNumber " + pageNumber);

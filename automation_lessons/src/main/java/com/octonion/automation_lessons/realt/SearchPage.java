@@ -69,6 +69,8 @@ public class SearchPage extends BasePage {
 
     public SearchPage submitForm() {
         submitForm.click();
+        WebDriverWait wait = new WebDriverWait(driver, 10000);
+        wait.until(ExpectedConditions.visibilityOf(searchResultCounter));
         return this;
     }
 
