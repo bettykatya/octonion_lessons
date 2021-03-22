@@ -7,21 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MainPage extends BasePage {
 
-    private WebDriver driver;
-
-    @FindBy(css = ".auth-link a")
-    private WebElement loginBtn;
-
-    @FindBy(css = ".main-header-top .main-header-right a.btn")
-    private WebElement logoutBtn;
-
     @FindBy(xpath = "//div[@id='residentialInputs']//span[text()='Расширенный поиск']")
     private WebElement searchBtn;
-
-    public LoginPopup clickLogin() {
-        loginBtn.click();
-        return new LoginPopup(driver);
-    }
 
     public SearchPage clickSearch() {
         searchBtn.click();
@@ -29,11 +16,8 @@ public class MainPage extends BasePage {
     }
 
     public MainPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement getLogoutBtn() {
-        return logoutBtn;
-    }
 }

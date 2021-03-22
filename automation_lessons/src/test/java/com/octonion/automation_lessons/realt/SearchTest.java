@@ -27,11 +27,9 @@ public class SearchTest extends BaseTest {
         searchPage.submitForm();
 
         int pageNumber = (int) Math.ceil((double) searchPage.getSearchResultCounter() / SearchPage.RESULTS_PER_PAGE);
-        System.out.println(" --- pageNumber " + pageNumber);
-
         int lastPageSize = searchPage.getSearchResultCounter() % SearchPage.RESULTS_PER_PAGE;
-        System.out.println(" --- lastPageSize " + lastPageSize);
 
+        //todo move to separate method(s) with human-friendly name(s)
         for (int i = 0; i < pageNumber; i++) {
 
             List<Integer> fromToAdsNumber = searchPage.getFromToAdsNumber();

@@ -42,7 +42,7 @@ public class SearchPage extends BasePage {
     private WebElement qtOfAdsOnPage;
 
     public SearchPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -86,7 +86,6 @@ public class SearchPage extends BasePage {
     public List<Integer> getFromToAdsNumber() {
         Pattern pattern = Pattern.compile("показаны объявления с (\\d*) по (\\d*)");
         Matcher matcher = pattern.matcher(qtOfAdsOnPage.getText());
-        System.out.println(" --- " + qtOfAdsOnPage.getText());
 
         String group1 = "0";
         Integer group2 = 0;

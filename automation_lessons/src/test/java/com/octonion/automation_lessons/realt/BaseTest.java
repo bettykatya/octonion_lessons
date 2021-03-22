@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
+//todo use generics (?)
 public class BaseTest {
 
     protected WebDriver driver;

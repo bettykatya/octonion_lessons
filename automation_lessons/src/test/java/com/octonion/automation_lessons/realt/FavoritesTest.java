@@ -10,23 +10,25 @@ import org.testng.annotations.Test;
     -- в заданном наседенном пункте,
 - сохранить их в избранное (если их там нет)
 - сохранить адреса в csv файл (отдельные столбцы - населенный пункт, улица, дом, квартира)
-
  */
-public class FavoritesTest extends LoginTest {
 
+public class FavoritesTest extends BaseTest {
+
+    private SearchPage searchPage;
+    private String city = "Копище";
 
     @BeforeClass
     public void login() {
-        //todo add common steps class with login method
+        CommonSteps.login(mainPage);
+        mainPage = CommonSteps.openMainPageByLogo(driver);
     }
 
     @Test
     public void searchCity() {
-
+        searchPage = mainPage.clickSearch();
     }
 
     /*
-
     precondition - user logged in
     1 - open main mage
     2 - search city
