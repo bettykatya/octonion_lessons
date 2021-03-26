@@ -25,8 +25,8 @@ public class BaseTest {
         projectListing = new ProjectListing(driver);
     }
 
-    @AfterClass
-    public void close() {
-        driver.close();
-    }
+//    @AfterClass
+//    public void close() {
+//        driver.close();
+//    }
 }

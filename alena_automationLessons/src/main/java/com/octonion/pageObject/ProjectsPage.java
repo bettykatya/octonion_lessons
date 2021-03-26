@@ -19,8 +19,11 @@ public class ProjectsPage extends BasePage {
     @FindBy(xpath = "//div[@class='select-dropdown css-2b097c-container']")
     private WebElement availableDevicesDrpd;
 
-    @FindBy(xpath = "//*[div[text()='29f']]")
-    private WebElement selectDevice;
+    @FindBy(css = "//div[@class='select-dropdown css-2b097c-container']")
+    private WebElement availableDevices;
+
+//    @FindBy(xpath = "//*[div[text()='AI Module']]")
+//    private WebElement selectDevice;
     //todo device variable
 
 
@@ -65,40 +68,44 @@ public class ProjectsPage extends BasePage {
         availableDevicesDrpd.click();
     }
 
-    public void clickSelectDevice() {
-        selectDevice.click();
-    }
+//    public void clickSelectDevice() {
+//        selectDevice.click();
+//    }
 
     public void clickAddToTheProjectBtn() {
         addToTheProjectBtn.click();
     }
 
-    public  void clickCreateWidgetBtn(){
+    public void clickCreateWidgetBtn() {
         createWidgetBtn.click();
     }
 
-    public void clickOnDropdown(){
+    public void clickOnDropdown() {
         onDropdown.click();
     }
 
-    public void doWidgetTypeInput(){
+    public void doWidgetTypeInput() {
         widgetTypeInput.sendKeys("Sound level");
         //todo change to variable
     }
 
-    public void clickInsideDropdown(){
+    public void clickInsideDropdown() {
         insideDropdown.click();
     }
 
-    public void clickVisualisationDropdown(){
+    public void clickVisualisationDropdown() {
         visualisationDropdown.click();
     }
 
-    public  void inputVisualisationType(){
+    public void inputVisualisationType() {
         visualisationType.sendKeys("Line");
     }
 
-    public void clickFinishBtn(){
+    public void clickFinishBtn() {
         finishBtn.click();
+    }
+
+    public void enterDeviceName(String device) {
+        availableDevices.sendKeys(device);
     }
 }

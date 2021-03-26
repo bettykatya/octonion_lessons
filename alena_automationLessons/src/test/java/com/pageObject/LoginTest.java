@@ -26,14 +26,15 @@ public class LoginTest extends BaseTest {
         projectsPage.clickAddToTheProjectBtn();
         projectsPage.inputName("test1");
         //todo why when i run test i see  test1 duplicate
-//        Thread.sleep(2000);   похоже ненужная, очень странно
-//        projectsPage.clickAddToTheProjectBtn();
         Thread.sleep(2000);
         projectsPage.clickAddDeviceBtn();
+        //delete comment when several devices
         Thread.sleep(2000);
         projectsPage.clickAvailableDevicesDrpd();
+        projectsPage.enterDeviceName("AI Module");
         Thread.sleep(2000);
-        projectsPage.clickSelectDevice();
+
+//        projectsPage.clickSelectDevice();
         Thread.sleep(2000);
         projectsPage.clickAddToTheProjectBtn();
 //        projectsPage.clickAddToTheProjectBtn();
