@@ -26,8 +26,16 @@ public class FavoritesTest extends BaseTest {
     @Test
     public void searchCity() {
         searchPage = mainPage.clickSearch();
+        searchPage.enterCityInput(city);
+        searchPage.clickCityDropdownValue(city);
+        searchPage.submitForm();
     }
 
+    @Test
+    public void name() {
+
+    }
+    
     /*
     precondition - user logged in
     1 - open main mage
@@ -35,6 +43,5 @@ public class FavoritesTest extends BaseTest {
     3 - open every ad and
         - check restroom
         - check favorite
-
      */
 }
