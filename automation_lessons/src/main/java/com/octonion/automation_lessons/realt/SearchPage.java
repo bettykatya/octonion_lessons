@@ -14,9 +14,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SearchPage extends BasePage {
-    private WebDriver driver;
 
     public static final int RESULTS_PER_PAGE = 30;
+
+    //todo move ad to separate PageObject
+    //.listing-item  a.teaser-title
 
     @FindBy(css = "form[name='tx_uedbflat_pi2']")
     private WebElement filterForm;
@@ -42,7 +44,7 @@ public class SearchPage extends BasePage {
     private WebElement qtOfAdsOnPage;
 
     public SearchPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -69,6 +71,8 @@ public class SearchPage extends BasePage {
 
     public SearchPage submitForm() {
         submitForm.click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(searchResultCounter));
         return this;
     }
 
@@ -82,18 +86,14 @@ public class SearchPage extends BasePage {
     }
 
     public List<Integer> getFromToAdsNumber() {
-        Pattern pattern = Pattern.compile("\\(показаны объявления с (\\d*) по (\\d*)\\)\\.");
+        Pattern pattern = Pattern.compile("показаны объявления с (\\d*) по (\\d*)");
         Matcher matcher = pattern.matcher(qtOfAdsOnPage.getText());
-        System.out.println(" --- " + qtOfAdsOnPage.getText());
 
         String group1 = "0";
         Integer group2 = 0;
         if (matcher.find()) {
             group1 = matcher.group(1);
-            System.out.println(" --- " + group1);
-
             group2 = Integer.parseInt(matcher.group(2));
-            System.out.println(" --- " + group2);
         }
 
         return Arrays.asList(Integer.parseInt(group1), group2);

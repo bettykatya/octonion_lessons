@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPopup extends BasePage {
+public class LoginPopup extends BasePage { //todo do not use basepage
 
     private WebDriver driver;
 
@@ -22,7 +22,7 @@ public class LoginPopup extends BasePage {
     private WebElement headerLbl;
 
     public LoginPopup(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 

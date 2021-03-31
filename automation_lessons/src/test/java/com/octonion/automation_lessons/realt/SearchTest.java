@@ -20,53 +20,49 @@ public class SearchTest extends BaseTest {
     }
 
     @Test(dependsOnMethods = "verifyOpenSearchPage")
-    public void verifySearch() throws InterruptedException {
-        Thread.sleep(3000); //todo change to wait
+    public void verifySearch() {
 
         searchPage.enterCityInput(city);
         searchPage.clickCityDropdownValue(city);
         searchPage.submitForm();
-        Thread.sleep(10000); //todo change to wait
 
         int pageNumber = (int) Math.ceil((double) searchPage.getSearchResultCounter() / SearchPage.RESULTS_PER_PAGE);
-        System.out.println(" --- pageNumber " + pageNumber);
-
         int lastPageSize = searchPage.getSearchResultCounter() % SearchPage.RESULTS_PER_PAGE;
-        System.out.println(" --- lastPageSize " + lastPageSize);
 
+        assertCityInAdsOnAllPages(pageNumber, lastPageSize);
+    }
+
+    private void assertCityInAdsOnAllPages(int pageNumber, int lastPageSize) {
         for (int i = 0; i < pageNumber; i++) {
-
             List<Integer> fromToAdsNumber = searchPage.getFromToAdsNumber();
             int fromN = i * SearchPage.RESULTS_PER_PAGE + 1;
             int toN = (i + 1) * SearchPage.RESULTS_PER_PAGE;
-            Assert.assertEquals(fromToAdsNumber, Arrays.asList(fromN, toN));
-
-            //  x-y    i 30
-            // i=0  x=i*30+1   y=(i+1)*30
-            //i=1   x=31 y=60
-            //i=2   x=61   y=90
-
-
-            // todo проверяем шапку
-            //1-30, 31-60, 61-90 ...   +30
-            //todo check new page is opened
+            int toNLastPage = fromN + lastPageSize - 1;
 
             List<WebElement> locationList = searchPage.getLocation();
-            if (i == pageNumber - 1) {
-                Assert.assertEquals(locationList.size(), lastPageSize);
-            } else {
-                Assert.assertEquals(locationList.size(), SearchPage.RESULTS_PER_PAGE);
-            }
+            assertCityInAds(locationList, city);
 
-            SoftAssert softAssert = new SoftAssert();
-            for (int j = 0; j < locationList.size(); j++) {
-                WebElement location = locationList.get(j);
-                softAssert.assertTrue(location.getText().contains(city), "city was expected " + city + ", but address was " + location.getText());
-            }
-            softAssert.assertAll();
-            if (i != pageNumber - 1) {
+            if (!isLastPage(i, pageNumber)) {
+                Assert.assertEquals(locationList.size(), SearchPage.RESULTS_PER_PAGE);
+                Assert.assertEquals(fromToAdsNumber, Arrays.asList(fromN, toN));
                 searchPage.clickNextPageBtn();
+            } else {
+                Assert.assertEquals(locationList.size(), lastPageSize);
+                Assert.assertEquals(fromToAdsNumber, Arrays.asList(fromN, toNLastPage));
             }
         }
+    }
+
+    private void assertCityInAds(List<WebElement> locationList, String city) {
+        SoftAssert softAssert = new SoftAssert();
+        for (int j = 0; j < locationList.size(); j++) {
+            WebElement location = locationList.get(j);
+            softAssert.assertTrue(location.getText().contains(city), "city was expected " + city + ", but address was " + location.getText());
+        }
+        softAssert.assertAll();
+    }
+
+    private boolean isLastPage(int i, int totalPageNumber) {
+        return i == totalPageNumber - 1;
     }
 }
