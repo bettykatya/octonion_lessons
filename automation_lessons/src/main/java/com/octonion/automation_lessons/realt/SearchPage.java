@@ -17,9 +17,6 @@ public class SearchPage extends BasePage {
 
     public static final int RESULTS_PER_PAGE = 30;
 
-    //todo move ad to separate PageObject
-    //.listing-item  a.teaser-title
-
     @FindBy(css = "form[name='tx_uedbflat_pi2']")
     private WebElement filterForm;
 
@@ -69,11 +66,11 @@ public class SearchPage extends BasePage {
         return this;
     }
 
-    public SearchPage submitForm() {
+    public SearchResultPage submitForm() {
         submitForm.click();
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(searchResultCounter));
-        return this;
+        return new SearchResultPage(driver);
     }
 
     public List<WebElement> getLocation() {

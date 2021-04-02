@@ -15,7 +15,9 @@ import org.testng.annotations.Test;
 public class FavoritesTest extends BaseTest {
 
     private SearchPage searchPage;
+    private SearchResultPage searchResultPage;
     private String city = "Копище";
+    private AdvertisingBlock advertisingBlock;
 
     @BeforeClass
     public void login() {
@@ -28,11 +30,19 @@ public class FavoritesTest extends BaseTest {
         searchPage = mainPage.clickSearch();
         searchPage.enterCityInput(city);
         searchPage.clickCityDropdownValue(city);
-        searchPage.submitForm();
+        searchResultPage = searchPage.submitForm();
     }
 
-    @Test
+    @Test(dependsOnMethods = "searchCity")
     public void name() {
+
+        for (int i = 0; i < searchResultPage.getAdvertisingBlockList().size(); i++) {
+
+//            advertisingBlock = new AdvertisingBlock(driver);
+//            advertisingBlock.clickTitle();
+        }
+
+
 
     }
     
