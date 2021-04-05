@@ -3,6 +3,9 @@ package com.octonion.automation_lessons.realt;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 задача -
 - найти объявления о продаже квартир
@@ -12,6 +15,9 @@ import org.testng.annotations.Test;
 - сохранить адреса в csv файл (отдельные столбцы - населенный пункт, улица, дом, квартира)
  */
 
+/*
+следующая задача - очистить избранное
+ */
 public class FavoritesTest extends BaseTest {
 
     private SearchPage searchPage;
@@ -36,12 +42,23 @@ public class FavoritesTest extends BaseTest {
     @Test(dependsOnMethods = "searchCity")
     public void name() {
 
-        for (int i = 0; i < searchResultPage.getAdvertisingBlockList().size(); i++) {
+        //todo all pages
+        List<AdvertisingBlock> advertisingBlockList = searchResultPage.getAdvertisingBlockList();
+        for (int i = 0; i < advertisingBlockList.size(); i++) {
+            advertisingBlock = advertisingBlockList.get(i);
+            advertisingBlock.clickTitle();
 
-//            advertisingBlock = new AdvertisingBlock(driver);
-//            advertisingBlock.clickTitle();
+            ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(tabs2.get(1));
+
+            AdvertisingDetailsPage advertisingDetailsPage = new AdvertisingDetailsPage(driver);
+            System.out.println(" --- " + i + " - " + advertisingDetailsPage.getToiletType());
+
+            //todo write to csv file
+            
+            driver.close();
+            driver.switchTo().window(tabs2.get(0));
         }
-
 
 
     }
