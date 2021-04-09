@@ -10,6 +10,12 @@ public class AdvertisingDetailsPage extends BasePage {
     @FindBy(xpath = "//td[contains(text(),'Сан/узел')]/following-sibling::td")
     private WebElement toiletType;
 
+    @FindBy(xpath = "//td[contains(text(),'Населенный пункт')]/following-sibling::td")
+    private WebElement city;
+
+    @FindBy(xpath = "//td[contains(text(),'Адрес')]/following-sibling::td")
+    private WebElement address;
+
     public AdvertisingDetailsPage(WebDriver driver) {
         super(driver);
     }
@@ -17,6 +23,22 @@ public class AdvertisingDetailsPage extends BasePage {
     public String getToiletType() {
         try {
             return toiletType.getText();
+        } catch (NoSuchElementException e){
+            return "NONE";
+        }
+    }
+
+    public String getCity() {
+        try {
+            return city.getText();
+        } catch (NoSuchElementException e){
+            return "NONE";
+        }
+    }
+
+    public String getAddress() {
+        try {
+            return address.getText();
         } catch (NoSuchElementException e){
             return "NONE";
         }
