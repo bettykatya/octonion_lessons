@@ -5,6 +5,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import java.util.concurrent.TimeUnit;
+
+//todo use generics (?)
 public class BaseTest {
 
     protected WebDriver driver;
@@ -15,6 +18,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.navigate().to("https://realt.by/");
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         mainPage = new MainPage(driver);
     }
 
