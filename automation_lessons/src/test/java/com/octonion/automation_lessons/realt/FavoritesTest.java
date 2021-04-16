@@ -1,5 +1,6 @@
 package com.octonion.automation_lessons.realt;
 
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -25,6 +26,7 @@ public class FavoritesTest extends BaseTest {
     private SearchPage searchPage;
     private SearchResultPage searchResultPage;
     private String city = "Копище";
+    private String toiletType = "раздельный";
     private AdvertisingBlock advertisingBlock;
     private String fileName = "addresses.csv";
 
@@ -42,43 +44,31 @@ public class FavoritesTest extends BaseTest {
         searchResultPage = searchPage.submitForm();
     }
 
-    //todo add screenshots
     @Test(dependsOnMethods = "searchCity")
-    public void name() throws IOException {
+    public void verifyAddToFile() throws IOException {
+        for (int i = 0; i < searchResultPage.getPageNumber(); i++) {
+            List<AdvertisingBlock> advertisingBlockList = searchResultPage.getAdvertisingBlockList();
+            for (int j = 0; j < advertisingBlockList.size(); j++) {
+                advertisingBlock = advertisingBlockList.get(j);
+                advertisingBlock.clickTitle();
 
-        //todo all pages
-        List<AdvertisingBlock> advertisingBlockList = searchResultPage.getAdvertisingBlockList();
-        for (int i = 0; i < advertisingBlockList.size(); i++) {
-            advertisingBlock = advertisingBlockList.get(i);
-            advertisingBlock.clickTitle();
+                ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+                driver.switchTo().window(tabs2.get(1));
 
-            ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
-            driver.switchTo().window(tabs2.get(1));
+                AdvertisingDetailsPage advertisingDetailsPage = new AdvertisingDetailsPage(driver);
 
-            AdvertisingDetailsPage advertisingDetailsPage = new AdvertisingDetailsPage(driver);
-            System.out.println(" --- " + i + " - " + advertisingDetailsPage.getToiletType());
+                if (advertisingDetailsPage.getToiletType().equals(toiletType)) {
+                    String str = advertisingDetailsPage.getCity() + "," + advertisingDetailsPage.getAddress() + "\n";
+                    FileUtils.addLine(fileName, str);
+                }
 
-            //отдельные столбцы - населенный пункт, улица, дом, квартира
-            String str = advertisingDetailsPage.getCity() + "," + advertisingDetailsPage.getAddress() + "\n";
+                driver.close();
+                driver.switchTo().window(tabs2.get(0));
+            }
 
-            //todo write to csv file
-            FileOutputStream outputStream = new FileOutputStream(fileName, true);
-            byte[] strToBytes = str.getBytes();
-            outputStream.write(strToBytes);
-            outputStream.close();
-
-
-            driver.close();
-            driver.switchTo().window(tabs2.get(0));
+            if (!isLastPage(i, searchResultPage.getPageNumber())) {
+                searchPage.clickNextPageBtn();
+            }
         }
     }
-    
-    /*
-    precondition - user logged in
-    1 - open main mage
-    2 - search city
-    3 - open every ad and
-        - check restroom
-        - check favorite
-     */
 }

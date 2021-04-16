@@ -15,8 +15,6 @@ import java.util.regex.Pattern;
 
 public class SearchPage extends BasePage {
 
-    public static final int RESULTS_PER_PAGE = 30;
-
     @FindBy(css = "form[name='tx_uedbflat_pi2']")
     private WebElement filterForm;
 
@@ -34,9 +32,6 @@ public class SearchPage extends BasePage {
     @FindBy(css = ".paging-list .active + a")
     private WebElement nextPageBtn;
 
-    @FindBy(xpath = "//div[@class='mt-sm']/div/strong[1]")
-    private WebElement searchResultCounter;
-
     @FindBy(css = ".fs-small  span.color-graydark")
     private WebElement qtOfAdsOnPage;
 
@@ -47,11 +42,6 @@ public class SearchPage extends BasePage {
 
     public WebElement getFilterForm() {
         return filterForm;
-    }
-
-    public int getSearchResultCounter() {
-        String text = this.searchResultCounter.getText();
-        return Integer.parseInt(text);
     }
 
     public SearchPage enterCityInput(String city) {
@@ -68,8 +58,6 @@ public class SearchPage extends BasePage {
 
     public SearchResultPage submitForm() {
         submitForm.click();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOf(searchResultCounter));
         return new SearchResultPage(driver);
     }
 

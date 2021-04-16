@@ -10,8 +10,16 @@ import java.util.List;
 
 public class SearchResultPage extends BasePage {
 
+    public static final int RESULTS_PER_PAGE = 30;
+
     @FindBy(css = ".listing-item[data-mode]")
     private List<WebElement> adRoots;
+
+    @FindBy(xpath = "//div[@class='mt-sm']/div/strong[1]")
+    private WebElement searchResultCounter;
+
+    private int pageNumber;
+    private int lastPageSize;
 
     private List<AdvertisingBlock> advertisingBlockList = new ArrayList<>();
 
@@ -25,9 +33,21 @@ public class SearchResultPage extends BasePage {
             System.out.println("--- " + advertisingBlock.getTitle());
         }
 
+        pageNumber = (int) Math.ceil((double) Integer.parseInt(searchResultCounter.getText()) / RESULTS_PER_PAGE);
+        lastPageSize = Integer.parseInt(searchResultCounter.getText()) % RESULTS_PER_PAGE;
     }
 
     public List<AdvertisingBlock> getAdvertisingBlockList() {
         return advertisingBlockList;
     }
+
+    public int getPageNumber() {
+        return pageNumber;
+    }
+
+    public int getLastPageSize() {
+        return lastPageSize;
+    }
+
+
 }
