@@ -15,8 +15,9 @@ public class AdvertisingBlock extends BasePage {
         this.titleLink = root.findElement(By.cssSelector(".listing-item  a.teaser-title"));
     }
 
-    public void clickTitle() {
+    public AdvertisingDetailsPage clickTitle() {
         titleLink.click();
+        return new AdvertisingDetailsPage(driver);
     }
 
     public String getTitle() {
