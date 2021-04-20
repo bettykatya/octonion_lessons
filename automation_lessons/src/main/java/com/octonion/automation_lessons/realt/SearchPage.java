@@ -15,11 +15,6 @@ import java.util.regex.Pattern;
 
 public class SearchPage extends BasePage {
 
-
-    private WebDriver driver;
-
-    public static final int RESULTS_PER_PAGE = 30;
-
     @FindBy(css = "form[name='tx_uedbflat_pi2']")
     private WebElement filterForm;
 
@@ -42,20 +37,11 @@ public class SearchPage extends BasePage {
 
     public SearchPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     public WebElement getFilterForm() {
         return filterForm;
-    }
-
-
-    public int getSearchResultCounter() {
-        /*WebDriverWait wait = new WebDriverWait(driver,10); //Явное ожидание
-        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='mt-sm']/div/strong[1]")));*/
-        String text = this.searchResultCounter.getText();
-        return Integer.parseInt(text);
     }
 
     public SearchPage enterCityInput(String city) {
@@ -70,7 +56,7 @@ public class SearchPage extends BasePage {
         return this;
     }
 
-    public SearchPage submitForm() {
+    public SearchResultPage submitForm() {
         submitForm.click();
         return new SearchResultPage(driver);
     }
@@ -87,15 +73,14 @@ public class SearchPage extends BasePage {
     public List<Integer> getFromToAdsNumber() {
         Pattern pattern = Pattern.compile("показаны объявления с (\\d*) по (\\d*)");
         Matcher matcher = pattern.matcher(qtOfAdsOnPage.getText());
-        System.out.println(" --- " + qtOfAdsOnPage.getText());
 
         String group1 = "0";
         Integer group2 = 0;
         if (matcher.find()) {
             group1 = matcher.group(1);
             group2 = Integer.parseInt(matcher.group(2));
-
         }
+
         return Arrays.asList(Integer.parseInt(group1), group2);
     }
 }

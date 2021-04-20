@@ -1,10 +1,8 @@
 package com.octonion.automation_lessons.realt;
 
-import org.apache.tools.ant.util.FileUtils;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +21,6 @@ import java.util.List;
  */
 public class FavoritesTest extends BaseTest {
 
-    /*
-    precondition - user logged in
-    1 - open main mage
-    2 - search city
-    3 - open every ad and
-        - check restroom
-        - check favorite
-     */
     private SearchPage searchPage;
     private SearchResultPage searchResultPage;
     private String city = "Копище";
@@ -73,11 +63,6 @@ public class FavoritesTest extends BaseTest {
                 driver.close();
                 driver.switchTo().window(tabs2.get(0));
             }
-            /*//todo write to csv file
-                FileOutputStream outputStream = new FileOutputStream(fileName, true);
-                byte[] strToBytes = str.getBytes();
-                outputStream.write(strToBytes);
-                outputStream.close();*/
 
             if (!isLastPage(i, searchResultPage.getPageNumber())) {
                 searchPage.clickNextPageBtn();
@@ -85,4 +70,3 @@ public class FavoritesTest extends BaseTest {
         }
     }
 }
-
