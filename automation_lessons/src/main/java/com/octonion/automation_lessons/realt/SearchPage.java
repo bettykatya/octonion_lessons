@@ -39,7 +39,7 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = "//div[@class='mt-sm']/div/strong[1]")
     private WebElement searchResultCounter;
 
-    @FindBy(css = ".fs-small span.color-graydark")
+    @FindBy(css = ".fs-small  span.color-graydark")
     private WebElement qtOfAdsOnPage;
 
     public SearchPage(WebDriver driver) {

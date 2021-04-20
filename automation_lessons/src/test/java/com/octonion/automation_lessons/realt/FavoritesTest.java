@@ -22,57 +22,57 @@ import java.util.List;
  */
 public class FavoritesTest extends BaseTest {
 
-    private SearchPage searchPage;
-    private SearchResultPage searchResultPage;
-    private String city = "Копище";
-    private AdvertisingBlock advertisingBlock;
-    private String fileName = "addresses.csv";
+        private SearchPage searchPage;
+        private SearchResultPage searchResultPage;
+        private String city = "Копище";
+        private AdvertisingBlock advertisingBlock;
+        private String fileName = "addresses.csv";
 
-    @BeforeClass
-    public void login() {
-        CommonSteps.login(mainPage);
-        mainPage = CommonSteps.openMainPageByLogo(driver);
-    }
-
-    @Test
-    public void searchCity() {
-        searchPage = mainPage.clickSearch();
-        searchPage.enterCityInput(city);
-        searchPage.clickCityDropdownValue(city);
-        searchResultPage = searchPage.submitForm();
-    }
-
-    //todo add screenshots
-    @Test(dependsOnMethods = "searchCity")
-    public void name() throws IOException {
-
-        //todo all pages
-        List<AdvertisingBlock> advertisingBlockList = searchResultPage.getAdvertisingBlockList();
-        for (int i = 0; i < advertisingBlockList.size(); i++) {
-            advertisingBlock = advertisingBlockList.get(i);
-            advertisingBlock.clickTitle();
-
-            ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
-            driver.switchTo().window(tabs2.get(1));
-
-            AdvertisingDetailsPage advertisingDetailsPage = new AdvertisingDetailsPage(driver);
-            System.out.println(" --- " + i + " - " + advertisingDetailsPage.getToiletType());
-
-            //отдельные столбцы - населенный пункт, улица, дом, квартира
-            String str = advertisingDetailsPage.getCity() + "," + advertisingDetailsPage.getAddress() + "\n";
-
-            //todo write to csv file
-            FileOutputStream outputStream = new FileOutputStream(fileName, true);
-            byte[] strToBytes = str.getBytes();
-            outputStream.write(strToBytes);
-            outputStream.close();
-
-
-            driver.close();
-            driver.switchTo().window(tabs2.get(0));
+        @BeforeClass
+        public void login() {
+            CommonSteps.login(mainPage);
+            mainPage = CommonSteps.openMainPageByLogo(driver);
         }
-    }
-    
+
+        @Test
+        public void searchCity() {
+            searchPage = mainPage.clickSearch();
+            searchPage.enterCityInput(city);
+            searchPage.clickCityDropdownValue(city);
+            searchResultPage = searchPage.submitForm();
+        }
+
+        //todo add screenshots
+        @Test(dependsOnMethods = "searchCity")
+        public void name() throws IOException {
+
+            //todo all pages
+            List<AdvertisingBlock> advertisingBlockList = searchResultPage.getAdvertisingBlockList();
+            for (int i = 0; i < advertisingBlockList.size(); i++) {
+                advertisingBlock = advertisingBlockList.get(i);
+                advertisingBlock.clickTitle();
+
+                ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+                driver.switchTo().window(tabs2.get(1));
+
+                AdvertisingDetailsPage advertisingDetailsPage = new AdvertisingDetailsPage(driver);
+                System.out.println(" --- " + i + " - " + advertisingDetailsPage.getToiletType());
+
+                //отдельные столбцы - населенный пункт, улица, дом, квартира
+                String str = advertisingDetailsPage.getCity() + "," + advertisingDetailsPage.getAddress() + "\n";
+
+                //todo write to csv file
+                FileOutputStream outputStream = new FileOutputStream(fileName, true);
+                byte[] strToBytes = str.getBytes();
+                outputStream.write(strToBytes);
+                outputStream.close();
+
+
+                driver.close();
+                driver.switchTo().window(tabs2.get(0));
+            }
+        }
+
     /*
     precondition - user logged in
     1 - open main mage
@@ -81,4 +81,4 @@ public class FavoritesTest extends BaseTest {
         - check restroom
         - check favorite
      */
-}
+    }

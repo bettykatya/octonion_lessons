@@ -60,19 +60,19 @@ public class SearchTest extends BaseTest {
                 Assert.assertEquals(locationList.size(), lastPageSize);
             } else {
                 Assert.assertEquals(locationList.size(), SearchPage.RESULTS_PER_PAGE);
-            }
+    }
 
-            SoftAssert softAssert = new SoftAssert();
-            for (int j = 0; j < locationList.size(); j++) {
-                WebElement location = locationList.get(j);
-                softAssert.assertTrue(location.getText().contains(city), "city was expected " + city + ", but address was " + location.getText());
-            }
-            softAssert.assertAll();
+        SoftAssert softAssert = new SoftAssert();
+        for (int j = 0; j < locationList.size(); j++) {
+            WebElement location = locationList.get(j);
+            softAssert.assertTrue(location.getText().contains(city), "city was expected " + city + ", but address was " + location.getText());
+        }
+        softAssert.assertAll();
 
             if (i != pageNumber - 1) {
                 searchPage.clickNextPageBtn();
-            }
-
-        }
     }
+
+    }
+}
 }
