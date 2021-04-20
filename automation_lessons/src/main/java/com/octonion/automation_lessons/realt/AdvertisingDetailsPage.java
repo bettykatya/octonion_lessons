@@ -16,6 +16,9 @@ public class AdvertisingDetailsPage extends BasePage {
     @FindBy(xpath = "//td[contains(text(),'Адрес')]/following-sibling::td")
     private WebElement address;
 
+    @FindBy(css = "#bmntf .ml-6")
+    private WebElement addToFavBtn;
+
     public AdvertisingDetailsPage(WebDriver driver) {
         super(driver);
     }
@@ -23,7 +26,7 @@ public class AdvertisingDetailsPage extends BasePage {
     public String getToiletType() {
         try {
             return toiletType.getText();
-        } catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return "NONE";
         }
     }
@@ -31,7 +34,7 @@ public class AdvertisingDetailsPage extends BasePage {
     public String getCity() {
         try {
             return city.getText();
-        } catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return "NONE";
         }
     }
@@ -39,8 +42,18 @@ public class AdvertisingDetailsPage extends BasePage {
     public String getAddress() {
         try {
             return address.getText();
-        } catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return "NONE";
         }
+    }
+
+    public AdvertisingDetailsPage clickAddToFavBtn() {
+        addToFavBtn.click();
+        System.out.println(String.format("--- click done for " + getAddress()));
+        return this;
+    }
+
+    public String getAddToFavBtnText() {
+        return addToFavBtn.getText();
     }
 }

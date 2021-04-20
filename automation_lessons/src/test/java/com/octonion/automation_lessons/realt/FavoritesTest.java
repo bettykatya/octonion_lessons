@@ -1,5 +1,6 @@
 package com.octonion.automation_lessons.realt;
 
+import org.apache.tools.ant.util.FileUtils;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -18,60 +19,9 @@ import java.util.List;
  */
 
 /*
-следующая задача - очистить избранное
+следующая задача - очистить избранное, очищать файл
  */
 public class FavoritesTest extends BaseTest {
-
-        private SearchPage searchPage;
-        private SearchResultPage searchResultPage;
-        private String city = "Копище";
-        private AdvertisingBlock advertisingBlock;
-        private String fileName = "addresses.csv";
-
-        @BeforeClass
-        public void login() {
-            CommonSteps.login(mainPage);
-            mainPage = CommonSteps.openMainPageByLogo(driver);
-        }
-
-        @Test
-        public void searchCity() {
-            searchPage = mainPage.clickSearch();
-            searchPage.enterCityInput(city);
-            searchPage.clickCityDropdownValue(city);
-            searchResultPage = searchPage.submitForm();
-        }
-
-        //todo add screenshots
-        @Test(dependsOnMethods = "searchCity")
-        public void name() throws IOException {
-
-            //todo all pages
-            List<AdvertisingBlock> advertisingBlockList = searchResultPage.getAdvertisingBlockList();
-            for (int i = 0; i < advertisingBlockList.size(); i++) {
-                advertisingBlock = advertisingBlockList.get(i);
-                advertisingBlock.clickTitle();
-
-                ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
-                driver.switchTo().window(tabs2.get(1));
-
-                AdvertisingDetailsPage advertisingDetailsPage = new AdvertisingDetailsPage(driver);
-                System.out.println(" --- " + i + " - " + advertisingDetailsPage.getToiletType());
-
-                //отдельные столбцы - населенный пункт, улица, дом, квартира
-                String str = advertisingDetailsPage.getCity() + "," + advertisingDetailsPage.getAddress() + "\n";
-
-                //todo write to csv file
-                FileOutputStream outputStream = new FileOutputStream(fileName, true);
-                byte[] strToBytes = str.getBytes();
-                outputStream.write(strToBytes);
-                outputStream.close();
-
-
-                driver.close();
-                driver.switchTo().window(tabs2.get(0));
-            }
-        }
 
     /*
     precondition - user logged in
@@ -81,4 +31,58 @@ public class FavoritesTest extends BaseTest {
         - check restroom
         - check favorite
      */
+    private SearchPage searchPage;
+    private SearchResultPage searchResultPage;
+    private String city = "Копище";
+    private String toiletType = "раздельный";
+    private String fileName = "addresses.csv";
+
+    @BeforeClass
+    public void login() {
+        CommonSteps.login(mainPage);
+        mainPage = CommonSteps.openMainPageByLogo(driver);
     }
+
+    @Test
+    public void searchCity() {
+        searchPage = mainPage.clickSearch();
+        searchPage.enterCityInput(city);
+        searchPage.clickCityDropdownValue(city);
+        searchResultPage = searchPage.submitForm();
+    }
+
+    @Test(dependsOnMethods = "searchCity")
+    public void verifyAddToFileAndToFavorite() throws IOException {
+        for (int i = 0; i < 1; i++) {
+            List<AdvertisingBlock> advertisingBlockList = searchResultPage.getAdvertisingBlockList();
+            for (int j = 0; j < advertisingBlockList.size(); j++) {
+                AdvertisingDetailsPage advertisingDetailsPage = advertisingBlockList.get(j).clickTitle();
+
+                ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+                driver.switchTo().window(tabs2.get(1));
+
+                if (advertisingDetailsPage.getToiletType().equals(toiletType)) {
+                    String str = advertisingDetailsPage.getCity() + "," + advertisingDetailsPage.getAddress() + "\n";
+                    FileUtils.addLine(fileName, str);
+
+                    if (advertisingDetailsPage.getAddToFavBtnText().equals("Добавить в избранное")) {
+                        advertisingDetailsPage.clickAddToFavBtn();
+                    }
+                }
+
+                driver.close();
+                driver.switchTo().window(tabs2.get(0));
+            }
+            /*//todo write to csv file
+                FileOutputStream outputStream = new FileOutputStream(fileName, true);
+                byte[] strToBytes = str.getBytes();
+                outputStream.write(strToBytes);
+                outputStream.close();*/
+
+            if (!isLastPage(i, searchResultPage.getPageNumber())) {
+                searchPage.clickNextPageBtn();
+            }
+        }
+    }
+}
+

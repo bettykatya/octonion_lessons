@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 
 public class SearchPage extends BasePage {
 
+
     private WebDriver driver;
 
     public static final int RESULTS_PER_PAGE = 30;
@@ -36,13 +37,11 @@ public class SearchPage extends BasePage {
     @FindBy(css = ".paging-list .active + a")
     private WebElement nextPageBtn;
 
-    @FindBy(xpath = "//div[@class='mt-sm']/div/strong[1]")
-    private WebElement searchResultCounter;
-
     @FindBy(css = ".fs-small  span.color-graydark")
     private WebElement qtOfAdsOnPage;
 
     public SearchPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -50,6 +49,7 @@ public class SearchPage extends BasePage {
     public WebElement getFilterForm() {
         return filterForm;
     }
+
 
     public int getSearchResultCounter() {
         /*WebDriverWait wait = new WebDriverWait(driver,10); //Явное ожидание
@@ -72,7 +72,7 @@ public class SearchPage extends BasePage {
 
     public SearchPage submitForm() {
         submitForm.click();
-        return this;
+        return new SearchResultPage(driver);
     }
 
     public List<WebElement> getLocation() {

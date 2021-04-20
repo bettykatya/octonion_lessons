@@ -19,6 +19,12 @@ public class AdvertisingBlock extends BasePage {
             titleLink.click();
         }
 
+    public AdvertisingDetailsPage clickTitle() {
+        titleLink.click();
+        return new AdvertisingDetailsPage(driver);
+    }
+
+
         public String getTitle() {
             return titleLink.getText();
         }
