@@ -23,6 +23,7 @@ public class FavoritesTest extends BaseTest {
 
     private SearchPage searchPage;
     private SearchResultPage searchResultPage;
+    private AccountPage accountPage;
     private String city = "Копище";
     private String toiletType = "раздельный";
     private String fileName = "addresses.csv";
@@ -41,7 +42,7 @@ public class FavoritesTest extends BaseTest {
         searchResultPage = searchPage.submitForm();
     }
 
-    @Test(dependsOnMethods = "searchCity")
+    @Test(dependsOnMethods = "searchCity", enabled = false)
     public void verifyAddToFileAndToFavorite() throws IOException {
         for (int i = 0; i < 1; i++) {
             List<AdvertisingBlock> advertisingBlockList = searchResultPage.getAdvertisingBlockList();
@@ -68,5 +69,16 @@ public class FavoritesTest extends BaseTest {
                 searchPage.clickNextPageBtn();
             }
         }
+    }
+
+    @Test(dependsOnMethods = "searchCity")
+    public void deleteFromFavorites() {
+        accountPage = searchPage.clickFavoriteAdsBtn();
+        accountPage.deleteFromFavorite();
+
+
+
+
+
     }
 }

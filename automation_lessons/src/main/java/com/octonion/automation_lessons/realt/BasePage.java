@@ -18,6 +18,9 @@ public class BasePage {
     @FindBy(css = ".logo")
     protected WebElement logoLink;
 
+    @FindBy(css = "[title='Избранные объявления']")
+    protected WebElement favoriteAdsBtn;
+
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -35,5 +38,10 @@ public class BasePage {
     public MainPage clickLogo() {
         logoLink.click();
         return new MainPage(driver);
+    }
+
+    public AccountPage clickFavoriteAdsBtn() {
+        favoriteAdsBtn.click();
+        return new AccountPage(driver);
     }
 }
