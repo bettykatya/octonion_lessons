@@ -74,11 +74,10 @@ public class FavoritesTest extends BaseTest {
     @Test(dependsOnMethods = "searchCity")
     public void deleteFromFavorites() {
         accountPage = searchPage.clickFavoriteAdsBtn();
-        accountPage.deleteFromFavorite();
+        for (int i = 0; i < accountPage.getBtnDeleteFromFavorite().size(); i++) {
+            System.out.println("---" + accountPage.getBtnDeleteFromFavorite().size());
+            accountPage.deleteFromFavorite();
 
-
-
-
-
+        }
     }
 }
