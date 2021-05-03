@@ -74,11 +74,9 @@ public class FavoritesTest extends BaseTest {
     @Test(dependsOnMethods = "searchCity")
     public void deleteFromFavorites() {
         accountPage = searchPage.clickFavoriteAdsBtn();
-        accountPage.deleteFromFavorite();
-
-
-
-
-
+        int size = accountPage.getBtnDeleteFromFavorite().size();
+        for (int i = 0; i < size; i++) {
+            accountPage = accountPage.deleteFromFavorite();
+        }
     }
 }
