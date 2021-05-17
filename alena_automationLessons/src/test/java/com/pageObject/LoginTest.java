@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
+private String device = "29f";
 
     @Test
     public void verifyEnterLoginData() throws InterruptedException {
@@ -31,7 +32,7 @@ public class LoginTest extends BaseTest {
         //delete comment when several devices
         Thread.sleep(2000);
         projectsPage.clickAvailableDevicesDrpd();
-        projectsPage.enterDeviceName("AI Module");
+//        projectsPage.enterDeviceName("AI Module");
         Thread.sleep(2000);
 
 //        projectsPage.clickSelectDevice();
