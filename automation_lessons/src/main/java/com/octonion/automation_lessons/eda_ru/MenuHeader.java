@@ -16,4 +16,8 @@ public class MenuHeader {
     private SelenideElement receiptMenu = $x(String.format(MENU_ITEM_FORMAT, "Рецепты"));
     private SelenideElement journalMenu = $x(String.format(MENU_ITEM_FORMAT,"Журнал «ЕДА»"));
     private SelenideElement menu = $x(String.format(MENU_ITEM_FORMAT,"ШКОЛА «ЕДЫ»"));
+    private SelenideElement menu = $x(String.format(MENU_ITEM_FORMAT,"Идеи"));
+    private SelenideElement menu = $x(String.format(MENU_ITEM_FORMAT,"Авторы"));
+    private SelenideElement menu = $x(String.format(MENU_ITEM_FORMAT,"База"));
+
 }
