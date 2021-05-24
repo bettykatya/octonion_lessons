@@ -25,6 +25,8 @@ public class MenuHeader {
     private SelenideElement filterReceiptPanel = $(".top-line-filter__toggle-text");
     private SelenideElement expandedFilterReceiptPanel = $(".tag-selector__main-list");
 
+    private SelenideElement loginBtn = $(".user-bar__text");
+
     public void expandFilterPanel() {
         if (expandedFilterReceiptPanel.isDisplayed()){
             System.out.println("Block expanded");
@@ -35,6 +37,11 @@ public class MenuHeader {
     }
     public void clickFilterPanel(){
         filterReceiptPanel.click();
+    }
+
+    public LoginPopup clickLoginBtn(){
+        loginBtn.click();
+        return new LoginPopup();
     }
 }
 
