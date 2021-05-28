@@ -30,7 +30,6 @@ public class MenuHeader {
     public void expandFilterPanel() {
         if (expandedFilterReceiptPanel.isDisplayed()){
             System.out.println("Block expanded");
-            //todo $element ask Kate
         } else {
             filterReceiptPanel.click();
         }

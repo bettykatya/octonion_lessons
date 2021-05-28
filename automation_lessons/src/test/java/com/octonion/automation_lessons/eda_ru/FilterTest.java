@@ -26,16 +26,24 @@ public class FilterTest {
     }
 
     @AfterMethod
-public void takeScreenshort(){
+public void takeScreenshot(){
         Selenide.screenshot(String.valueOf(new Date().getTime()));
     }
 
     @Test
-    public void verifyExpandFilter() throws InterruptedException {
+    public void verifyExpandFilter(){
         menuHeader.clickFilterPanel();
-        Thread.sleep(3000);
+        doSleep(3);
         menuHeader.expandFilterPanel();
-        Thread.sleep(5000);
+        doSleep(5);
+    }
+    private void doSleep(int sec){
+        try {
+            Thread.sleep(sec*1000);
+        }
+        catch (InterruptedException e){
+            e.printStackTrace();
+        }
     }
 
 
